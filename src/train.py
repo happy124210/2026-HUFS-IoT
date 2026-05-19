@@ -6,7 +6,7 @@ import soundfile as sf
 import librosa
 
 # ── 설정 ──────────────────────────────
-DATA_DIR   = '../data'
+DATA_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\data_clean'
 MODEL_DIR  = '../model'
 SAMPLE_RATE = 16000
 CLASSES     = ['glass', 'normal']  # 0=유리파손, 1=일반
