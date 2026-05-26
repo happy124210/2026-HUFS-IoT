@@ -9,7 +9,7 @@ OUTPUT_DIR  = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\data_clean'
 SAMPLE_RATE = 16000
 DURATION    = 3.0
 MIN_RMS     = 0.01
-CLASSES     = ['glass', 'normal']
+CLASSES     = ['glass', 'normal', 'scream']
 
 def process_audio(path, sr=SAMPLE_RATE, duration=DURATION):
     try:
