@@ -7,10 +7,17 @@ import soundfile as sf
 from scipy import signal
 
 # ── 설정 ──────────────────────────────
+BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
+os.environ.setdefault('TFHUB_CACHE_DIR', 'C:\\tmp\\tfhub_cache_hufs_iot')
 MODEL_PATH = '../model/glass_classifier.h5'
 SAMPLE_RATE = 16000
 DURATION = 3.0
-CLASSES = ['glass', 'normal']
+CLASSES = ['glass', 'normal', 'scream']
+THRESHOLDS = {
+    'glass': 0.75,
+    'scream': 0.70,
+}
+MIN_EVENT_FRAMES = 2
 
 # ── wav 로딩 + 리샘플링 (librosa 없이) ─
 def load_wav(path, target_sr=SAMPLE_RATE):
@@ -78,23 +85,56 @@ def predict(wav_path):
     for i, emb in enumerate(embeddings):
         emb_in = np.expand_dims(emb, axis=0)
         probs = model.predict(emb_in, verbose=0)[0]
+        if len(probs) != len(CLASSES):
+            raise RuntimeError(
+                f"모델 출력 차원({len(probs)})과 CLASSES({len(CLASSES)})가 맞지 않습니다."
+            )
         all_probs.append(probs)
-        print(f"  프레임 {i}: glass={probs[0]*100:5.1f}% normal={probs[1]*100:5.1f}%")
+        scores = ' '.join(
+            f"{cls}={probs[idx]*100:5.1f}%"
+            for idx, cls in enumerate(CLASSES)
+        )
+        print(f"  프레임 {i}: {scores}")
 
     all_probs = np.array(all_probs)
     
     # 평균 결과 (원래 방식)
     mean_probs = all_probs.mean(axis=0)
     
-    # 최대 glass 확률 (개선 방식)
-    max_glass_idx = np.argmax(all_probs[:, 0])
-    max_probs = all_probs[max_glass_idx]
+    # 이벤트성 소리는 프레임별 최대 확률을 사용
+    max_probs = all_probs.max(axis=0)
+    max_indices = all_probs.argmax(axis=0)
 
-    print(f"\n📊 [평균] glass: {mean_probs[0]*100:5.1f}%  normal: {mean_probs[1]*100:5.1f}%")
-    print(f"📊 [최대] glass: {max_probs[0]*100:5.1f}%  normal: {max_probs[1]*100:5.1f}%  (프레임 {max_glass_idx})")
+    mean_scores = '  '.join(
+        f"{cls}: {mean_probs[idx]*100:5.1f}%"
+        for idx, cls in enumerate(CLASSES)
+    )
+    max_scores = '  '.join(
+        f"{cls}: {max_probs[idx]*100:5.1f}% (프레임 {max_indices[idx]})"
+        for idx, cls in enumerate(CLASSES)
+    )
+    print(f"\n📊 [평균] {mean_scores}")
+    print(f"📊 [최대] {max_scores}")
     
-    # 최대값 기준으로 판정 (임계값 50%)
-    final = 'glass' if max_probs[0] > 0.5 else 'normal'
+    event_scores = {
+        cls: max_probs[CLASSES.index(cls)]
+        for cls in THRESHOLDS
+    }
+    event_counts = {
+        cls: int(np.sum(all_probs[:, CLASSES.index(cls)] >= THRESHOLDS[cls]))
+        for cls in THRESHOLDS
+    }
+    triggered = [
+        cls for cls, score in event_scores.items()
+        if score >= THRESHOLDS[cls] and event_counts[cls] >= MIN_EVENT_FRAMES
+    ]
+    if triggered:
+        final = max(triggered, key=lambda cls: event_scores[cls])
+    else:
+        final = 'normal'
+
+    count_text = '  '.join(f"{cls}: {event_counts[cls]}프레임" for cls in THRESHOLDS)
+    print(f"📊 [감지 프레임] {count_text}")
     print(f"\n🎯 결론: {final}")
     return final
 # ── 실행 ──────────────────────────────

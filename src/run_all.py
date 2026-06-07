@@ -20,6 +20,7 @@ def run(script, desc):
 
 run('download_audioset.py', 'scream 데이터 다운로드')
 run('preprocess.py', '전처리 (glass + normal + scream)')
+run('augment.py', '데이터 증강 (실시간 감지용 3초 윈도우 생성)')
 run('train.py', '모델 학습')
 run('convert_tflite.py', 'TFLite 변환')
 
