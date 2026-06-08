@@ -8,7 +8,7 @@ import soundfile as sf
 from scipy import signal
 
 
-BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 INPUT_DIR = os.path.join(BASE_DIR, 'data_clean')
 AUGMENTED_DIR = os.path.join(BASE_DIR, 'data_augmented')
 MIXED_DIR = os.path.join(BASE_DIR, 'data_mixed')

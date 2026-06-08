@@ -1,7 +1,7 @@
 import tensorflow as tf
 import os
 
-BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 h5_path     = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 tflite_path = os.path.join(BASE_DIR, 'model', 'glass_classifier.tflite')
 

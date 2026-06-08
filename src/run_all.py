@@ -2,7 +2,7 @@ import os
 import subprocess
 import sys
 
-BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 SRC_DIR  = os.path.join(BASE_DIR, 'src')
 
 def run(script, desc):

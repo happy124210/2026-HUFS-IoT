@@ -1,5 +1,6 @@
 import os
 import sys
+import tempfile
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -7,9 +8,9 @@ import soundfile as sf
 from scipy import signal
 
 # ── 설정 ──────────────────────────────
-BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
-os.environ.setdefault('TFHUB_CACHE_DIR', 'C:\\tmp\\tfhub_cache_hufs_iot')
-MODEL_PATH = '../model/glass_classifier.h5'
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tfhub_cache_hufs_iot'))
+MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 SAMPLE_RATE = 16000
 DURATION = 3.0
 CLASSES = ['glass', 'normal', 'scream']

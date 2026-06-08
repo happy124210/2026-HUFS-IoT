@@ -1,5 +1,6 @@
 import os
 import re
+import tempfile
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
@@ -9,8 +10,8 @@ from sklearn.utils.class_weight import compute_class_weight
 from sklearn.model_selection import train_test_split
 
 # ── 설정 ──────────────────────────────
-BASE_DIR = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT'
-os.environ.setdefault('TFHUB_CACHE_DIR', 'C:\\tmp\\tfhub_cache_hufs_iot')
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tfhub_cache_hufs_iot'))
 DATA_DIRS = [
     os.path.join(BASE_DIR, 'data_clean'),
     os.path.join(BASE_DIR, 'data_augmented'),
