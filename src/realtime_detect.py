@@ -16,8 +16,8 @@ WINDOW_SECONDS = 3.0
 HOP_SECONDS = 1.0
 CLASSES = ['glass', 'normal', 'scream']
 THRESHOLDS = {
-    'glass': 0.75,
-    'scream': 0.70,
+    'glass': 0.88,
+    'scream': 0.85,
 }
 MIN_EVENT_FRAMES = 2
 
