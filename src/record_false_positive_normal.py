@@ -5,6 +5,7 @@ import time
 
 import numpy as np
 import soundfile as sf
+from scipy import signal
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -62,16 +63,34 @@ def normalize_int16(audio):
     return audio
 
 
-def record_clip(sd, duration, device):
+def resolve_input_sample_rate(sd, device, requested_sample_rate):
+    if requested_sample_rate:
+        return int(requested_sample_rate)
+
+    info = sd.query_devices(device, 'input')
+    return int(info['default_samplerate'])
+
+
+def resample_to_save_rate(audio, input_sample_rate):
+    audio = np.asarray(audio, dtype=np.float32).reshape(-1)
+    if input_sample_rate == SAMPLE_RATE:
+        return audio
+
+    target_len = int(round(len(audio) * SAMPLE_RATE / input_sample_rate))
+    return signal.resample(audio, target_len).astype(np.float32)
+
+
+def record_clip(sd, duration, device, input_sample_rate):
     recording = sd.rec(
-        int(duration * SAMPLE_RATE),
-        samplerate=SAMPLE_RATE,
+        int(duration * input_sample_rate),
+        samplerate=input_sample_rate,
         channels=CHANNELS,
         dtype='float32',
         device=device,
     )
     sd.wait()
-    return normalize_int16(recording)
+    audio = normalize_int16(recording)
+    return resample_to_save_rate(audio, input_sample_rate)
 
 
 def save_clip(audio, scenario, index):
@@ -94,8 +113,9 @@ def collect(args):
         return
 
     scenarios = args.scenario or SCENARIOS
+    input_sample_rate = resolve_input_sample_rate(sd, args.device, args.input_sample_rate)
     print(f'저장 위치: {OUTPUT_DIR}')
-    print(f'녹음 설정: {SAMPLE_RATE}Hz mono, {args.duration:.1f}s')
+    print(f'녹음 설정: input={input_sample_rate}Hz mono -> save={SAMPLE_RATE}Hz, {args.duration:.1f}s')
     print('중단하려면 Ctrl+C를 누르세요.')
 
     for scenario in scenarios:
@@ -106,7 +126,7 @@ def collect(args):
             print(f'  준비: {scenario} #{index:03d}')
             time.sleep(args.prepare)
             print('  녹음 중...')
-            audio = record_clip(sd, args.duration, args.device)
+            audio = record_clip(sd, args.duration, args.device, input_sample_rate)
             path, rms, peak = save_clip(audio, scenario, index)
             print(f'  저장: {path}  rms={rms:.4f} peak={peak:.4f}')
             index += 1
@@ -126,6 +146,12 @@ def parse_args():
     parser.add_argument('--duration', type=float, default=DURATION, help='클립 길이 초')
     parser.add_argument('--prepare', type=float, default=2.0, help='녹음 전 대기 시간 초')
     parser.add_argument('--device', default=None, help='sounddevice 입력 장치 ID 또는 이름')
+    parser.add_argument(
+        '--input-sample-rate',
+        type=int,
+        default=None,
+        help='마이크 입력 sample rate. 생략하면 장치 default_samplerate를 사용합니다.',
+    )
     parser.add_argument('--list-devices', action='store_true', help='오디오 장치 목록 출력')
     return parser.parse_args()
 

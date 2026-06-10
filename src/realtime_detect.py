@@ -6,6 +6,7 @@ import tempfile
 import time
 
 import numpy as np
+from scipy import signal
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -86,6 +87,24 @@ def list_devices(sd):
     print(sd.query_devices())
 
 
+def resolve_input_sample_rate(sd, device, requested_sample_rate):
+    if requested_sample_rate:
+        return int(requested_sample_rate)
+
+    info = sd.query_devices(device, 'input')
+    default_sr = int(info['default_samplerate'])
+    return default_sr
+
+
+def resample_to_model_rate(audio, input_sample_rate):
+    audio = np.asarray(audio, dtype=np.float32).reshape(-1)
+    if input_sample_rate == SAMPLE_RATE:
+        return audio
+
+    target_len = int(round(len(audio) * SAMPLE_RATE / input_sample_rate))
+    return signal.resample(audio, target_len).astype(np.float32)
+
+
 def run_loop(args):
     sd = import_sounddevice()
     if args.list_devices:
@@ -94,8 +113,9 @@ def run_loop(args):
 
     yamnet, classifier = load_models(args.no_model)
 
-    window_len = int(args.window * SAMPLE_RATE)
-    hop_len = int(args.hop * SAMPLE_RATE)
+    input_sample_rate = resolve_input_sample_rate(sd, args.device, args.input_sample_rate)
+    window_len = int(args.window * input_sample_rate)
+    hop_len = int(args.hop * input_sample_rate)
     audio_buffer = np.zeros(window_len, dtype=np.float32)
     blocks = queue.Queue()
     last_event_time = 0.0
@@ -107,11 +127,14 @@ def run_loop(args):
         blocks.put(indata[:, 0].copy())
 
     print(f'입력 장치: {args.device if args.device is not None else "default"}')
-    print(f'루프: {SAMPLE_RATE}Hz mono, window={args.window:.1f}s, hop={args.hop:.1f}s')
+    print(
+        f'루프: input={input_sample_rate}Hz mono -> model={SAMPLE_RATE}Hz, '
+        f'window={args.window:.1f}s, hop={args.hop:.1f}s'
+    )
     print('중단: Ctrl+C')
 
     with sd.InputStream(
-        samplerate=SAMPLE_RATE,
+        samplerate=input_sample_rate,
         channels=1,
         dtype='float32',
         blocksize=hop_len,
@@ -141,7 +164,8 @@ def run_loop(args):
                 print(f'[audio] rms={rms:.4f} peak={peak:.4f}')
                 continue
 
-            probs = frame_predictions(yamnet, classifier, audio_buffer)
+            model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
+            probs = frame_predictions(yamnet, classifier, model_audio)
             final, mean_probs, max_probs, event_counts = decide(probs)
 
             now = time.time()
@@ -165,6 +189,12 @@ def parse_args():
     parser.add_argument('--window', type=float, default=WINDOW_SECONDS, help='판정 윈도우 길이 초')
     parser.add_argument('--hop', type=float, default=HOP_SECONDS, help='판정 간격 초')
     parser.add_argument('--cooldown', type=float, default=3.0, help='이벤트 재알림 최소 간격 초')
+    parser.add_argument(
+        '--input-sample-rate',
+        type=int,
+        default=None,
+        help='마이크 입력 sample rate. 생략하면 장치 default_samplerate를 사용합니다.',
+    )
     parser.add_argument('--no-model', action='store_true', help='모델 없이 마이크 레벨만 출력')
     return parser.parse_args()
 
