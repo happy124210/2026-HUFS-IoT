@@ -14,7 +14,7 @@ DURATION    = 3.0
 MIN_RMS     = 0.01
 CLASSES     = ['glass', 'normal', 'scream']
 
-def process_audio(path, sr=SAMPLE_RATE, duration=DURATION):
+def process_audio(path, sr=SAMPLE_RATE, duration=DURATION, min_rms=MIN_RMS):
     try:
         if path.lower().endswith('.wav'):
             audio, source_sr = sf.read(path)
@@ -31,7 +31,7 @@ def process_audio(path, sr=SAMPLE_RATE, duration=DURATION):
 
     # 너무 조용한 파일 제거
     rms = np.sqrt(np.mean(audio**2))
-    if rms < MIN_RMS:
+    if rms < min_rms:
         return None, "너무 조용함"
 
     # 길이 3초로 통일
@@ -67,6 +67,7 @@ def parse_args():
     )
     parser.add_argument('--verbose-skip', action='store_true', help='이미 있는 출력 파일도 로그로 표시합니다.')
     parser.add_argument('--prefix', help='파일명이 이 prefix로 시작하는 입력만 처리합니다.')
+    parser.add_argument('--min-rms', type=float, default=MIN_RMS, help='스킵할 최소 RMS 기준')
     return parser.parse_args()
 
 
@@ -94,7 +95,7 @@ for cls in target_classes:
                 print(f"  - skip existing: {fname}")
             continue
 
-        audio, status = process_audio(os.path.join(in_dir, fname))
+        audio, status = process_audio(os.path.join(in_dir, fname), min_rms=args.min_rms)
         if audio is None:
             print(f"  ✗ skip: {fname} ({status})")
             total_skip += 1
