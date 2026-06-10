@@ -190,7 +190,7 @@ def write_audio(folder, source_path, index, audio):
     return True
 
 
-def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable_pitch_time):
+def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable_pitch_time, background_prefix):
     random.seed(seed)
     np.random.seed(seed)
 
@@ -199,10 +199,17 @@ def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable
         for cls in CLASSES
     }
     normal_files = files_by_class['normal']
+    if background_prefix:
+        normal_files = [
+            path for path in normal_files
+            if os.path.basename(path).startswith(background_prefix)
+        ]
 
     print('Input files:')
     for cls in CLASSES:
         print(f'  {cls}: {len(files_by_class[cls])}')
+    if background_prefix:
+        print(f'  event backgrounds matching {background_prefix}: {len(normal_files)}')
 
     counts = {'glass': 0, 'normal': 0, 'scream': 0}
 
@@ -265,6 +272,10 @@ def parse_args():
         action='store_true',
         help='Enable slower pitch shift and time stretch transforms.',
     )
+    parser.add_argument(
+        '--background-prefix',
+        help='Use only normal clean files with this prefix as event-mix backgrounds.',
+    )
     return parser.parse_args()
 
 
@@ -276,4 +287,5 @@ if __name__ == '__main__':
         normal_per_file=args.normal_per_file,
         seed=args.seed,
         enable_pitch_time=args.enable_pitch_time,
+        background_prefix=args.background_prefix,
     )

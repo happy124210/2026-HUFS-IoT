@@ -3,3 +3,4 @@ photos/
 logs/
 src/__pycache__/
 src/scream_test.wav
+model/embedding_cache/

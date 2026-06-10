@@ -1,5 +1,6 @@
 import os
 import re
+import hashlib
 import tempfile
 import numpy as np
 import tensorflow as tf
@@ -18,19 +19,52 @@ DATA_DIRS = [
     os.path.join(BASE_DIR, 'data_mixed'),
 ]
 MODEL_DIR  = os.path.join(BASE_DIR, 'model')
+EMBEDDING_CACHE_DIR = os.path.join(MODEL_DIR, 'embedding_cache')
 SAMPLE_RATE = 16000
 CLASSES     = ['glass', 'normal', 'scream']  # 0=유리파손, 1=일반, 2=비명
+SEED = 42
+
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
 
 # ── YAMNet 로드 ────────────────────────
 print("YAMNet 로드 중...")
 yamnet = hub.load('https://tfhub.dev/google/yamnet/1')
 
 # ── 오디오 → embedding 변환 ────────────
+def load_audio(path):
+    if path.lower().endswith('.wav'):
+        audio, sr = sf.read(path)
+        if audio.ndim > 1:
+            audio = audio.mean(axis=1)
+        audio = audio.astype(np.float32)
+        if sr != SAMPLE_RATE:
+            audio = librosa.resample(audio, orig_sr=sr, target_sr=SAMPLE_RATE)
+        return audio.astype(np.float32)
+    audio, _ = librosa.load(path, sr=SAMPLE_RATE, mono=True)
+    return audio.astype(np.float32)
+
+
+def cache_path_for(path):
+    rel_path = os.path.relpath(path, BASE_DIR).replace('\\', '/')
+    stat = os.stat(path)
+    key = f'{rel_path}|{stat.st_size}|{stat.st_mtime_ns}'
+    digest = hashlib.sha1(key.encode('utf-8')).hexdigest()
+    return os.path.join(EMBEDDING_CACHE_DIR, f'{digest}.npy')
+
+
 def wav_to_embedding(path):
-    audio, sr = librosa.load(path, sr=SAMPLE_RATE, mono=True)
+    os.makedirs(EMBEDDING_CACHE_DIR, exist_ok=True)
+    cache_path = cache_path_for(path)
+    if os.path.exists(cache_path):
+        return np.load(cache_path)
+
+    audio = load_audio(path)
     audio = audio.astype(np.float32)
     _, embeddings, _ = yamnet(audio)
-    return tf.reduce_mean(embeddings, axis=0).numpy()  # (1024,)
+    emb = tf.reduce_mean(embeddings, axis=0).numpy()  # (1024,)
+    np.save(cache_path, emb)
+    return emb
 
 def source_group(cls, fname):
     stem = os.path.splitext(fname)[0]
@@ -69,7 +103,8 @@ if len(X) == 0:
 
 # ── 분류기 학습 ────────────────────────
 model = tf.keras.Sequential([
-    tf.keras.layers.Dense(64, activation='relu', input_shape=(1024,)),
+    tf.keras.layers.Input(shape=(1024,)),
+    tf.keras.layers.Dense(64, activation='relu'),
     tf.keras.layers.Dropout(0.3),
     tf.keras.layers.Dense(3, activation='softmax')
 ])
@@ -103,9 +138,27 @@ print(f"groups: train={len(train_groups)}개 / val={len(val_groups)}개")
 for label, cls in enumerate(CLASSES):
     print(f"  {cls}: train={np.sum(y_train==label)}, val={np.sum(y_val==label)}")
 
-model.fit(X_train, y_train, epochs=30,
-          validation_data=(X_val, y_val),
-          class_weight=class_weight_dict, verbose=1)
+callbacks = [
+    tf.keras.callbacks.EarlyStopping(
+        monitor='val_accuracy',
+        mode='max',
+        patience=8,
+        restore_best_weights=True,
+        verbose=1,
+    ),
+]
+
+history = model.fit(
+    X_train,
+    y_train,
+    epochs=60,
+    validation_data=(X_val, y_val),
+    class_weight=class_weight_dict,
+    callbacks=callbacks,
+    verbose=1,
+)
+best_val_accuracy = max(history.history.get('val_accuracy', [0.0]))
+print(f"best_val_accuracy: {best_val_accuracy:.4f}")
 
 # ── 모델 저장 ──────────────────────────
 os.makedirs(MODEL_DIR, exist_ok=True)

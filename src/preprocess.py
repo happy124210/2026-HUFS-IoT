@@ -67,6 +67,7 @@ def parse_args():
     )
     parser.add_argument('--verbose-skip', action='store_true', help='이미 있는 출력 파일도 로그로 표시합니다.')
     parser.add_argument('--prefix', help='파일명이 이 prefix로 시작하는 입력만 처리합니다.')
+    parser.add_argument('--ext', action='append', help='처리할 확장자. 예: --ext .wav')
     parser.add_argument('--min-rms', type=float, default=MIN_RMS, help='스킵할 최소 RMS 기준')
     return parser.parse_args()
 
@@ -85,6 +86,12 @@ for cls in target_classes:
     files = [f for f in os.listdir(in_dir) if f.lower().endswith(exts)]
     if args.prefix:
         files = [f for f in files if f.startswith(args.prefix)]
+    if args.ext:
+        wanted_exts = tuple(
+            ext.lower() if ext.startswith('.') else f'.{ext.lower()}'
+            for ext in args.ext
+        )
+        files = [f for f in files if f.lower().endswith(wanted_exts)]
     print(f"\n[{cls}] {len(files)}개 처리 중...")
 
     for fname in files:

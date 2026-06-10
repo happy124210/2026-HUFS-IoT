@@ -1,142 +1,217 @@
+import argparse
+import csv
 import os
 import subprocess
-import pandas as pd
-import csv
 
-# ── AudioSet 클래스 ID ──────────────────
-# /m/0k4j = Glass (유리 파손)
-# /m/07yv9 = Vehicle (일반 소음)
-# /m/0dgbq = Silence/ambient
-GLASS_ID  = '/m/0k4j'
-NORMAL_IDS = ['/m/07yv9', '/m/0dgbq', '/m/09x0r']  # 차량, 배경, 발화
 
-DATA_DIR = '../data'
-MAX_PER_CLASS = 50  # 클래스당 최대 개수
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+DATA_DIR = os.path.join(BASE_DIR, 'data')
+
+# AudioSet class IDs used by this project.
+# Source: https://github.com/audioset/ontology/blob/master/ontology.json
+PROFILES = {
+    'casino-normal': {
+        'class_name': 'normal',
+        'prefix': 'audioset_casino_normal',
+        'ids': [
+            '/m/09x0r',    # Speech
+            '/m/01h8n0',   # Conversation
+            '/m/07rkbfh',  # Chatter
+            '/m/03qtwd',   # Crowd
+            '/m/07qfr4h',  # Hubbub, speech noise, speech babble
+            '/m/01j3sz',   # Laughter
+            '/m/028ght',   # Applause
+            '/m/053hz1',   # Cheering
+            '/m/0242l',    # Coin dropping
+            '/m/03v3yw',   # Keys jangling
+            '/m/02fs_r',   # Beep, bleep
+            '/m/07qwdck',  # Ping
+            '/m/07phxs1',  # Ding
+        ],
+    },
+    'scream': {
+        'class_name': 'scream',
+        'prefix': 'audioset_scream',
+        'ids': [
+            '/m/03qc9zr',  # Screaming
+        ],
+    },
+    'glass-impact': {
+        'class_name': 'glass',
+        'prefix': 'audioset_glass_event',
+        'ids': [
+            '/m/07pjjrj',  # Smash, crash
+            '/m/07pc8lb',  # Breaking
+            '/m/07plct2',  # Crushing
+        ],
+    },
+}
+
 
 def download_segment(ytid, start, end, out_path):
-    """YouTube에서 특정 구간만 다운로드"""
     url = f'https://www.youtube.com/watch?v={ytid}'
-    duration = end - start
+    duration = max(0.1, end - start)
+    output_template = os.path.splitext(out_path)[0] + '.%(ext)s'
     cmd = [
         'yt-dlp',
         url,
         '--extract-audio',
-        '--audio-format', 'wav',
-        '--external-downloader', 'ffmpeg',
+        '--audio-format',
+        'wav',
+        '--external-downloader',
+        'ffmpeg',
         '--external-downloader-args',
         f'ffmpeg_i:-ss {start} -t {duration}',
-        '-o', out_path,
+        '-o',
+        output_template,
         '--quiet',
         '--no-warnings',
     ]
     result = subprocess.run(cmd, capture_output=True)
     return result.returncode == 0
 
+
 def parse_audioset_csv(csv_path, target_ids, max_count):
-    """AudioSet CSV에서 target 클래스 항목만 추출"""
     items = []
-    with open(csv_path, 'r') as f:
-        for line in f:
-            if line.startswith('#'):
+    with open(csv_path, 'r', encoding='utf-8') as f:
+        reader = csv.reader(line for line in f if not line.startswith('#'))
+        for row in reader:
+            if len(row) < 4:
                 continue
-            parts = line.strip().split(', ')
-            if len(parts) < 4:
+            ytid = row[0].strip()
+            try:
+                start = float(row[1])
+                end = float(row[2])
+            except ValueError:
                 continue
-            ytid, start, end, labels = parts[0], float(parts[1]), float(parts[2]), parts[3]
-            for tid in target_ids:
-                if tid in labels:
-                    items.append((ytid, start, end))
-                    break
+            labels = row[3]
+            if any(target_id in labels for target_id in target_ids):
+                items.append((ytid, start, end))
             if len(items) >= max_count:
                 break
     return items
 
-def parse_all_scream_items(csv_paths, target_ids):
-    """여러 CSV에서 모든 scream 항목을 ytid 중복 제거하여 추출"""
-    all_items = []
+
+def collect_candidates(csv_paths, target_ids, max_candidates):
+    candidates = []
     seen = set()
-    for cp in csv_paths:
-        if not os.path.exists(cp):
-            print(f"  [건너뜀] CSV 없음: {os.path.basename(cp)}")
+    for csv_path in csv_paths:
+        if not os.path.exists(csv_path):
+            print(f'  skip missing CSV: {csv_path}')
             continue
-        items = parse_audioset_csv(cp, target_ids, max_count=10**9)
+        items = parse_audioset_csv(csv_path, target_ids, max_candidates)
         added = 0
-        for it in items:
-            if it[0] not in seen:
-                all_items.append(it)
-                seen.add(it[0])
-                added += 1
-        print(f"  {os.path.basename(cp)}: {len(items)}개 (신규 {added}개)")
-    return all_items
-
-# ── CSV 다운로드 안내 ───────────────────
-print("""
-AudioSet CSV 파일을 먼저 다운로드해주세요:
-  balanced_train_segments.csv:
-  http://storage.googleapis.com/us_audioset/youtube_corpus/v1/csv/balanced_train_segments.csv
-
-다운로드 후 프로젝트 루트에 저장하세요.
-""")
-
-csv_path = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\balanced_train_segments.csv'
-if not os.path.exists(csv_path):
-    print("CSV 파일이 없어요! 위 링크에서 받아주세요.")
-    exit()
-
-# ── normal 다운로드 ────────────────────
-# print("\n[normal] 파싱 중...")
-# normal_items = parse_audioset_csv(csv_path, NORMAL_IDS, MAX_PER_CLASS)
-# print(f"  {len(normal_items)}개 찾음")
-#
-# out_dir = os.path.join(DATA_DIR, 'normal')
-# os.makedirs(out_dir, exist_ok=True)
-# for i, (ytid, start, end) in enumerate(normal_items):
-#     out = os.path.join(out_dir, f'normal_{i:03d}.wav')
-#     ok = download_segment(ytid, start, end, out)
-#     print(f"  {'✓' if ok else '✗'} {ytid} ({start}~{end}s)")
-
-# ── scream 다운로드 ────────────────────
-SCREAM_IDS = ['/m/03qc9zr', '/m/0158x5']
-SCREAM_TARGET = 100
-
-unbalanced_csv = 'C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\unbalanced_train_segments.csv'
-csv_paths = [csv_path, unbalanced_csv]
-
-print("\n[scream] 파싱 중...")
-scream_items = parse_all_scream_items(csv_paths, SCREAM_IDS)
-print(f"  중복 제거 후 총 {len(scream_items)}개 후보")
-
-out_dir = os.path.join(DATA_DIR, 'scream')
-os.makedirs(out_dir, exist_ok=True)
-
-existing_wavs = [f for f in os.listdir(out_dir) if f.lower().endswith('.wav')]
-existing_count = len(existing_wavs)
-print(f"  기존 .wav: {existing_count}개 / 목표: {SCREAM_TARGET}개")
-
-if existing_count >= SCREAM_TARGET:
-    print("  목표 이미 달성, 다운로드 생략")
-else:
-    next_idx = 50  # 기존이 000~049 영역이므로 050부터 이어 받음
-    while os.path.exists(os.path.join(out_dir, f'scream_{next_idx:03d}.wav')):
-        next_idx += 1
-
-    success = 0
-    for ytid, start, end in scream_items:
-        cur_total = len([f for f in os.listdir(out_dir) if f.lower().endswith('.wav')])
-        if cur_total >= SCREAM_TARGET:
-            print(f"  목표 {SCREAM_TARGET}개 달성, 중단")
+        for item in items:
+            ytid, start, end = item
+            key = (ytid, start, end)
+            if key in seen:
+                continue
+            seen.add(key)
+            candidates.append(item)
+            added += 1
+            if len(candidates) >= max_candidates:
+                break
+        print(f'  {os.path.basename(csv_path)}: {len(items)} found, {added} added')
+        if len(candidates) >= max_candidates:
             break
-        out = os.path.join(out_dir, f'scream_{next_idx:03d}.wav')
-        if os.path.exists(out):
-            next_idx += 1
+    return candidates
+
+
+def safe_segment_name(prefix, ytid, start, end):
+    token = ytid.replace('-', 'm').replace('_', 'u')
+    start_cs = int(round(start * 100))
+    end_cs = int(round(end * 100))
+    return f'{prefix}_{token}_{start_cs:06d}_{end_cs:06d}.wav'
+
+
+def output_exists(path):
+    stem = os.path.splitext(path)[0]
+    folder = os.path.dirname(path)
+    if not os.path.isdir(folder):
+        return False
+    return any(
+        name.startswith(os.path.basename(stem) + '.')
+        for name in os.listdir(folder)
+    )
+
+
+def download_profile(profile_name, csv_paths, target_count, max_candidates, dry_run):
+    profile = PROFILES[profile_name]
+    out_dir = os.path.join(DATA_DIR, profile['class_name'])
+    prefix = profile['prefix']
+
+    print(f'\n[{profile_name}]')
+    print(f'  class: {profile["class_name"]}')
+    print(f'  output: {out_dir}')
+    print(f'  target new files: {target_count}')
+
+    candidates = collect_candidates(csv_paths, profile['ids'], max_candidates)
+    print(f'  candidates: {len(candidates)}')
+
+    if dry_run:
+        for ytid, start, end in candidates[:target_count]:
+            print(f'  dry-run: {ytid} {start}-{end}')
+        return
+
+    os.makedirs(out_dir, exist_ok=True)
+    success = 0
+    for ytid, start, end in candidates:
+        if success >= target_count:
+            break
+        out_path = os.path.join(out_dir, safe_segment_name(prefix, ytid, start, end))
+        if output_exists(out_path):
             continue
-        ok = download_segment(ytid, start, end, out)
-        marker = '✓' if ok else '✗'
+        ok = download_segment(ytid, start, end, out_path)
+        marker = 'OK' if ok else 'FAIL'
         if ok:
             success += 1
-        print(f"  {marker} scream_{next_idx:03d} {ytid} ({start}~{end}s) [{cur_total + (1 if ok else 0)}/{SCREAM_TARGET}]")
-        next_idx += 1
+        print(f'  {marker} {os.path.basename(out_path)} {ytid} ({start}-{end}) [{success}/{target_count}]')
 
-    print(f"\n  신규 다운로드 성공: {success}개")
+    print(f'\n  downloaded: {success}')
 
-print("\n전체 완료!")
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description='Download AudioSet clips for this project using yt-dlp and local AudioSet CSV files.'
+    )
+    parser.add_argument(
+        '--profile',
+        choices=sorted(PROFILES),
+        default='casino-normal',
+        help='Download profile. casino-normal is best for crowded indoor false-positive training.',
+    )
+    parser.add_argument(
+        '--csv',
+        action='append',
+        default=[],
+        help='AudioSet CSV path. Can be repeated. Defaults to balanced and unbalanced CSVs in project root.',
+    )
+    parser.add_argument('--target-count', type=int, default=80, help='Number of new clips to download.')
+    parser.add_argument('--max-candidates', type=int, default=1500, help='Maximum matching CSV rows to scan/download from.')
+    parser.add_argument('--dry-run', action='store_true', help='Only print candidate clips; do not download.')
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+    csv_paths = args.csv or [
+        os.path.join(BASE_DIR, 'balanced_train_segments.csv'),
+        os.path.join(BASE_DIR, 'unbalanced_train_segments.csv'),
+    ]
+
+    print('Required tools: yt-dlp and ffmpeg')
+    print('CSV files:')
+    for csv_path in csv_paths:
+        print(f'  {csv_path}')
+
+    download_profile(
+        profile_name=args.profile,
+        csv_paths=csv_paths,
+        target_count=args.target_count,
+        max_candidates=args.max_candidates,
+        dry_run=args.dry_run,
+    )
+
+
+if __name__ == '__main__':
+    main()
