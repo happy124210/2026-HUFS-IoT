@@ -8,7 +8,7 @@ from datetime import datetime
 # ── 설정 ──────────────────────────────
 SENDER_EMAIL    = "jangtaehyun16@gmail.com"
 SENDER_PASSWORD = "gkms lqku qurf ehkx"
-RECEIVER_EMAIL  = "0205ria@gmail.com"
+RECEIVER_EMAIL  = "jangtaehyun16@gmail.com"
 
 # ── 로그 기록 ─────────────────────────
 LOG_DIR = os.path.join(os.path.dirname(__file__), '..', 'logs')
