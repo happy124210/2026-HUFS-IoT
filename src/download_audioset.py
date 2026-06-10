@@ -29,6 +29,25 @@ PROFILES = {
             '/m/07phxs1',  # Ding
         ],
     },
+    'music-normal': {
+        'class_name': 'normal',
+        'prefix': 'audioset_music_normal',
+        'ids': [
+            '/m/04rlf',    # Music
+            '/m/015lz1',   # Singing
+            '/m/0y4f8',    # Vocal music
+            '/m/0z9c',     # A capella
+            '/m/0l14jd',   # Choir
+            '/t/dd00003',  # Male singing
+            '/t/dd00004',  # Female singing
+            '/t/dd00005',  # Child singing
+            '/m/0ggq0m',   # Pop music
+            '/m/064t9',    # Hip hop music
+            '/m/06by7',    # Rock music
+            '/m/0fd3y',    # Ambient music
+            '/m/08cyft',   # Electronic dance music
+        ],
+    },
     'scream': {
         'class_name': 'scream',
         'prefix': 'audioset_scream',
