@@ -14,10 +14,11 @@ WINDOW_SECONDS = 3.0
 HOP_SECONDS = 1.0
 CLASSES = ['glass', 'normal', 'scream']
 THRESHOLDS = {
-    'glass': 0.88,
-    'scream': 0.85,
+    'glass': 0.97,
+    'scream': 0.92,
 }
-MIN_EVENT_FRAMES = 2
+MIN_EVENT_FRAMES = 3
+MIN_RMS = 0.02  # 이 이하면 감지 무시
 
 alert_active = False
 alert_lock = threading.Lock()
@@ -170,6 +171,7 @@ def run(device=1):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
+            rms = float(np.sqrt(np.mean(model_audio**2)))
             probs = frame_predictions(yamnet, classifier, model_audio)
             final, max_probs, event_counts = decide(probs)
 
@@ -178,7 +180,7 @@ def run(device=1):
                 is_active = alert_active
             can_alert = now - last_event_time >= 5.0 and not is_active
 
-            if final != 'normal' and can_alert:
+            if final != 'normal' and can_alert and rms >= MIN_RMS:
                 last_event_time = now
                 confidence = max_probs[CLASSES.index(final)]
                 t = threading.Thread(target=handle_threat, args=(final, confidence), daemon=True)
