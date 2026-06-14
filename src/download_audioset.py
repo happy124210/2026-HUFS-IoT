@@ -48,6 +48,20 @@ PROFILES = {
             '/m/08cyft',   # Electronic dance music
         ],
     },
+    'impact-normal': {
+        'class_name': 'normal',
+        'prefix': 'audioset_impact_normal',
+        'ids': [
+            '/m/02dgv',    # Door
+            '/m/07rjzl8',  # Slam
+            '/m/07r4wb8',  # Knock
+            '/m/07qnq_y',  # Thump, thud
+            '/m/07pws3f',  # Bang
+            '/m/03l9g',    # Hammer
+            '/m/0l15bq',   # Clapping
+            '/m/01sm1g',   # Wood block
+        ],
+    },
     'scream': {
         'class_name': 'scream',
         'prefix': 'audioset_scream',
@@ -67,7 +81,7 @@ PROFILES = {
 }
 
 
-def download_segment(ytid, start, end, out_path):
+def download_segment(ytid, start, end, out_path, timeout):
     url = f'https://www.youtube.com/watch?v={ytid}'
     duration = max(0.1, end - start)
     output_template = os.path.splitext(out_path)[0] + '.%(ext)s'
@@ -85,9 +99,15 @@ def download_segment(ytid, start, end, out_path):
         output_template,
         '--quiet',
         '--no-warnings',
+        '--socket-timeout',
+        '15',
     ]
-    result = subprocess.run(cmd, capture_output=True)
-    return result.returncode == 0
+    try:
+        result = subprocess.run(cmd, capture_output=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return False
+    wav_path = os.path.splitext(out_path)[0] + '.wav'
+    return result.returncode == 0 and os.path.exists(wav_path)
 
 
 def parse_audioset_csv(csv_path, target_ids, max_count):
@@ -154,7 +174,7 @@ def output_exists(path):
     )
 
 
-def download_profile(profile_name, csv_paths, target_count, max_candidates, dry_run):
+def download_profile(profile_name, csv_paths, target_count, max_candidates, dry_run, timeout):
     profile = PROFILES[profile_name]
     out_dir = os.path.join(DATA_DIR, profile['class_name'])
     prefix = profile['prefix']
@@ -180,7 +200,7 @@ def download_profile(profile_name, csv_paths, target_count, max_candidates, dry_
         out_path = os.path.join(out_dir, safe_segment_name(prefix, ytid, start, end))
         if output_exists(out_path):
             continue
-        ok = download_segment(ytid, start, end, out_path)
+        ok = download_segment(ytid, start, end, out_path, timeout)
         marker = 'OK' if ok else 'FAIL'
         if ok:
             success += 1
@@ -207,6 +227,7 @@ def parse_args():
     )
     parser.add_argument('--target-count', type=int, default=80, help='Number of new clips to download.')
     parser.add_argument('--max-candidates', type=int, default=1500, help='Maximum matching CSV rows to scan/download from.')
+    parser.add_argument('--timeout', type=int, default=45, help='Seconds to wait for each yt-dlp attempt.')
     parser.add_argument('--dry-run', action='store_true', help='Only print candidate clips; do not download.')
     return parser.parse_args()
 
@@ -229,6 +250,7 @@ def main():
         target_count=args.target_count,
         max_candidates=args.max_candidates,
         dry_run=args.dry_run,
+        timeout=args.timeout,
     )
 
 

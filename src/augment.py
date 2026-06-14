@@ -180,6 +180,18 @@ def augment_normal(path):
     return normalize_peak(audio)
 
 
+def augment_event_standalone(path, cls, enable_pitch_time=False):
+    audio = load_audio(path)
+    audio = active_region(audio, cls)
+    audio = transform_event(audio, cls, enable_pitch_time=enable_pitch_time)
+    audio = apply_gain_db(audio, random.uniform(-10.0, 6.0))
+    audio = add_noise(audio, noise_db_range=(-50, -30))
+    audio = maybe_filter(audio)
+    audio = maybe_clip(audio)
+    audio = fit_length(audio)
+    return normalize_peak(audio)
+
+
 def write_audio(folder, source_path, index, audio):
     os.makedirs(folder, exist_ok=True)
     stem = os.path.splitext(os.path.basename(source_path))[0]
@@ -190,7 +202,17 @@ def write_audio(folder, source_path, index, audio):
     return True
 
 
-def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable_pitch_time, background_prefix):
+def build_dataset(
+    glass_per_file,
+    scream_per_file,
+    normal_per_file,
+    glass_standalone_per_file,
+    scream_standalone_per_file,
+    seed,
+    enable_pitch_time,
+    background_prefix,
+    normal_prefix,
+):
     random.seed(seed)
     np.random.seed(seed)
 
@@ -199,6 +221,12 @@ def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable
         for cls in CLASSES
     }
     normal_files = files_by_class['normal']
+    normal_augment_files = normal_files
+    if normal_prefix:
+        normal_augment_files = [
+            path for path in normal_files
+            if os.path.basename(path).startswith(normal_prefix)
+        ]
     if background_prefix:
         normal_files = [
             path for path in normal_files
@@ -210,10 +238,13 @@ def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable
         print(f'  {cls}: {len(files_by_class[cls])}')
     if background_prefix:
         print(f'  event backgrounds matching {background_prefix}: {len(normal_files)}')
+    if normal_prefix:
+        print(f'  normal augment files matching {normal_prefix}: {len(normal_augment_files)}')
 
     counts = {'glass': 0, 'normal': 0, 'scream': 0}
+    standalone_counts = {'glass': 0, 'scream': 0}
 
-    for path in files_by_class['normal']:
+    for path in normal_augment_files:
         for i in range(normal_per_file):
             written = write_audio(
                 os.path.join(AUGMENTED_DIR, 'normal'),
@@ -243,19 +274,40 @@ def build_dataset(glass_per_file, scream_per_file, normal_per_file, seed, enable
                 if written:
                     counts[cls] += 1
                 if counts[cls] and counts[cls] % 100 == 0:
-                    print(f"  {cls} generated: {counts[cls]}")
+                    print(f"  {cls} mixed generated: {counts[cls]}")
+
+    for cls, per_file in [('glass', glass_standalone_per_file), ('scream', scream_standalone_per_file)]:
+        if per_file <= 0:
+            continue
+        print(f'\nGenerating {cls} standalone augmentation ({per_file} per file)...')
+        for path in files_by_class[cls]:
+            for i in range(per_file):
+                written = write_audio(
+                    os.path.join(AUGMENTED_DIR, cls),
+                    path,
+                    i,
+                    augment_event_standalone(path, cls, enable_pitch_time=enable_pitch_time),
+                )
+                if written:
+                    standalone_counts[cls] += 1
+            if standalone_counts[cls] and standalone_counts[cls] % 100 == 0:
+                print(f"  {cls} standalone generated: {standalone_counts[cls]}")
 
     print('\nGenerated files in this run:')
     for cls in CLASSES:
-        print(f'  {cls}: {counts[cls]}')
+        print(f'  {cls} mixed: {counts[cls]}')
+    for cls in ['glass', 'scream']:
+        print(f'  {cls} standalone: {standalone_counts[cls]}')
     print('\nTotal augmented files on disk:')
     for cls, folder in [
-        ('glass', os.path.join(MIXED_DIR, 'glass')),
+        ('glass mixed', os.path.join(MIXED_DIR, 'glass')),
+        ('glass standalone', os.path.join(AUGMENTED_DIR, 'glass')),
         ('normal', os.path.join(AUGMENTED_DIR, 'normal')),
-        ('scream', os.path.join(MIXED_DIR, 'scream')),
+        ('scream mixed', os.path.join(MIXED_DIR, 'scream')),
+        ('scream standalone', os.path.join(AUGMENTED_DIR, 'scream')),
     ]:
         print(f'  {cls}: {len(list_audio_files(folder))}')
-    print(f'\nAugmented normal: {os.path.join(AUGMENTED_DIR, "normal")}')
+    print(f'\nAugmented: {AUGMENTED_DIR}')
     print(f'Mixed events: {MIXED_DIR}')
 
 
@@ -266,6 +318,10 @@ def parse_args():
     parser.add_argument('--glass-per-file', type=int, default=5)
     parser.add_argument('--scream-per-file', type=int, default=7)
     parser.add_argument('--normal-per-file', type=int, default=12)
+    parser.add_argument('--glass-standalone-per-file', type=int, default=20,
+                        help='Standalone augmentation count per glass file (no background mix).')
+    parser.add_argument('--scream-standalone-per-file', type=int, default=25,
+                        help='Standalone augmentation count per scream file (no background mix).')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument(
         '--enable-pitch-time',
@@ -276,6 +332,10 @@ def parse_args():
         '--background-prefix',
         help='Use only normal clean files with this prefix as event-mix backgrounds.',
     )
+    parser.add_argument(
+        '--normal-prefix',
+        help='Augment only normal clean files whose names start with this prefix.',
+    )
     return parser.parse_args()
 
 
@@ -285,7 +345,10 @@ if __name__ == '__main__':
         glass_per_file=args.glass_per_file,
         scream_per_file=args.scream_per_file,
         normal_per_file=args.normal_per_file,
+        glass_standalone_per_file=args.glass_standalone_per_file,
+        scream_standalone_per_file=args.scream_standalone_per_file,
         seed=args.seed,
         enable_pitch_time=args.enable_pitch_time,
         background_prefix=args.background_prefix,
+        normal_prefix=args.normal_prefix,
     )

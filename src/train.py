@@ -102,15 +102,24 @@ if len(X) == 0:
     raise RuntimeError("학습할 오디오 샘플을 찾지 못했습니다.")
 
 # ── 분류기 학습 ────────────────────────
+reg = tf.keras.regularizers.l2(1e-4)
 model = tf.keras.Sequential([
     tf.keras.layers.Input(shape=(1024,)),
-    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=reg),
+    tf.keras.layers.BatchNormalization(),
+    tf.keras.layers.Dropout(0.4),
+    tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=reg),
+    tf.keras.layers.BatchNormalization(),
     tf.keras.layers.Dropout(0.3),
-    tf.keras.layers.Dense(3, activation='softmax')
+    tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=reg),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.Dense(3, activation='softmax'),
 ])
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
+model.compile(
+    optimizer=tf.keras.optimizers.Adam(learning_rate=1e-3),
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy'],
+)
 
 classes = np.unique(y)
 weights = compute_class_weight(class_weight='balanced', classes=classes, y=y)
@@ -142,8 +151,15 @@ callbacks = [
     tf.keras.callbacks.EarlyStopping(
         monitor='val_accuracy',
         mode='max',
-        patience=8,
+        patience=15,
         restore_best_weights=True,
+        verbose=1,
+    ),
+    tf.keras.callbacks.ReduceLROnPlateau(
+        monitor='val_loss',
+        factor=0.5,
+        patience=5,
+        min_lr=1e-6,
         verbose=1,
     ),
 ]
@@ -151,7 +167,8 @@ callbacks = [
 history = model.fit(
     X_train,
     y_train,
-    epochs=60,
+    epochs=120,
+    batch_size=32,
     validation_data=(X_val, y_val),
     class_weight=class_weight_dict,
     callbacks=callbacks,
