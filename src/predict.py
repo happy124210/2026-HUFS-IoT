@@ -4,65 +4,21 @@ import tempfile
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-import soundfile as sf
-from scipy import signal
+
+from audio_pipeline import SAMPLE_RATE, load_audio, loudest_window
+from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
 
 # ── 설정 ──────────────────────────────
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tfhub_cache_hufs_iot'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-SAMPLE_RATE = 16000
 DURATION = 3.0
-CLASSES = ['glass', 'normal', 'scream']
-THRESHOLDS = {
-    'glass': 0.75,
-    'scream': 0.70,
-}
-MIN_EVENT_FRAMES = 2
-
-# ── wav 로딩 + 리샘플링 (librosa 없이) ─
-def load_wav(path, target_sr=SAMPLE_RATE):
-    audio, sr = sf.read(path)
-    # 스테레오면 모노로
-    if audio.ndim > 1:
-        audio = audio.mean(axis=1)
-    # float32로
-    audio = audio.astype(np.float32)
-    # 샘플레이트 다르면 리샘플
-    if sr != target_sr:
-        n_samples = int(len(audio) * target_sr / sr)
-        audio = signal.resample(audio, n_samples).astype(np.float32)
-    return audio
-
-# ── RMS 계산 (librosa.feature.rms 대체) ─
-def frame_rms(audio, frame_length, hop_length):
-    n_frames = 1 + (len(audio) - frame_length) // hop_length
-    rms_list = []
-    for i in range(n_frames):
-        frame = audio[i*hop_length : i*hop_length + frame_length]
-        rms_list.append(np.sqrt(np.mean(frame**2)))
-    return np.array(rms_list)
 
 # ── preprocess.py와 동일한 전처리 ─────
 def process_audio(path):
-    audio = load_wav(path)
+    audio = load_audio(path)
     target_len = int(SAMPLE_RATE * DURATION)
-
-    if len(audio) >= target_len:
-        rms_frames = frame_rms(audio, target_len, target_len // 2)
-        if len(rms_frames) > 0:
-            best_frame = np.argmax(rms_frames)
-            start = min(best_frame * (target_len // 2), len(audio) - target_len)
-            audio = audio[start:start + target_len]
-        else:
-            audio = audio[:target_len]
-    else:
-        audio = np.pad(audio, (0, target_len - len(audio)))
-
-    max_val = np.max(np.abs(audio))
-    if max_val > 0:
-        audio = audio / max_val * 0.9
-    return audio.astype(np.float32)
+    return loudest_window(audio, target_len)
 
 # ── 모델 로드 ─────────────────────────
 print("YAMNet 로드 중...")
@@ -117,25 +73,12 @@ def predict(wav_path):
     print(f"\n📊 [평균] {mean_scores}")
     print(f"📊 [최대] {max_scores}")
     
-    event_scores = {
-        cls: max_probs[CLASSES.index(cls)]
+    final, _, _, consecutive_runs = decide(all_probs)
+    count_text = '  '.join(
+        f"{cls}: 연속 {consecutive_runs[cls]} / 필요 {MIN_CONSECUTIVE_FRAMES[cls]}"
         for cls in THRESHOLDS
-    }
-    event_counts = {
-        cls: int(np.sum(all_probs[:, CLASSES.index(cls)] >= THRESHOLDS[cls]))
-        for cls in THRESHOLDS
-    }
-    triggered = [
-        cls for cls, score in event_scores.items()
-        if score >= THRESHOLDS[cls] and event_counts[cls] >= MIN_EVENT_FRAMES
-    ]
-    if triggered:
-        final = max(triggered, key=lambda cls: event_scores[cls])
-    else:
-        final = 'normal'
-
-    count_text = '  '.join(f"{cls}: {event_counts[cls]}프레임" for cls in THRESHOLDS)
-    print(f"📊 [감지 프레임] {count_text}")
+    )
+    print(f"📊 [연속 감지 프레임] {count_text}")
     print(f"\n🎯 결론: {final}")
     return final
 # ── 실행 ──────────────────────────────

@@ -50,10 +50,10 @@ def process_audio(path, sr=SAMPLE_RATE, duration=DURATION, min_rms=MIN_RMS):
     else:
         audio = np.pad(audio, (0, target_len - len(audio)))
 
-    # 볼륨 정규화
+    # 클리핑만 방지하고 조용한 입력을 강제로 증폭하지 않는다.
     max_val = np.max(np.abs(audio))
-    if max_val > 0:
-        audio = audio / max_val * 0.9
+    if max_val > 0.99:
+        audio = audio / max_val * 0.99
 
     return audio, "OK"
 

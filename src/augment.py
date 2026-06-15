@@ -47,9 +47,9 @@ def fit_length(audio):
     return np.pad(audio, (0, TARGET_LEN - len(audio))).astype(np.float32)
 
 
-def normalize_peak(audio, peak=0.9):
+def limit_peak(audio, peak=0.99):
     max_val = np.max(np.abs(audio))
-    if max_val > 0:
+    if max_val > peak:
         audio = audio / max_val * peak
     return audio.astype(np.float32)
 
@@ -168,7 +168,7 @@ def mix_event_with_background(event_path, cls, normal_files, enable_pitch_time=F
     mixed = add_noise(mixed)
     mixed = maybe_filter(mixed)
     mixed = maybe_clip(mixed)
-    return normalize_peak(mixed)
+    return limit_peak(mixed)
 
 
 def augment_normal(path):
@@ -177,7 +177,7 @@ def augment_normal(path):
     audio = add_noise(audio, noise_db_range=(-48, -28))
     audio = maybe_filter(audio)
     audio = maybe_clip(audio)
-    return normalize_peak(audio)
+    return limit_peak(audio)
 
 
 def augment_event_standalone(path, cls, enable_pitch_time=False):
@@ -189,7 +189,7 @@ def augment_event_standalone(path, cls, enable_pitch_time=False):
     audio = maybe_filter(audio)
     audio = maybe_clip(audio)
     audio = fit_length(audio)
-    return normalize_peak(audio)
+    return limit_peak(audio)
 
 
 def write_audio(folder, source_path, index, audio):

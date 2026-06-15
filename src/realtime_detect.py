@@ -6,20 +6,15 @@ import tempfile
 import time
 
 import numpy as np
-from scipy import signal
+
+from audio_pipeline import SAMPLE_RATE, resample_audio
+from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-SAMPLE_RATE = 16000
 WINDOW_SECONDS = 3.0
 HOP_SECONDS = 1.0
-CLASSES = ['glass', 'normal', 'scream']
-THRESHOLDS = {
-    'glass': 0.88,
-    'scream': 0.85,
-}
-MIN_EVENT_FRAMES = 2
 
 
 def import_sounddevice():
@@ -57,25 +52,6 @@ def frame_predictions(yamnet, classifier, audio):
     return probs
 
 
-def decide(probs):
-    max_probs = probs.max(axis=0)
-    mean_probs = probs.mean(axis=0)
-    event_counts = {
-        cls: int(np.sum(probs[:, CLASSES.index(cls)] >= THRESHOLDS[cls]))
-        for cls in THRESHOLDS
-    }
-    triggered = [
-        cls for cls in THRESHOLDS
-        if max_probs[CLASSES.index(cls)] >= THRESHOLDS[cls]
-        and event_counts[cls] >= MIN_EVENT_FRAMES
-    ]
-    if triggered:
-        final = max(triggered, key=lambda cls: max_probs[CLASSES.index(cls)])
-    else:
-        final = 'normal'
-    return final, mean_probs, max_probs, event_counts
-
-
 def format_scores(probs):
     return ' '.join(
         f'{cls}={probs[idx] * 100:5.1f}%'
@@ -101,8 +77,7 @@ def resample_to_model_rate(audio, input_sample_rate):
     if input_sample_rate == SAMPLE_RATE:
         return audio
 
-    target_len = int(round(len(audio) * SAMPLE_RATE / input_sample_rate))
-    return signal.resample(audio, target_len).astype(np.float32)
+    return resample_audio(audio, input_sample_rate, SAMPLE_RATE)
 
 
 def run_loop(args):
@@ -166,7 +141,7 @@ def run_loop(args):
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
             probs = frame_predictions(yamnet, classifier, model_audio)
-            final, mean_probs, max_probs, event_counts = decide(probs)
+            final, mean_probs, max_probs, consecutive_runs = decide(probs)
 
             now = time.time()
             can_alert = now - last_event_time >= args.cooldown
@@ -175,7 +150,7 @@ def run_loop(args):
                 last_event_time = now
 
             marker = 'ALERT' if alert else '     '
-            count_text = ' '.join(f'{cls}_frames={event_counts[cls]}' for cls in THRESHOLDS)
+            count_text = ' '.join(f'{cls}_run={consecutive_runs[cls]}' for cls in THRESHOLDS)
             print(
                 f'[{marker}] final={final:<6} rms={rms:.4f} peak={peak:.4f} '
                 f'max({format_scores(max_probs)}) mean({format_scores(mean_probs)}) {count_text}'

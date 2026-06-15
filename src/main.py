@@ -7,17 +7,13 @@ import time
 import threading
 import numpy as np
 
+from audio_pipeline import SAMPLE_RATE, peak_frame_rms, resample_audio
+from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
+
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-SAMPLE_RATE = 16000
 WINDOW_SECONDS = 2.0
 HOP_SECONDS = 1.0
-CLASSES = ['glass', 'normal', 'scream']
-THRESHOLDS = {
-    'glass': 0.97,
-    'scream': 0.92,
-}
-MIN_EVENT_FRAMES = 3
 MIN_RMS = 0.02  # 이 이하면 감지 무시
 
 alert_active = False
@@ -48,34 +44,13 @@ def load_models():
     return yamnet, classifier
 
 def resample_to_model_rate(audio, input_sample_rate):
-    from scipy import signal
-    if input_sample_rate == SAMPLE_RATE:
-        return audio
-    target_len = int(round(len(audio) * SAMPLE_RATE / input_sample_rate))
-    return signal.resample(audio, target_len).astype(np.float32)
+    return resample_audio(audio, input_sample_rate, SAMPLE_RATE)
 
 def frame_predictions(yamnet, classifier, audio):
     _, embeddings, _ = yamnet(audio.astype(np.float32))
     embeddings = embeddings.numpy()
     probs = classifier.predict(embeddings, verbose=0)
     return probs
-
-def decide(probs):
-    max_probs = probs.max(axis=0)
-    event_counts = {
-        cls: int(np.sum(probs[:, CLASSES.index(cls)] >= THRESHOLDS[cls]))
-        for cls in THRESHOLDS
-    }
-    triggered = [
-        cls for cls in THRESHOLDS
-        if max_probs[CLASSES.index(cls)] >= THRESHOLDS[cls]
-        and event_counts[cls] >= MIN_EVENT_FRAMES
-    ]
-    if triggered:
-        final = max(triggered, key=lambda cls: max_probs[CLASSES.index(cls)])
-    else:
-        final = 'normal'
-    return final, max_probs, event_counts
 
 def handle_threat(label, confidence):
     global alert_active
@@ -146,6 +121,10 @@ def run(device=1):
     print(f"\n✅ 시스템 시작!")
     print(f"   입력: {input_sample_rate}Hz → 모델: {SAMPLE_RATE}Hz")
     print(f"   임계값: glass={THRESHOLDS['glass']*100}% scream={THRESHOLDS['scream']*100}%")
+    print(
+        '   연속 프레임: '
+        + ' '.join(f'{cls}={count}' for cls, count in MIN_CONSECUTIVE_FRAMES.items())
+    )
     print(f"   Ctrl+C로 종료")
     print("-"*50)
 
@@ -171,16 +150,16 @@ def run(device=1):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            rms = float(np.sqrt(np.mean(model_audio**2)))
+            audio_rms = peak_frame_rms(model_audio, int(0.1 * SAMPLE_RATE))
             probs = frame_predictions(yamnet, classifier, model_audio)
-            final, max_probs, event_counts = decide(probs)
+            final, _, max_probs, consecutive_runs = decide(probs)
 
             now = time.time()
             with alert_lock:
                 is_active = alert_active
             can_alert = now - last_event_time >= 5.0 and not is_active
 
-            if final != 'normal' and can_alert and rms >= MIN_RMS:
+            if final != 'normal' and can_alert and audio_rms >= MIN_RMS:
                 last_event_time = now
                 confidence = max_probs[CLASSES.index(final)]
                 t = threading.Thread(target=handle_threat, args=(final, confidence), daemon=True)
@@ -190,7 +169,8 @@ def run(device=1):
                     print(f"\r🟢 모니터링 중... "
                           f"glass={max_probs[0]*100:.1f}% "
                           f"normal={max_probs[1]*100:.1f}% "
-                          f"scream={max_probs[2]*100:.1f}%", end='', flush=True)
+                          f"scream={max_probs[2]*100:.1f}% "
+                          f"runs={consecutive_runs}", end='', flush=True)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
