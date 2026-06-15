@@ -10,7 +10,7 @@ import numpy as np
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 SAMPLE_RATE = 16000
-WINDOW_SECONDS = 3.0
+WINDOW_SECONDS = 2.0
 HOP_SECONDS = 1.0
 CLASSES = ['glass', 'normal', 'scream']
 THRESHOLDS = {
