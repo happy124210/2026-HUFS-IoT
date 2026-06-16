@@ -7,7 +7,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 
 from audio_pipeline import load_audio
-from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, decide
+from detection_policy import CLASSES, decide
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -18,8 +18,8 @@ def audit_file(yamnet, model, path):
     _, embeddings, _ = yamnet(audio)
     probs = model.predict(embeddings.numpy(), verbose=0)
     max_probs = probs.max(axis=0)
-    _, _, _, consecutive_runs = decide(probs)
-    return max_probs, consecutive_runs
+    final, _, _, consecutive_runs = decide(probs)
+    return final, max_probs, consecutive_runs
 
 
 def parse_args():
@@ -49,27 +49,26 @@ def main():
     suspicious = []
     print(f'검수 대상: {len(files)}개')
     for path in files:
-        max_probs, consecutive_runs = audit_file(yamnet, model, path)
+        final, max_probs, consecutive_runs = audit_file(yamnet, model, path)
         glass = max_probs[CLASSES.index('glass')]
         normal = max_probs[CLASSES.index('normal')]
         scream = max_probs[CLASSES.index('scream')]
-        flagged = any(
-            consecutive_runs[cls] >= MIN_CONSECUTIVE_FRAMES[cls]
-            for cls in MIN_CONSECUTIVE_FRAMES
-        )
+        flagged = final != 'normal'
         if flagged:
-            suspicious.append((path, glass, normal, scream, consecutive_runs))
+            suspicious.append((path, final, glass, normal, scream, consecutive_runs))
         print(
             f'{"FLAG" if flagged else "OK  "} '
             f'{os.path.basename(path)} '
+            f'final={final} '
             f'glass={glass:.3f} normal={normal:.3f} scream={scream:.3f} '
             f'runs={consecutive_runs}'
         )
 
     print(f'\n의심 파일: {len(suspicious)}개')
-    for path, glass, normal, scream, consecutive_runs in suspicious:
+    for path, final, glass, normal, scream, consecutive_runs in suspicious:
         print(
             f'  {os.path.basename(path)} '
+            f'final={final} '
             f'glass={glass:.3f} normal={normal:.3f} scream={scream:.3f} '
             f'runs={consecutive_runs}'
         )
