@@ -1,5 +1,6 @@
 import argparse
 import itertools
+import json
 import os
 import tempfile
 
@@ -46,10 +47,30 @@ def labels_for(all_probs, thresholds):
     ])
 
 
+def metric_summary(y_true, y_pred):
+    matrix = confusion_matrix(y_true, y_pred, labels=range(len(CLASSES)))
+    normal_index = CLASSES.index('normal')
+    normal_mask = y_true == normal_index
+    false_alarm_rate = float(np.mean(y_pred[normal_mask] != normal_index)) if np.any(normal_mask) else 0.0
+    return {
+        'confusion_matrix': matrix.tolist(),
+        'macro_f1': float(f1_score(
+            y_true,
+            y_pred,
+            labels=range(len(CLASSES)),
+            average='macro',
+            zero_division=0,
+        )),
+        'normal_false_alarm_rate': false_alarm_rate,
+        'accuracy': float(np.mean(y_true == y_pred)),
+    }
+
+
 def print_metrics(y_true, y_pred):
+    summary = metric_summary(y_true, y_pred)
     print('\nConfusion matrix (rows=true, columns=predicted)')
     print('          ' + ' '.join(f'{cls:>7}' for cls in CLASSES))
-    matrix = confusion_matrix(y_true, y_pred, labels=range(len(CLASSES)))
+    matrix = np.asarray(summary['confusion_matrix'])
     for cls, row in zip(CLASSES, matrix):
         print(f'{cls:>8}  ' + ' '.join(f'{value:7d}' for value in row))
     print('\n' + classification_report(
@@ -61,14 +82,12 @@ def print_metrics(y_true, y_pred):
         digits=3,
     ))
 
-    normal_index = CLASSES.index('normal')
-    normal_mask = y_true == normal_index
-    false_alarm_rate = float(np.mean(y_pred[normal_mask] != normal_index)) if np.any(normal_mask) else 0.0
-    print(f'Normal false alarm rate: {false_alarm_rate:.3f}')
+    print(f"Normal false alarm rate: {summary['normal_false_alarm_rate']:.3f}")
+    return summary
 
 
 def threshold_search(y_true, all_probs):
-    candidates = np.arange(0.70, 1.00, 0.02)
+    candidates = [value / 100.0 for value in range(70, 100)]
     normal_index = CLASSES.index('normal')
     normal_mask = y_true == normal_index
     ranked = []
@@ -81,24 +100,30 @@ def threshold_search(y_true, all_probs):
         macro_f1 = f1_score(y_true, y_pred, labels=range(len(CLASSES)), average='macro', zero_division=0)
         false_alarm_rate = float(np.mean(y_pred[normal_mask] != normal_index)) if np.any(normal_mask) else 0.0
         score = macro_f1 - false_alarm_rate
-        ranked.append((score, macro_f1, false_alarm_rate, thresholds))
+        ranked.append({
+            'score': float(score),
+            'macro_f1': float(macro_f1),
+            'normal_false_alarm_rate': false_alarm_rate,
+            'thresholds': thresholds,
+        })
 
     print('\nThreshold candidates (macro F1 - normal false alarm rate)')
-    for score, macro_f1, false_alarm_rate, thresholds in sorted(
-        ranked,
-        key=lambda result: result[0],
-        reverse=True,
-    )[:10]:
+    ranked = sorted(ranked, key=lambda result: result['score'], reverse=True)
+    for result in ranked[:10]:
         print(
-            f"score={score:.3f} macro_f1={macro_f1:.3f} false_alarm={false_alarm_rate:.3f} "
-            f"glass={thresholds['glass']:.2f} scream={thresholds['scream']:.2f}"
+            f"score={result['score']:.3f} macro_f1={result['macro_f1']:.3f} "
+            f"false_alarm={result['normal_false_alarm_rate']:.3f} "
+            f"glass={result['thresholds']['glass']:.2f} scream={result['thresholds']['scream']:.2f}"
         )
+    return ranked
 
 
 def main():
     parser = argparse.ArgumentParser(description='Evaluate event detection and search thresholds.')
     parser.add_argument('--dataset-dir', default=DEFAULT_DATASET_DIR)
+    parser.add_argument('--model-path', default=MODEL_PATH)
     parser.add_argument('--search-thresholds', action='store_true')
+    parser.add_argument('--json-output', help='Optional path for machine-readable evaluation results.')
     args = parser.parse_args()
 
     samples = collect_files(args.dataset_dir)
@@ -110,7 +135,7 @@ def main():
     os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tfhub_cache_hufs_iot'))
     print('Loading YAMNet and classifier...')
     yamnet = hub.load('https://tfhub.dev/google/yamnet/1')
-    classifier = tf.keras.models.load_model(MODEL_PATH)
+    classifier = tf.keras.models.load_model(args.model_path)
 
     all_probs = []
     y_true = []
@@ -122,9 +147,36 @@ def main():
     y_true = np.array(y_true)
     y_pred = labels_for(all_probs, THRESHOLDS)
     print(f'\nPolicy: thresholds={THRESHOLDS}, consecutive_frames={MIN_CONSECUTIVE_FRAMES}')
-    print_metrics(y_true, y_pred)
+    summary = print_metrics(y_true, y_pred)
+    ranked = []
     if args.search_thresholds:
-        threshold_search(y_true, all_probs)
+        ranked = threshold_search(y_true, all_probs)
+
+    if args.json_output:
+        output = {
+            'dataset_dir': os.path.abspath(args.dataset_dir),
+            'model_path': os.path.abspath(args.model_path),
+            'classes': CLASSES,
+            'sample_count': len(samples),
+            'policy': {
+                'thresholds': THRESHOLDS,
+                'min_consecutive_frames': MIN_CONSECUTIVE_FRAMES,
+            },
+            'metrics': summary,
+            'predictions': [
+                {
+                    'path': os.path.relpath(path, args.dataset_dir).replace('\\', '/'),
+                    'actual': CLASSES[int(actual)],
+                    'predicted': CLASSES[int(predicted)],
+                }
+                for (path, _), actual, predicted in zip(samples, y_true, y_pred)
+            ],
+            'threshold_search_top10': ranked[:10],
+        }
+        os.makedirs(os.path.dirname(os.path.abspath(args.json_output)), exist_ok=True)
+        with open(args.json_output, 'w', encoding='utf-8') as handle:
+            json.dump(output, handle, ensure_ascii=False, indent=2)
+        print(f'JSON results: {os.path.abspath(args.json_output)}')
 
 
 if __name__ == '__main__':

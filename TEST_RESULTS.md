@@ -1,4 +1,63 @@
-# 테스트 결과 정리 (2026-06-16)
+# 테스트 결과 정리 (최종 갱신: 2026-06-18)
+
+## 2026-06-17 review 오판 반영 재학습
+
+### 대상과 방법
+
+- review 오판 원본 13개 전부 반영: glass 4개, normal 5개, scream 4개
+- 신규 생성 데이터: glass 460개(standalone 80 + normal 혼합 380), normal 60개, scream 572개(standalone 100 + normal 혼합 472)
+- 전체 학습 입력: embedding 108,709개
+- source-group 분리: train 86,808개 / validation 21,901개, source group 920 / 231개
+- 모델: `model/glass_classifier.h5` (2026-06-18 재학습), `model/glass_classifier.tflite` 재변환
+- baseline: `model/baselines/glass_classifier_20260615.h5`
+- 평가셋: `evaluation_data/review_20260617`의 원본 13개만 사용(증강본 제외)
+- 정책: glass threshold 0.97 / 1 frame, scream threshold 0.92 / 3 consecutive frames
+
+> 이 평가셋은 이번 학습에 반영된 오판 원본으로 구성된 hard-case 교정 확인용 셋이다. 따라서 아래 수치는 독립 holdout 일반화 성능이 아니라, 수집된 오판이 얼마나 교정됐는지를 나타낸다.
+
+### baseline 대비 결과
+
+| 지표 | 2026-06-15 baseline | 2026-06-18 재학습 | 변화 |
+|---|---:|---:|---:|
+| 전체 정답 | 0/13 (0.0%) | 6/13 (46.2%) | +6개, +46.2%p |
+| macro F1 | 0.000 | 0.329 | +0.329 |
+| normal false alarm | 5/5 (100%) | 0/5 (0%) | 100% 감소 |
+| glass → normal | 4/4 | 3/4 | 25% 감소 |
+| normal → scream | 5/5 | 0/5 | 100% 감소 |
+| scream → normal | 4/4 | 4/4 | 변화 없음 |
+| scream/normal 양방향 혼동 합계 | 9/9 | 4/9 | 55.6% 감소 |
+| glass/normal 양방향 혼동 합계 | 4/4 | 3/4 | 25.0% 감소 |
+
+재학습 모델 confusion matrix (행=actual, 열=predicted):
+
+| actual \\ predicted | glass | normal | scream |
+|---|---:|---:|---:|
+| glass | 1 | 3 | 0 |
+| normal | 0 | 5 | 0 |
+| scream | 0 | 4 | 0 |
+
+### 임계값 탐색
+
+- 탐색 범위: glass/scream 각각 0.70~0.99, 0.01 간격(900개 조합)
+- 목적 함수: `macro F1 - normal false alarm rate`
+- 재학습 모델 최고 점수: 0.329 (macro F1 0.329, normal false alarm 0.000)
+- 동률 최고 조합에 현행 scream 0.92가 포함된다. 예: glass 0.70, scream 0.92
+- 현행 glass 0.97에서도 실제 confusion matrix와 점수는 동일하므로, 13개 교정셋만 근거로 운영 임계값을 낮추지 않고 **0.97/0.92를 유지**한다.
+- scream 4개는 threshold 조정만으로 복구되지 않았다. 현재 3-frame 연속 조건과 mean/margin 조건을 함께 만족하지 못하므로, 독립 scream/normal holdout을 추가한 뒤 연속 프레임 조건까지 별도로 탐색해야 한다.
+
+### 재현 명령과 산출물
+
+```powershell
+python src/evaluate_model.py --dataset-dir evaluation_data/review_20260617 --model-path model/baselines/glass_classifier_20260615.h5 --search-thresholds --json-output test_results/evaluations/review_20260617_baseline.json
+python src/evaluate_model.py --dataset-dir evaluation_data/review_20260617 --model-path model/glass_classifier.h5 --search-thresholds --json-output test_results/evaluations/review_20260617_retrained.json
+```
+
+- baseline 상세 결과: `test_results/evaluations/review_20260617_baseline.json`
+- 재학습 상세 결과: `test_results/evaluations/review_20260617_retrained.json`
+
+---
+
+## 2026-06-16 라즈베리파이 현장 테스트(이전 결과)
 
 ## 테스트 환경
 - 라즈베리 파이 4 + 라발리에 USB 마이크 (device 1)
