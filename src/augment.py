@@ -192,12 +192,14 @@ def augment_event_standalone(path, cls, enable_pitch_time=False):
     return limit_peak(audio)
 
 
+def augmented_path(folder, source_path, index):
+    stem = os.path.splitext(os.path.basename(source_path))[0]
+    return os.path.join(folder, f'{stem}_aug_{index:03d}.wav')
+
+
 def write_audio(folder, source_path, index, audio):
     os.makedirs(folder, exist_ok=True)
-    stem = os.path.splitext(os.path.basename(source_path))[0]
-    out_path = os.path.join(folder, f'{stem}_aug_{index:03d}.wav')
-    if os.path.exists(out_path):
-        return False
+    out_path = augmented_path(folder, source_path, index)
     sf.write(out_path, audio, SAMPLE_RATE)
     return True
 
@@ -212,6 +214,7 @@ def build_dataset(
     enable_pitch_time,
     background_prefix,
     normal_prefix,
+    event_prefix,
 ):
     random.seed(seed)
     np.random.seed(seed)
@@ -221,6 +224,13 @@ def build_dataset(
         for cls in CLASSES
     }
     normal_files = files_by_class['normal']
+    event_files = {
+        cls: [
+            path for path in files_by_class[cls]
+            if not event_prefix or os.path.basename(path).startswith(event_prefix)
+        ]
+        for cls in ('glass', 'scream')
+    }
     normal_augment_files = normal_files
     if normal_prefix:
         normal_augment_files = [
@@ -240,14 +250,20 @@ def build_dataset(
         print(f'  event backgrounds matching {background_prefix}: {len(normal_files)}')
     if normal_prefix:
         print(f'  normal augment files matching {normal_prefix}: {len(normal_augment_files)}')
+    if event_prefix:
+        for cls in ('glass', 'scream'):
+            print(f'  {cls} event files matching {event_prefix}: {len(event_files[cls])}')
 
     counts = {'glass': 0, 'normal': 0, 'scream': 0}
     standalone_counts = {'glass': 0, 'scream': 0}
 
     for path in normal_augment_files:
         for i in range(normal_per_file):
+            output_folder = os.path.join(AUGMENTED_DIR, 'normal')
+            if os.path.exists(augmented_path(output_folder, path, i)):
+                continue
             written = write_audio(
-                os.path.join(AUGMENTED_DIR, 'normal'),
+                output_folder,
                 path,
                 i,
                 augment_normal(path),
@@ -258,10 +274,13 @@ def build_dataset(
             print(f"  normal generated: {counts['normal']}")
 
     for cls, per_file in [('glass', glass_per_file), ('scream', scream_per_file)]:
-        for path in files_by_class[cls]:
+        for path in event_files[cls]:
             for i in range(per_file):
+                output_folder = os.path.join(MIXED_DIR, cls)
+                if os.path.exists(augmented_path(output_folder, path, i)):
+                    continue
                 written = write_audio(
-                    os.path.join(MIXED_DIR, cls),
+                    output_folder,
                     path,
                     i,
                     mix_event_with_background(
@@ -280,10 +299,13 @@ def build_dataset(
         if per_file <= 0:
             continue
         print(f'\nGenerating {cls} standalone augmentation ({per_file} per file)...')
-        for path in files_by_class[cls]:
+        for path in event_files[cls]:
             for i in range(per_file):
+                output_folder = os.path.join(AUGMENTED_DIR, cls)
+                if os.path.exists(augmented_path(output_folder, path, i)):
+                    continue
                 written = write_audio(
-                    os.path.join(AUGMENTED_DIR, cls),
+                    output_folder,
                     path,
                     i,
                     augment_event_standalone(path, cls, enable_pitch_time=enable_pitch_time),
@@ -336,6 +358,10 @@ def parse_args():
         '--normal-prefix',
         help='Augment only normal clean files whose names start with this prefix.',
     )
+    parser.add_argument(
+        '--event-prefix',
+        help='Augment only glass/scream clean files whose names start with this prefix.',
+    )
     return parser.parse_args()
 
 
@@ -351,4 +377,5 @@ if __name__ == '__main__':
         enable_pitch_time=args.enable_pitch_time,
         background_prefix=args.background_prefix,
         normal_prefix=args.normal_prefix,
+        event_prefix=args.event_prefix,
     )

@@ -8,7 +8,14 @@ import threading
 import numpy as np
 
 from audio_pipeline import SAMPLE_RATE, peak_frame_rms, resample_audio
-from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
+from detection_policy import (
+    CLASSES,
+    MIN_CONSECUTIVE_FRAMES,
+    MIN_MEAN_PROBS,
+    MIN_PROB_MARGINS,
+    THRESHOLDS,
+    decide,
+)
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
@@ -124,6 +131,13 @@ def run(device=1):
     print(
         '   연속 프레임: '
         + ' '.join(f'{cls}={count}' for cls, count in MIN_CONSECUTIVE_FRAMES.items())
+    )
+    print(
+        '   추가 필터: '
+        + ' '.join(
+            f'{cls}_mean>={MIN_MEAN_PROBS[cls]*100:.0f}% margin>={MIN_PROB_MARGINS[cls]*100:.0f}%'
+            for cls in MIN_MEAN_PROBS
+        )
     )
     print(f"   Ctrl+C로 종료")
     print("-"*50)

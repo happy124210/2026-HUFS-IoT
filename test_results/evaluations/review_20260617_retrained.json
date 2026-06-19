@@ -1,0 +1,201 @@
+{
+  "dataset_dir": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\evaluation_data\\review_20260617",
+  "model_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\glass_classifier.h5",
+  "classes": [
+    "glass",
+    "normal",
+    "scream"
+  ],
+  "sample_count": 13,
+  "policy": {
+    "thresholds": {
+      "glass": 0.97,
+      "scream": 0.92
+    },
+    "min_consecutive_frames": {
+      "glass": 1,
+      "scream": 3
+    }
+  },
+  "metrics": {
+    "confusion_matrix": [
+      [
+        1,
+        3,
+        0
+      ],
+      [
+        0,
+        5,
+        0
+      ],
+      [
+        0,
+        4,
+        0
+      ]
+    ],
+    "macro_f1": 0.32941176470588235,
+    "normal_false_alarm_rate": 0.0,
+    "accuracy": 0.46153846153846156
+  },
+  "predictions": [
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181107_005.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181116_006.wav",
+      "actual": "glass",
+      "predicted": "glass"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181139_009.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181146_010.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_180842_009.wav",
+      "actual": "normal",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_180849_010.wav",
+      "actual": "normal",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181329_001.wav",
+      "actual": "normal",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181432_008.wav",
+      "actual": "normal",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181444_009.wav",
+      "actual": "normal",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181404_005.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181413_006.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181425_007.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181452_010.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    }
+  ],
+  "threshold_search_top10": [
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.87
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.88
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.89
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.9
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.91
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.92
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.93
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.94
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.95
+      }
+    },
+    {
+      "score": 0.32941176470588235,
+      "macro_f1": 0.32941176470588235,
+      "normal_false_alarm_rate": 0.0,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.96
+      }
+    }
+  ]
+}

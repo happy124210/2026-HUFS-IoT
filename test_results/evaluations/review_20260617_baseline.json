@@ -1,0 +1,201 @@
+{
+  "dataset_dir": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\evaluation_data\\review_20260617",
+  "model_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\baselines\\glass_classifier_20260615.h5",
+  "classes": [
+    "glass",
+    "normal",
+    "scream"
+  ],
+  "sample_count": 13,
+  "policy": {
+    "thresholds": {
+      "glass": 0.97,
+      "scream": 0.92
+    },
+    "min_consecutive_frames": {
+      "glass": 1,
+      "scream": 3
+    }
+  },
+  "metrics": {
+    "confusion_matrix": [
+      [
+        0,
+        4,
+        0
+      ],
+      [
+        0,
+        0,
+        5
+      ],
+      [
+        0,
+        4,
+        0
+      ]
+    ],
+    "macro_f1": 0.0,
+    "normal_false_alarm_rate": 1.0,
+    "accuracy": 0.0
+  },
+  "predictions": [
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181107_005.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181116_006.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181139_009.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "glass/review_glass_pred_normal_20260617_181146_010.wav",
+      "actual": "glass",
+      "predicted": "normal"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_180842_009.wav",
+      "actual": "normal",
+      "predicted": "scream"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_180849_010.wav",
+      "actual": "normal",
+      "predicted": "scream"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181329_001.wav",
+      "actual": "normal",
+      "predicted": "scream"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181432_008.wav",
+      "actual": "normal",
+      "predicted": "scream"
+    },
+    {
+      "path": "normal/review_normal_pred_scream_20260617_181444_009.wav",
+      "actual": "normal",
+      "predicted": "scream"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181404_005.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181413_006.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181425_007.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260617_181452_010.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    }
+  ],
+  "threshold_search_top10": [
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.7,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.71,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.72,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.73,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.74,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.75,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.76,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.77,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.78,
+        "scream": 0.99
+      }
+    },
+    {
+      "score": -0.0431372549019608,
+      "macro_f1": 0.1568627450980392,
+      "normal_false_alarm_rate": 0.2,
+      "thresholds": {
+        "glass": 0.79,
+        "scream": 0.99
+      }
+    }
+  ]
+}
