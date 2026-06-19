@@ -5,23 +5,29 @@ echo ========================================
 cd /d "%~dp0"
 
 echo.
-echo [1/3] Preprocessing new audio files...
+echo [1/4] Preprocessing new audio files...
 python src/preprocess.py
 if %errorlevel% neq 0 goto :error
 
 echo.
-echo [2/3] Augmenting data...
-python src/augment.py --glass-per-file 95 --scream-per-file 118 --normal-per-file 12 --glass-standalone-per-file 20 --scream-standalone-per-file 25 --enable-pitch-time
+echo [2/4] Building capped augmentation data...
+python src/augment.py --glass-per-file 10 --scream-per-file 10 --normal-per-file 4 --glass-standalone-per-file 5 --scream-standalone-per-file 5 --enable-pitch-time
 if %errorlevel% neq 0 goto :error
 
 echo.
-echo [3/3] Training model...
-python src/train.py
+echo [3/4] Training and evaluating safe candidates...
+python src/train.py --promote --results-path test_results\training\latest.json
+if %errorlevel% neq 0 goto :error
+
+echo.
+echo [4/4] Synchronizing TFLite with the selected H5 model...
+python src/convert_tflite.py
 if %errorlevel% neq 0 goto :error
 
 echo.
 echo ========================================
-echo  Done! model/glass_classifier.h5 saved.
+echo  Done! A candidate is promoted only when every quality gate passes.
+echo  See test_results\training\latest.json for the decision.
 echo ========================================
 goto :end
 

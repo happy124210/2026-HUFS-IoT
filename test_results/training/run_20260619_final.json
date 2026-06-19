@@ -1,0 +1,319 @@
+{
+  "manifest_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\test_results\\training\\split_manifest.json",
+  "baseline": {
+    "policy": {
+      "thresholds": {
+        "glass": 0.4,
+        "scream": 0.6
+      },
+      "min_consecutive_frames": {
+        "glass": 1,
+        "scream": 3
+      },
+      "min_mean_probs": {
+        "scream": 0.0
+      },
+      "min_prob_margins": {
+        "scream": 0.0
+      }
+    },
+    "validation": {
+      "accuracy": 0.7792792792792793,
+      "macro_f1": 0.7008879792786348,
+      "normal_false_alarm_rate": 0.08695652173913043,
+      "recall": {
+        "glass": 0.30952380952380953,
+        "normal": 0.9130434782608695,
+        "scream": 0.8095238095238095
+      },
+      "confusion_matrix": [
+        [
+          13,
+          28,
+          1
+        ],
+        [
+          11,
+          126,
+          1
+        ],
+        [
+          1,
+          7,
+          34
+        ]
+      ]
+    },
+    "test": {
+      "accuracy": 0.7702127659574468,
+      "macro_f1": 0.6934219117665176,
+      "normal_false_alarm_rate": 0.08450704225352113,
+      "recall": {
+        "glass": 0.3191489361702128,
+        "normal": 0.9154929577464789,
+        "scream": 0.782608695652174
+      },
+      "confusion_matrix": [
+        [
+          15,
+          30,
+          2
+        ],
+        [
+          9,
+          130,
+          3
+        ],
+        [
+          1,
+          9,
+          36
+        ]
+      ]
+    }
+  },
+  "candidates": {
+    "candidate_a_capped": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_a_capped.h5",
+      "training": {
+        "strategy": "class-weight",
+        "reused_existing_model": true
+      },
+      "evaluation": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.8,
+            "scream": 0.6
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 3
+          },
+          "min_mean_probs": {
+            "scream": 0.0
+          },
+          "min_prob_margins": {
+            "scream": 0.15
+          }
+        },
+        "validation": {
+          "accuracy": 0.7792792792792793,
+          "macro_f1": 0.6910068752222864,
+          "normal_false_alarm_rate": 0.043478260869565216,
+          "recall": {
+            "glass": 0.6190476190476191,
+            "normal": 0.9565217391304348,
+            "scream": 0.35714285714285715
+          },
+          "confusion_matrix": [
+            [
+              26,
+              16,
+              0
+            ],
+            [
+              5,
+              132,
+              1
+            ],
+            [
+              0,
+              27,
+              15
+            ]
+          ]
+        },
+        "test": {
+          "accuracy": 0.7148936170212766,
+          "macro_f1": 0.6191289015381556,
+          "normal_false_alarm_rate": 0.08450704225352113,
+          "recall": {
+            "glass": 0.425531914893617,
+            "normal": 0.9154929577464789,
+            "scream": 0.391304347826087
+          },
+          "confusion_matrix": [
+            [
+              20,
+              27,
+              0
+            ],
+            [
+              7,
+              130,
+              5
+            ],
+            [
+              0,
+              28,
+              18
+            ]
+          ]
+        }
+      },
+      "passed_gate": false
+    },
+    "candidate_b_balanced": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_b_balanced.h5",
+      "training": {
+        "strategy": "balanced-frames",
+        "reused_existing_model": true
+      },
+      "evaluation": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.95,
+            "scream": 0.6
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 3
+          },
+          "min_mean_probs": {
+            "scream": 0.0
+          },
+          "min_prob_margins": {
+            "scream": 0.0
+          }
+        },
+        "validation": {
+          "accuracy": 0.7387387387387387,
+          "macro_f1": 0.6102592880370659,
+          "normal_false_alarm_rate": 0.036231884057971016,
+          "recall": {
+            "glass": 0.23809523809523808,
+            "normal": 0.9637681159420289,
+            "scream": 0.5
+          },
+          "confusion_matrix": [
+            [
+              10,
+              32,
+              0
+            ],
+            [
+              3,
+              133,
+              2
+            ],
+            [
+              0,
+              21,
+              21
+            ]
+          ]
+        },
+        "test": {
+          "accuracy": 0.6851063829787234,
+          "macro_f1": 0.553670634920635,
+          "normal_false_alarm_rate": 0.07746478873239436,
+          "recall": {
+            "glass": 0.19148936170212766,
+            "normal": 0.9225352112676056,
+            "scream": 0.45652173913043476
+          },
+          "confusion_matrix": [
+            [
+              9,
+              38,
+              0
+            ],
+            [
+              8,
+              131,
+              3
+            ],
+            [
+              0,
+              25,
+              21
+            ]
+          ]
+        }
+      },
+      "passed_gate": false
+    },
+    "candidate_c_finetuned": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_c_finetuned.h5",
+      "training": {
+        "strategy": "class-weight",
+        "reused_existing_model": true
+      },
+      "evaluation": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.9,
+            "scream": 0.5
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 3
+          },
+          "min_mean_probs": {
+            "scream": 0.0
+          },
+          "min_prob_margins": {
+            "scream": 0.0
+          }
+        },
+        "validation": {
+          "accuracy": 0.8558558558558559,
+          "macro_f1": 0.8303984055018946,
+          "normal_false_alarm_rate": 0.10144927536231885,
+          "recall": {
+            "glass": 0.8333333333333334,
+            "normal": 0.8985507246376812,
+            "scream": 0.7380952380952381
+          },
+          "confusion_matrix": [
+            [
+              35,
+              6,
+              1
+            ],
+            [
+              12,
+              124,
+              2
+            ],
+            [
+              0,
+              11,
+              31
+            ]
+          ]
+        },
+        "test": {
+          "accuracy": 0.8212765957446808,
+          "macro_f1": 0.7859979429746872,
+          "normal_false_alarm_rate": 0.09859154929577464,
+          "recall": {
+            "glass": 0.6382978723404256,
+            "normal": 0.9014084507042254,
+            "scream": 0.7608695652173914
+          },
+          "confusion_matrix": [
+            [
+              30,
+              16,
+              1
+            ],
+            [
+              8,
+              128,
+              6
+            ],
+            [
+              1,
+              10,
+              35
+            ]
+          ]
+        }
+      },
+      "passed_gate": false
+    }
+  },
+  "winner": null,
+  "promoted": false
+}

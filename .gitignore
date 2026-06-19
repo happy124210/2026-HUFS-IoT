@@ -4,3 +4,6 @@ logs/
 src/__pycache__/
 src/scream_test.wav
 model/embedding_cache/
+data_augmented/
+data_mixed/
+.tfhub_cache/

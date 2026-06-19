@@ -1,0 +1,31 @@
+{
+  "model": "candidate_c_20260619.h5",
+  "source": "fine-tuned from the 2026-06-18 baseline",
+  "policy": {
+    "thresholds": {
+      "glass": 0.9,
+      "scream": 0.5
+    },
+    "min_consecutive_frames": {
+      "glass": 1,
+      "scream": 3
+    },
+    "min_mean_probs": {
+      "scream": 0.0
+    },
+    "min_prob_margins": {
+      "scream": 0.0
+    }
+  },
+  "independent_test": {
+    "accuracy": 0.8212765957446808,
+    "macro_f1": 0.7859979429746872,
+    "normal_false_alarm_rate": 0.09859154929577464,
+    "recall": {
+      "glass": 0.6382978723404256,
+      "normal": 0.9014084507042254,
+      "scream": 0.7608695652173914
+    }
+  },
+  "promoted_to_production": false
+}
