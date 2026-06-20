@@ -1,0 +1,146 @@
+{
+  "manifest": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\test_results\\training\\split_manifest.json",
+  "split": "test",
+  "sample_count": 224,
+  "models": {
+    "baseline": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\glass_classifier.h5",
+    "candidate_c": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_c_finetuned.h5"
+  },
+  "results": {
+    "yamnet_only": {
+      "accuracy": 0.7767857142857143,
+      "macro_f1": 0.7225616168569188,
+      "normal_false_alarm_rate": 0.08148148148148149,
+      "recall": {
+        "glass": 0.5319148936170213,
+        "normal": 0.9185185185185185,
+        "scream": 0.5952380952380952
+      },
+      "confusion_matrix": [
+        [
+          25,
+          22,
+          0
+        ],
+        [
+          6,
+          124,
+          5
+        ],
+        [
+          0,
+          17,
+          25
+        ]
+      ]
+    },
+    "baseline_custom_policy": {
+      "accuracy": 0.7723214285714286,
+      "macro_f1": 0.7120402896264966,
+      "normal_false_alarm_rate": 0.08888888888888889,
+      "recall": {
+        "glass": 0.6382978723404256,
+        "normal": 0.9111111111111111,
+        "scream": 0.47619047619047616
+      },
+      "confusion_matrix": [
+        [
+          30,
+          17,
+          0
+        ],
+        [
+          9,
+          123,
+          3
+        ],
+        [
+          1,
+          21,
+          20
+        ]
+      ]
+    },
+    "baseline_yamnet_fusion": {
+      "accuracy": 0.7991071428571429,
+      "macro_f1": 0.7571524903713155,
+      "normal_false_alarm_rate": 0.0962962962962963,
+      "recall": {
+        "glass": 0.6595744680851063,
+        "normal": 0.9037037037037037,
+        "scream": 0.6190476190476191
+      },
+      "confusion_matrix": [
+        [
+          31,
+          16,
+          0
+        ],
+        [
+          10,
+          122,
+          3
+        ],
+        [
+          2,
+          14,
+          26
+        ]
+      ]
+    },
+    "candidate_c_custom_policy": {
+      "accuracy": 0.7633928571428571,
+      "macro_f1": 0.6845577303178185,
+      "normal_false_alarm_rate": 0.06666666666666667,
+      "recall": {
+        "glass": 0.6170212765957447,
+        "normal": 0.9333333333333333,
+        "scream": 0.38095238095238093
+      },
+      "confusion_matrix": [
+        [
+          29,
+          18,
+          0
+        ],
+        [
+          8,
+          126,
+          1
+        ],
+        [
+          1,
+          25,
+          16
+        ]
+      ]
+    },
+    "candidate_c_yamnet_fusion": {
+      "accuracy": 0.7857142857142857,
+      "macro_f1": 0.7343967403248494,
+      "normal_false_alarm_rate": 0.08888888888888889,
+      "recall": {
+        "glass": 0.6382978723404256,
+        "normal": 0.9111111111111111,
+        "scream": 0.5476190476190477
+      },
+      "confusion_matrix": [
+        [
+          30,
+          17,
+          0
+        ],
+        [
+          10,
+          123,
+          2
+        ],
+        [
+          2,
+          17,
+          23
+        ]
+      ]
+    }
+  }
+}

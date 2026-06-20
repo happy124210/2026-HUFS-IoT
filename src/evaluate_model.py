@@ -42,8 +42,8 @@ def predict_frames(yamnet, classifier, path):
 
 def labels_for(all_probs, thresholds):
     return np.array([
-        CLASSES.index(decide(probs, yamnet_scores=yamnet_scores, thresholds=thresholds)[0])
-        for probs, yamnet_scores in all_probs
+        CLASSES.index(decide(probs, thresholds=thresholds)[0])
+        for probs, _ in all_probs
     ])
 
 

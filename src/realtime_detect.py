@@ -8,7 +8,7 @@ import time
 import numpy as np
 
 from audio_pipeline import SAMPLE_RATE, resample_audio
-from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
+from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide_deployment
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -140,8 +140,8 @@ def run_loop(args):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
-            final, mean_probs, max_probs, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores)
+            probs, _ = frame_predictions(yamnet, classifier, model_audio)
+            final, mean_probs, max_probs, consecutive_runs = decide_deployment(probs)
 
             now = time.time()
             can_alert = now - last_event_time >= args.cooldown

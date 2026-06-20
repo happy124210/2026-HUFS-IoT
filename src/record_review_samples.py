@@ -9,7 +9,7 @@ import numpy as np
 import soundfile as sf
 
 from audio_pipeline import SAMPLE_RATE, resample_audio
-from detection_policy import CLASSES, decide
+from detection_policy import CLASSES, decide_deployment
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -88,9 +88,7 @@ def record_clip(sd, duration, device, input_sample_rate):
 def predict_audio(yamnet, classifier, audio):
     yamnet_scores, embeddings, _ = yamnet(audio.astype(np.float32))
     probs = classifier.predict(embeddings.numpy(), verbose=0)
-    final, mean_probs, max_probs, consecutive_runs = decide(
-        probs, yamnet_scores=yamnet_scores.numpy()
-    )
+    final, mean_probs, max_probs, consecutive_runs = decide_deployment(probs)
     return final, mean_probs, max_probs, consecutive_runs
 
 

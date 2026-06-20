@@ -1,0 +1,3845 @@
+{
+  "strict_ids": {
+    "glass": [
+      "/m/039jq",
+      "/m/07rn7sz"
+    ],
+    "scream": [
+      "/m/03qc9zr"
+    ]
+  },
+  "records": [
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_03BfOnuDXzk_000000_000500",
+      "path": "data_clean/glass/audioset_glass_event_03BfOnuDXzk_000000_000500_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_04ZuYc8B7Vc_002100_003100",
+      "path": "data_clean/glass/audioset_glass_event_04ZuYc8B7Vc_002100_003100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_06reXqx5RX8_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_06reXqx5RX8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_08U71rh7cDw_000500_001500",
+      "path": "data_clean/glass/audioset_glass_event_08U71rh7cDw_000500_001500_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0FhuO7FnSy0_000000_000600",
+      "path": "data_clean/glass/audioset_glass_event_0FhuO7FnSy0_000000_000600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0GyQAwVDfyo_000000_000900",
+      "path": "data_clean/glass/audioset_glass_event_0GyQAwVDfyo_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0IhZ8j0U0Nw_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0IhZ8j0U0Nw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0JNAHVgIrsA_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_0JNAHVgIrsA_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0JjKkybBSfA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0JjKkybBSfA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0Lt0Cvxe6qA_000200_001200",
+      "path": "data_clean/glass/audioset_glass_event_0Lt0Cvxe6qA_000200_001200_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0NOe6SoMpgM_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0NOe6SoMpgM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0UJBVLInFr0_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0UJBVLInFr0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0VBprgHoKmI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0VBprgHoKmI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0VeuAMr9goQ_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0VeuAMr9goQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0VsjdI1yiA8_000400_001400",
+      "path": "data_clean/glass/audioset_glass_event_0VsjdI1yiA8_000400_001400_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0WBJjhp5EjI_001700_002700",
+      "path": "data_clean/glass/audioset_glass_event_0WBJjhp5EjI_001700_002700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0arN4pk83lA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0arN4pk83lA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0bbgeqkDm6U_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0bbgeqkDm6U_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0dngvMVUni4_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0dngvMVUni4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0ksMyKsUywI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0ksMyKsUywI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0m0K0CMsMDc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0m0K0CMsMDc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0mlUNMVc7oM_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_0mlUNMVc7oM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0pkBnoC9uf4_000000_000900",
+      "path": "data_clean/glass/audioset_glass_event_0pkBnoC9uf4_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0rRgWmuX5Is_001300_002300",
+      "path": "data_clean/glass/audioset_glass_event_0rRgWmuX5Is_001300_002300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0savYpcEZ8Q_001100_002100",
+      "path": "data_clean/glass/audioset_glass_event_0savYpcEZ8Q_001100_002100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0uGvLfaulfM_000000_000400",
+      "path": "data_clean/glass/audioset_glass_event_0uGvLfaulfM_000000_000400_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_0zHscU28oK0_000000_000400",
+      "path": "data_clean/glass/audioset_glass_event_0zHscU28oK0_000000_000400_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_100CKdZMyQw_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_100CKdZMyQw_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_1PK0suW9hkM_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_1PK0suW9hkM_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_1fJNudB6faA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_1fJNudB6faA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_1xRoPmw1yCY_016000_017000",
+      "path": "data_clean/glass/audioset_glass_event_1xRoPmw1yCY_016000_017000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_207DZmrawjI_002600_003600",
+      "path": "data_clean/glass/audioset_glass_event_207DZmrawjI_002600_003600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_24NB0Ap7J8g_000000_000900",
+      "path": "data_clean/glass/audioset_glass_event_24NB0Ap7J8g_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_2CMVqo7dIZU_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_2CMVqo7dIZU_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_2OEm9kmVgIc_000100_001100",
+      "path": "data_clean/glass/audioset_glass_event_2OEm9kmVgIc_000100_001100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_2aDcV6zKmF8_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_2aDcV6zKmF8_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_2lXyUsQZ5Bo_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_2lXyUsQZ5Bo_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_2z6bBmuY44s_000000_000700",
+      "path": "data_clean/glass/audioset_glass_event_2z6bBmuY44s_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3PbmIDlNLfE_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_3PbmIDlNLfE_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3Pw1UqBFGvY_027000_028000",
+      "path": "data_clean/glass/audioset_glass_event_3Pw1UqBFGvY_027000_028000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3QibDiritdU_012000_013000",
+      "path": "data_clean/glass/audioset_glass_event_3QibDiritdU_012000_013000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3UAvkNVtoak_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_3UAvkNVtoak_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3WBHaDninIc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_3WBHaDninIc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3cXmQBLCXGA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_3cXmQBLCXGA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3gBweLbN1gQ_021000_022000",
+      "path": "data_clean/glass/audioset_glass_event_3gBweLbN1gQ_021000_022000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3iPlzJG1kg0_000200_001200",
+      "path": "data_clean/glass/audioset_glass_event_3iPlzJG1kg0_000200_001200_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3r9T9ru7UgM_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_3r9T9ru7UgM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3rJ1VmDeaWw_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_3rJ1VmDeaWw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_3wstXl8vdno_013000_014000",
+      "path": "data_clean/glass/audioset_glass_event_3wstXl8vdno_013000_014000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_42dyMWLuqOg_015000_016000",
+      "path": "data_clean/glass/audioset_glass_event_42dyMWLuqOg_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_43O1xNsjqAE_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_43O1xNsjqAE_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_44NvxukEaRc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_44NvxukEaRc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_45hWHyDPkac_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_45hWHyDPkac_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4BWNwIV7Ty8_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4BWNwIV7Ty8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4DVOPueGYXo_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4DVOPueGYXo_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4GeWGhYqDeg_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4GeWGhYqDeg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4LPBEUtOWPQ_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4LPBEUtOWPQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4VuwEc5HLEA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4VuwEc5HLEA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4Ybccwjmmjo_034000_035000",
+      "path": "data_clean/glass/audioset_glass_event_4Ybccwjmmjo_034000_035000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4ZP1qd3xjH4_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4ZP1qd3xjH4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4iQzc4UF9t0_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4iQzc4UF9t0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4kW1mjfom2w_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4kW1mjfom2w_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4pzWIL1AB8U_017000_018000",
+      "path": "data_clean/glass/audioset_glass_event_4pzWIL1AB8U_017000_018000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4uv9ZR06R4Y_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4uv9ZR06R4Y_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4vAanhLFpeY_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4vAanhLFpeY_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4yEyFvRTMks_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_4yEyFvRTMks_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4yttmhpdhOg_014000_015000",
+      "path": "data_clean/glass/audioset_glass_event_4yttmhpdhOg_014000_015000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_4znr6UmsuIY_000000_000900",
+      "path": "data_clean/glass/audioset_glass_event_4znr6UmsuIY_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_51sVqS1P9vg_000900_001900",
+      "path": "data_clean/glass/audioset_glass_event_51sVqS1P9vg_000900_001900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_56qNZpiwRPw_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_56qNZpiwRPw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_5AtdNZxX0Z8_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_5AtdNZxX0Z8_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_5YcIJuYQECc_000000_000600",
+      "path": "data_clean/glass/audioset_glass_event_5YcIJuYQECc_000000_000600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_5mzOpJOd1aE_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_5mzOpJOd1aE_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_63GTFc5Okms_007000_008000",
+      "path": "data_clean/glass/audioset_glass_event_63GTFc5Okms_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_6LLTLAVy6L4_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_6LLTLAVy6L4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_6M2lNShlcYw_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_6M2lNShlcYw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_6R8mmrJvXgc_022000_023000",
+      "path": "data_clean/glass/audioset_glass_event_6R8mmrJvXgc_022000_023000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_6XiVOflQITo_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_6XiVOflQITo_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_732xfAeyuJE_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_732xfAeyuJE_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_81a39gW9Tik_012000_013000",
+      "path": "data_clean/glass/audioset_glass_event_81a39gW9Tik_012000_013000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_8PT5MS2POEQ_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_8PT5MS2POEQ_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_8lmTWnwTapo_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_8lmTWnwTapo_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_8oBmYWGuVF0_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_8oBmYWGuVF0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_8tbm8V9vyMk_012000_013000",
+      "path": "data_clean/glass/audioset_glass_event_8tbm8V9vyMk_012000_013000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_A8ED8Iix7XQ_019000_020000",
+      "path": "data_clean/glass/audioset_glass_event_A8ED8Iix7XQ_019000_020000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_A8m9RIidXLo_010000_011000",
+      "path": "data_clean/glass/audioset_glass_event_A8m9RIidXLo_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ASzOY50Dg38_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_ASzOY50Dg38_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ATAF6Wp31ZE_007000_008000",
+      "path": "data_clean/glass/audioset_glass_event_ATAF6Wp31ZE_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_AVmA9n7szrI_007000_008000",
+      "path": "data_clean/glass/audioset_glass_event_AVmA9n7szrI_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_AbqueNnRaXc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_AbqueNnRaXc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_AemcWVbB2zI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_AemcWVbB2zI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Auuad2L5XDc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_Auuad2L5XDc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_B4b7BVwW4eI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_B4b7BVwW4eI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_CnnszUoFGcQ_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_CnnszUoFGcQ_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_E1QaQHjCAv4_023000_024000",
+      "path": "data_clean/glass/audioset_glass_event_E1QaQHjCAv4_023000_024000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ElJG14TnudM_004000_005000",
+      "path": "data_clean/glass/audioset_glass_event_ElJG14TnudM_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_FJ284KLUWDI_008000_009000",
+      "path": "data_clean/glass/audioset_glass_event_FJ284KLUWDI_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_FbzG3GRUdxg_000800_001800",
+      "path": "data_clean/glass/audioset_glass_event_FbzG3GRUdxg_000800_001800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_FdeHk3CjgB0_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_FdeHk3CjgB0_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_GFBV97rw4S0_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_GFBV97rw4S0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_GPQJCqOP8V0_007000_008000",
+      "path": "data_clean/glass/audioset_glass_event_GPQJCqOP8V0_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_H8TZIBcXgZg_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_H8TZIBcXgZg_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_HuV0egxYTyg_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_HuV0egxYTyg_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_I6YKcQuj2W0_001100_002100",
+      "path": "data_clean/glass/audioset_glass_event_I6YKcQuj2W0_001100_002100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_IURPWxQBWjE_010000_011000",
+      "path": "data_clean/glass/audioset_glass_event_IURPWxQBWjE_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_JFa31UL1FWU_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_JFa31UL1FWU_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_JHG3dbmoFwc_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_JHG3dbmoFwc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_KpePNxg8cQU_014000_015000",
+      "path": "data_clean/glass/audioset_glass_event_KpePNxg8cQU_014000_015000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_L1rAooQEnsk_000000_000700",
+      "path": "data_clean/glass/audioset_glass_event_L1rAooQEnsk_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_L9YtOeck3A0_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_L9YtOeck3A0_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Mg5fu4pJFPw_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_Mg5fu4pJFPw_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_MmRuttXvw9c_000400_001400",
+      "path": "data_clean/glass/audioset_glass_event_MmRuttXvw9c_000400_001400_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_N3Xzum4s9rg_011000_012000",
+      "path": "data_clean/glass/audioset_glass_event_N3Xzum4s9rg_011000_012000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_N6QXxr4QapY_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_N6QXxr4QapY_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_NGLTevMKHqI_000100_001100",
+      "path": "data_clean/glass/audioset_glass_event_NGLTevMKHqI_000100_001100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_NVXEQHEAtd4_002100_003100",
+      "path": "data_clean/glass/audioset_glass_event_NVXEQHEAtd4_002100_003100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ODuHtSYmBbY_027000_028000",
+      "path": "data_clean/glass/audioset_glass_event_ODuHtSYmBbY_027000_028000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_OWs5lKqSuBs_001100_002100",
+      "path": "data_clean/glass/audioset_glass_event_OWs5lKqSuBs_001100_002100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_OmgoFCyqDpo_019000_020000",
+      "path": "data_clean/glass/audioset_glass_event_OmgoFCyqDpo_019000_020000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_PYY96LGbDXI_026000_027000",
+      "path": "data_clean/glass/audioset_glass_event_PYY96LGbDXI_026000_027000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_QgspzZcZnxI_043000_044000",
+      "path": "data_clean/glass/audioset_glass_event_QgspzZcZnxI_043000_044000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_RL0UbJ3R8Qw_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_RL0UbJ3R8Qw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_RVvt4wufPV0_055000_056000",
+      "path": "data_clean/glass/audioset_glass_event_RVvt4wufPV0_055000_056000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_RYcVPWiGNyg_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_RYcVPWiGNyg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_SAQnmv5TtNA_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_SAQnmv5TtNA_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_SvO5oxiLDXQ_004000_005000",
+      "path": "data_clean/glass/audioset_glass_event_SvO5oxiLDXQ_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Sw5kOYVwjFQ_019000_020000",
+      "path": "data_clean/glass/audioset_glass_event_Sw5kOYVwjFQ_019000_020000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_U1PZW6umAkg_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_U1PZW6umAkg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_UikrYQmCYf0_009000_010000",
+      "path": "data_clean/glass/audioset_glass_event_UikrYQmCYf0_009000_010000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_UrmTlspWK6Y_005000_006000",
+      "path": "data_clean/glass/audioset_glass_event_UrmTlspWK6Y_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_UyhdMa1ikKM_009000_010000",
+      "path": "data_clean/glass/audioset_glass_event_UyhdMa1ikKM_009000_010000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_VFlunjHsr34_004000_005000",
+      "path": "data_clean/glass/audioset_glass_event_VFlunjHsr34_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_VMQylmE61uk_011000_012000",
+      "path": "data_clean/glass/audioset_glass_event_VMQylmE61uk_011000_012000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+      "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_W65cuuSH4mg_020000_021000",
+      "path": "data_clean/glass/audioset_glass_event_W65cuuSH4mg_020000_021000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/07rn7sz",
+      "all_ids": "/m/07rn7sz",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Waljosxqz0Y_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_Waljosxqz0Y_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Wd29y5QBPZE_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_Wd29y5QBPZE_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Werch1AIKnE_040000_041000",
+      "path": "data_clean/glass/audioset_glass_event_Werch1AIKnE_040000_041000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_WzYcEubC18A_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_WzYcEubC18A_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_X7weoQRFmc0_010000_011000",
+      "path": "data_clean/glass/audioset_glass_event_X7weoQRFmc0_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Xv9dwDAfTyI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_Xv9dwDAfTyI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_YDbxalELOOs_021000_022000",
+      "path": "data_clean/glass/audioset_glass_event_YDbxalELOOs_021000_022000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_YEIRmhmqFWU_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_YEIRmhmqFWU_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_YUzyhL4gCvU_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_YUzyhL4gCvU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Yi1jOlUeELs_000900_001900",
+      "path": "data_clean/glass/audioset_glass_event_Yi1jOlUeELs_000900_001900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ZMFF8qfgwW0_025000_026000",
+      "path": "data_clean/glass/audioset_glass_event_ZMFF8qfgwW0_025000_026000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_Zjcgd631S7k_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_Zjcgd631S7k_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ZzhombOgVLU_015000_016000",
+      "path": "data_clean/glass/audioset_glass_event_ZzhombOgVLU_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_axRUQGQeBkE_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_axRUQGQeBkE_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_b0sK7m4NB2w_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_b0sK7m4NB2w_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_bAlmi0g7rUM_000000_000800",
+      "path": "data_clean/glass/audioset_glass_event_bAlmi0g7rUM_000000_000800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_boWwhGMmIDk_035000_036000",
+      "path": "data_clean/glass/audioset_glass_event_boWwhGMmIDk_035000_036000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_c8YKxp3GNPI_006000_007000",
+      "path": "data_clean/glass/audioset_glass_event_c8YKxp3GNPI_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_cOQgl4Y2wSw_009000_010000",
+      "path": "data_clean/glass/audioset_glass_event_cOQgl4Y2wSw_009000_010000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ewtAB2FD2BU_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_ewtAB2FD2BU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_g3sHyGWuZPQ_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_g3sHyGWuZPQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_gb6znNVrhJ0_028000_029000",
+      "path": "data_clean/glass/audioset_glass_event_gb6znNVrhJ0_028000_029000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_gp5KCkmWRhA_013000_014000",
+      "path": "data_clean/glass/audioset_glass_event_gp5KCkmWRhA_013000_014000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/039jq",
+      "all_ids": "/m/039jq",
+      "review_action": "keep"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_hm1nUE6P9xo_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_hm1nUE6P9xo_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_ic6BK6uGHHQ_000300_001300",
+      "path": "data_clean/glass/audioset_glass_event_ic6BK6uGHHQ_000300_001300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_itnpPvk38xc_012000_013000",
+      "path": "data_clean/glass/audioset_glass_event_itnpPvk38xc_012000_013000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_jaOffpnqcUY_029000_030000",
+      "path": "data_clean/glass/audioset_glass_event_jaOffpnqcUY_029000_030000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_jfnXfEnihw4_049000_050000",
+      "path": "data_clean/glass/audioset_glass_event_jfnXfEnihw4_049000_050000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_k87LUzVsOF4_027000_028000",
+      "path": "data_clean/glass/audioset_glass_event_k87LUzVsOF4_027000_028000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_lB5wREZLKI0_008000_009000",
+      "path": "data_clean/glass/audioset_glass_event_lB5wREZLKI0_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_m1xQ5m9yCK8_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_m1xQ5m9yCK8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_m3MV6T3u9Ig_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_m3MV6T3u9Ig_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_m3vG3iqvj2I_008000_009000",
+      "path": "data_clean/glass/audioset_glass_event_m3vG3iqvj2I_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mDTgp1cbyug_000000_000200",
+      "path": "data_clean/glass/audioset_glass_event_mDTgp1cbyug_000000_000200_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mEX1Lym8t1I_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mEX1Lym8t1I_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mHIozxABvUQ_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mHIozxABvUQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mJe1LZrvpOI_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mJe1LZrvpOI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mK324S0Jwc0_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mK324S0Jwc0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mRqpjA6QahI_001800_002800",
+      "path": "data_clean/glass/audioset_glass_event_mRqpjA6QahI_001800_002800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mVXZgLBbb5U_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mVXZgLBbb5U_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mWp8ypa5kT0_000400_001400",
+      "path": "data_clean/glass/audioset_glass_event_mWp8ypa5kT0_000400_001400_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mZOWDbU1voE_057000_058000",
+      "path": "data_clean/glass/audioset_glass_event_mZOWDbU1voE_057000_058000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mcFdpn0xOwY_002300_003300",
+      "path": "data_clean/glass/audioset_glass_event_mcFdpn0xOwY_002300_003300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mgNn39uSfMM_000900_001900",
+      "path": "data_clean/glass/audioset_glass_event_mgNn39uSfMM_000900_001900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mga00QU7Lh8_007000_008000",
+      "path": "data_clean/glass/audioset_glass_event_mga00QU7Lh8_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mglN59TmfME_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mglN59TmfME_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mhTZlECQIO8_000000_000600",
+      "path": "data_clean/glass/audioset_glass_event_mhTZlECQIO8_000000_000600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mk0CHx34n0Q_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mk0CHx34n0Q_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mnJaosqncoU_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mnJaosqncoU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mnoFxGTuVsA_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_mnoFxGTuVsA_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mqU3Ch6kBj4_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mqU3Ch6kBj4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mutWiTNL2pA_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mutWiTNL2pA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_myJk74Vfs2s_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_myJk74Vfs2s_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_mzJkuGuxl1g_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_mzJkuGuxl1g_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_n4o1r8Ai66o_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_n4o1r8Ai66o_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_nagzRHY8eyA_000000_000700",
+      "path": "data_clean/glass/audioset_glass_event_nagzRHY8eyA_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_p1PxCuL3KGk_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_p1PxCuL3KGk_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_pJ1qQ9c3Niw_002000_003000",
+      "path": "data_clean/glass/audioset_glass_event_pJ1qQ9c3Niw_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_pJmTcxs4asA_001000_002000",
+      "path": "data_clean/glass/audioset_glass_event_pJmTcxs4asA_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_pO8bym7laSQ_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_pO8bym7laSQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_pSApKHByeeY_000000_000300",
+      "path": "data_clean/glass/audioset_glass_event_pSApKHByeeY_000000_000300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_sD9Zh17d9Qc_000000_001000",
+      "path": "data_clean/glass/audioset_glass_event_sD9Zh17d9Qc_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_t3w7iwpgmTw_030000_031000",
+      "path": "data_clean/glass/audioset_glass_event_t3w7iwpgmTw_030000_031000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_uLsfoHZ0zvk_004000_005000",
+      "path": "data_clean/glass/audioset_glass_event_uLsfoHZ0zvk_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07plct2",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_xLJHMzmNYVE_000000_000800",
+      "path": "data_clean/glass/audioset_glass_event_xLJHMzmNYVE_000000_000800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pc8lb",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "glass",
+      "group": "glass:audioset_glass_event_yWQ8bXMlpLk_003000_004000",
+      "path": "data_clean/glass/audioset_glass_event_yWQ8bXMlpLk_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": false,
+      "strict_ids": "",
+      "all_ids": "/m/07pjjrj",
+      "review_action": "listen_before_keep_or_quarantine"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0AmjRMtiSGI_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0AmjRMtiSGI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0Ees8KFCUXM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0Ees8KFCUXM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0EymGuYWkFk_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0EymGuYWkFk_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0JOdbnmiuOg_002000_003000",
+      "path": "data_clean/scream/audioset_scream_0JOdbnmiuOg_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0Nw1OyTsaAo_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0Nw1OyTsaAo_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0b24w9l0flA_001000_002000",
+      "path": "data_clean/scream/audioset_scream_0b24w9l0flA_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0hC044mDsWA_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0hC044mDsWA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0kQANiakiH0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0kQANiakiH0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0l1acpkziXE_014000_015000",
+      "path": "data_clean/scream/audioset_scream_0l1acpkziXE_014000_015000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0mRnTXpp8Q0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0mRnTXpp8Q0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0o1aGQAWcQE_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0o1aGQAWcQE_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0qC99Z0YeMY_021000_022000",
+      "path": "data_clean/scream/audioset_scream_0qC99Z0YeMY_021000_022000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0rZzd93pUHs_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0rZzd93pUHs_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0soaJKVZ8cM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0soaJKVZ8cM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0uAVQtnXVeM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0uAVQtnXVeM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0uRLjhAsFGk_034000_035000",
+      "path": "data_clean/scream/audioset_scream_0uRLjhAsFGk_034000_035000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0ugyUQkLCY8_003000_004000",
+      "path": "data_clean/scream/audioset_scream_0ugyUQkLCY8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0uhnDV2SHBI_000700_001700",
+      "path": "data_clean/scream/audioset_scream_0uhnDV2SHBI_000700_001700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_0wdcRKu4fJY_010000_011000",
+      "path": "data_clean/scream/audioset_scream_0wdcRKu4fJY_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_17hNGTxg6pU_003000_004000",
+      "path": "data_clean/scream/audioset_scream_17hNGTxg6pU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1AvYsne1UYU_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1AvYsne1UYU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1C8Oh2xOkMM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1C8Oh2xOkMM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1CLANjc8jzM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1CLANjc8jzM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1DHcsuOeMgE_007000_008000",
+      "path": "data_clean/scream/audioset_scream_1DHcsuOeMgE_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1F8vU7LHe38_032000_033000",
+      "path": "data_clean/scream/audioset_scream_1F8vU7LHe38_032000_033000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1M7bb668bm4_002000_003000",
+      "path": "data_clean/scream/audioset_scream_1M7bb668bm4_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1YyWDHJ3OCM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1YyWDHJ3OCM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1iG4kkFxrS8_002000_003000",
+      "path": "data_clean/scream/audioset_scream_1iG4kkFxrS8_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1koqIX6Qcn4_000000_000900",
+      "path": "data_clean/scream/audioset_scream_1koqIX6Qcn4_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1lFcPooQI8A_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1lFcPooQI8A_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1lekVu44f4k_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1lekVu44f4k_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1msyXyqRvpY_000000_001000",
+      "path": "data_clean/scream/audioset_scream_1msyXyqRvpY_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1rxsXvj5hQc_008000_009000",
+      "path": "data_clean/scream/audioset_scream_1rxsXvj5hQc_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1uA742sRonE_005000_006000",
+      "path": "data_clean/scream/audioset_scream_1uA742sRonE_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_1y1CS3tduBw_003000_004000",
+      "path": "data_clean/scream/audioset_scream_1y1CS3tduBw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_20qEIZlhruA_003000_004000",
+      "path": "data_clean/scream/audioset_scream_20qEIZlhruA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_25oh2YZKY6o_001000_002000",
+      "path": "data_clean/scream/audioset_scream_25oh2YZKY6o_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_28VoHgz8Pbg_003000_004000",
+      "path": "data_clean/scream/audioset_scream_28VoHgz8Pbg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2D5uDFaSTVk_022000_023000",
+      "path": "data_clean/scream/audioset_scream_2D5uDFaSTVk_022000_023000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2EVWWafRWwY_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2EVWWafRWwY_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2Fm1urjNwpo_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2Fm1urjNwpo_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2G4ueviie4w_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2G4ueviie4w_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2GsP2RDXZtg_013000_014000",
+      "path": "data_clean/scream/audioset_scream_2GsP2RDXZtg_013000_014000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2IRTIUYmEGw_023000_024000",
+      "path": "data_clean/scream/audioset_scream_2IRTIUYmEGw_023000_024000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2KemIPeXeyQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2KemIPeXeyQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2MPj4OvD3JI_030000_031000",
+      "path": "data_clean/scream/audioset_scream_2MPj4OvD3JI_030000_031000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2PmfaHJsm1g_002700_003700",
+      "path": "data_clean/scream/audioset_scream_2PmfaHJsm1g_002700_003700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2UUUivJa6DY_000000_000700",
+      "path": "data_clean/scream/audioset_scream_2UUUivJa6DY_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2V56kbDXe4o_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2V56kbDXe4o_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2Vtak7T92Rc_001000_002000",
+      "path": "data_clean/scream/audioset_scream_2Vtak7T92Rc_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2WwYJFQiV6U_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2WwYJFQiV6U_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2kuuwEr32YE_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2kuuwEr32YE_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2mMsuOcZRv0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2mMsuOcZRv0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2mrA762O4f4_000600_001600",
+      "path": "data_clean/scream/audioset_scream_2mrA762O4f4_000600_001600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2o5phG83XgU_000000_001000",
+      "path": "data_clean/scream/audioset_scream_2o5phG83XgU_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2puO5Tq1XfQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_2puO5Tq1XfQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_2sSDVIV7kdA_021000_022000",
+      "path": "data_clean/scream/audioset_scream_2sSDVIV7kdA_021000_022000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_32uQEpwmYOo_001300_002300",
+      "path": "data_clean/scream/audioset_scream_32uQEpwmYOo_001300_002300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3ERj8It26dk_001000_002000",
+      "path": "data_clean/scream/audioset_scream_3ERj8It26dk_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3GKXi74m3RY_000000_000800",
+      "path": "data_clean/scream/audioset_scream_3GKXi74m3RY_000000_000800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3GphOenlNiw_004000_005000",
+      "path": "data_clean/scream/audioset_scream_3GphOenlNiw_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3O4etBY6e6U_016000_017000",
+      "path": "data_clean/scream/audioset_scream_3O4etBY6e6U_016000_017000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3PGkuNqInRs_000000_000500",
+      "path": "data_clean/scream/audioset_scream_3PGkuNqInRs_000000_000500_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3bqGx2WuDK0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_3bqGx2WuDK0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3ijkT9Ci4vI_003000_004000",
+      "path": "data_clean/scream/audioset_scream_3ijkT9Ci4vI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3sYPuktlyDY_031000_032000",
+      "path": "data_clean/scream/audioset_scream_3sYPuktlyDY_031000_032000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3uaFu4euuXU_000000_001000",
+      "path": "data_clean/scream/audioset_scream_3uaFu4euuXU_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3umyQpQ0o6I_001000_002000",
+      "path": "data_clean/scream/audioset_scream_3umyQpQ0o6I_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_3zAp2kxzU7Q_005000_006000",
+      "path": "data_clean/scream/audioset_scream_3zAp2kxzU7Q_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_41frLbvJKhQ_000000_001000",
+      "path": "data_clean/scream/audioset_scream_41frLbvJKhQ_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4NetAxSbjmY_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4NetAxSbjmY_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4X41JGsXexI_002000_003000",
+      "path": "data_clean/scream/audioset_scream_4X41JGsXexI_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4ZVrM1WH7FY_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4ZVrM1WH7FY_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4aNtZ8cbFzI_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4aNtZ8cbFzI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4dj6NLvutnQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4dj6NLvutnQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4muQtHIUKyU_017000_018000",
+      "path": "data_clean/scream/audioset_scream_4muQtHIUKyU_017000_018000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4oNM9Ze60DI_008000_009000",
+      "path": "data_clean/scream/audioset_scream_4oNM9Ze60DI_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4trq0MmPG2M_000200_001200",
+      "path": "data_clean/scream/audioset_scream_4trq0MmPG2M_000200_001200_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4tsbMQETqQw_002000_003000",
+      "path": "data_clean/scream/audioset_scream_4tsbMQETqQw_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4xTGouBKGN4_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4xTGouBKGN4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_4yBWQ0Z5c1I_003000_004000",
+      "path": "data_clean/scream/audioset_scream_4yBWQ0Z5c1I_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_52waxTykuLc_003000_004000",
+      "path": "data_clean/scream/audioset_scream_52waxTykuLc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_54MkoyLle2Q_016000_017000",
+      "path": "data_clean/scream/audioset_scream_54MkoyLle2Q_016000_017000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_54wPGR5TLPs_050000_051000",
+      "path": "data_clean/scream/audioset_scream_54wPGR5TLPs_050000_051000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_57RzoHQGpww_011000_012000",
+      "path": "data_clean/scream/audioset_scream_57RzoHQGpww_011000_012000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5IAS11SG9Dc_003000_004000",
+      "path": "data_clean/scream/audioset_scream_5IAS11SG9Dc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5L78Wi1rhyA_016000_017000",
+      "path": "data_clean/scream/audioset_scream_5L78Wi1rhyA_016000_017000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5SuuqLsuCaQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_5SuuqLsuCaQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5TWLuhGlwyg_011000_012000",
+      "path": "data_clean/scream/audioset_scream_5TWLuhGlwyg_011000_012000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5bqVGgtJHBE_031000_032000",
+      "path": "data_clean/scream/audioset_scream_5bqVGgtJHBE_031000_032000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5c6wTpeOqpg_002000_003000",
+      "path": "data_clean/scream/audioset_scream_5c6wTpeOqpg_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5dYlvKV6mrc_003000_004000",
+      "path": "data_clean/scream/audioset_scream_5dYlvKV6mrc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5t4vQjw30uA_008000_009000",
+      "path": "data_clean/scream/audioset_scream_5t4vQjw30uA_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5udZTmDLxSQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_5udZTmDLxSQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_5yTNLH67SP4_003000_004000",
+      "path": "data_clean/scream/audioset_scream_5yTNLH67SP4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_65V6hqmdgGg_003000_004000",
+      "path": "data_clean/scream/audioset_scream_65V6hqmdgGg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_663Cy9dppf8_005000_006000",
+      "path": "data_clean/scream/audioset_scream_663Cy9dppf8_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6DZwNokgiPA_002000_003000",
+      "path": "data_clean/scream/audioset_scream_6DZwNokgiPA_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6H3MUryE568_003000_004000",
+      "path": "data_clean/scream/audioset_scream_6H3MUryE568_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6Ln0va9Y9ww_000000_000700",
+      "path": "data_clean/scream/audioset_scream_6Ln0va9Y9ww_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6S6kil3vpk8_003000_004000",
+      "path": "data_clean/scream/audioset_scream_6S6kil3vpk8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6UP3giSp8cI_004000_005000",
+      "path": "data_clean/scream/audioset_scream_6UP3giSp8cI_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6bQGbJutS5g_003000_004000",
+      "path": "data_clean/scream/audioset_scream_6bQGbJutS5g_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6vuvHFVTuuc_011000_012000",
+      "path": "data_clean/scream/audioset_scream_6vuvHFVTuuc_011000_012000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_6ztLmySuHCk_000000_001000",
+      "path": "data_clean/scream/audioset_scream_6ztLmySuHCk_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_70QrXPezY2o_002000_003000",
+      "path": "data_clean/scream/audioset_scream_70QrXPezY2o_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_714ucN51H7U_004000_005000",
+      "path": "data_clean/scream/audioset_scream_714ucN51H7U_004000_005000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_72fUt6hvcs0_000000_001000",
+      "path": "data_clean/scream/audioset_scream_72fUt6hvcs0_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_75EwmfHLijI_002000_003000",
+      "path": "data_clean/scream/audioset_scream_75EwmfHLijI_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_75MKX1nmeNA_003000_004000",
+      "path": "data_clean/scream/audioset_scream_75MKX1nmeNA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7CPGD73Sou8_003000_004000",
+      "path": "data_clean/scream/audioset_scream_7CPGD73Sou8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7FuBkI8ThD0_040000_041000",
+      "path": "data_clean/scream/audioset_scream_7FuBkI8ThD0_040000_041000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7Gtx7ooeows_002000_003000",
+      "path": "data_clean/scream/audioset_scream_7Gtx7ooeows_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7H5mmslHS8g_003000_004000",
+      "path": "data_clean/scream/audioset_scream_7H5mmslHS8g_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7HsIqQVqTs4_000000_001000",
+      "path": "data_clean/scream/audioset_scream_7HsIqQVqTs4_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7J7uU7kluig_000000_001000",
+      "path": "data_clean/scream/audioset_scream_7J7uU7kluig_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7V4GSxmSVsM_003000_004000",
+      "path": "data_clean/scream/audioset_scream_7V4GSxmSVsM_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7XNPMJV06Dw_000000_001000",
+      "path": "data_clean/scream/audioset_scream_7XNPMJV06Dw_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7ZxN4Labbsg_003000_004000",
+      "path": "data_clean/scream/audioset_scream_7ZxN4Labbsg_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_7kL7i5VdAT4_003000_004000",
+      "path": "data_clean/scream/audioset_scream_7kL7i5VdAT4_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_82V80XZKV8M_009000_010000",
+      "path": "data_clean/scream/audioset_scream_82V80XZKV8M_009000_010000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_83mcNpSYm7M_015000_016000",
+      "path": "data_clean/scream/audioset_scream_83mcNpSYm7M_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_88SopTWiKLg_000000_000300",
+      "path": "data_clean/scream/audioset_scream_88SopTWiKLg_000000_000300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8Iomk4TBn8Y_015000_016000",
+      "path": "data_clean/scream/audioset_scream_8Iomk4TBn8Y_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8KLDKzOulAw_003000_004000",
+      "path": "data_clean/scream/audioset_scream_8KLDKzOulAw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8LYY2pQPd80_010000_011000",
+      "path": "data_clean/scream/audioset_scream_8LYY2pQPd80_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8M51aCH70Z8_002800_003800",
+      "path": "data_clean/scream/audioset_scream_8M51aCH70Z8_002800_003800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8PDsogXkGnw_000600_001600",
+      "path": "data_clean/scream/audioset_scream_8PDsogXkGnw_000600_001600_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8RhqjFNu3yA_025000_026000",
+      "path": "data_clean/scream/audioset_scream_8RhqjFNu3yA_025000_026000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8Vb69cN3uWQ_003000_004000",
+      "path": "data_clean/scream/audioset_scream_8Vb69cN3uWQ_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8jN5OJJLfZ4_023000_024000",
+      "path": "data_clean/scream/audioset_scream_8jN5OJJLfZ4_023000_024000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_8o8LyEIy5UA_003000_004000",
+      "path": "data_clean/scream/audioset_scream_8o8LyEIy5UA_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_9ZBRmdTCPrg_008000_009000",
+      "path": "data_clean/scream/audioset_scream_9ZBRmdTCPrg_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_Bkq1PAyGuZY_000800_001800",
+      "path": "data_clean/scream/audioset_scream_Bkq1PAyGuZY_000800_001800_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_CeIiAEQTbhY_000000_000500",
+      "path": "data_clean/scream/audioset_scream_CeIiAEQTbhY_000000_000500_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_D4GhIt5THAI_000000_000700",
+      "path": "data_clean/scream/audioset_scream_D4GhIt5THAI_000000_000700_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_D6thZbNv148_001300_002300",
+      "path": "data_clean/scream/audioset_scream_D6thZbNv148_001300_002300_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_DaMvUuMSjoo_002000_003000",
+      "path": "data_clean/scream/audioset_scream_DaMvUuMSjoo_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_FaYQcP0hKmU_033000_034000",
+      "path": "data_clean/scream/audioset_scream_FaYQcP0hKmU_033000_034000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_HtuIiMEbMJk_007000_008000",
+      "path": "data_clean/scream/audioset_scream_HtuIiMEbMJk_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+      "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_QT02wb27wCA_010000_011000",
+      "path": "data_clean/scream/audioset_scream_QT02wb27wCA_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_TAl6LU38u8M_003000_004000",
+      "path": "data_clean/scream/audioset_scream_TAl6LU38u8M_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_UdY8WXNiuzw_001000_002000",
+      "path": "data_clean/scream/audioset_scream_UdY8WXNiuzw_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_VxuMKb5CKI0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_VxuMKb5CKI0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_W4Ru63uUxSw_001000_002000",
+      "path": "data_clean/scream/audioset_scream_W4Ru63uUxSw_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_a2ugthH2Urk_015000_016000",
+      "path": "data_clean/scream/audioset_scream_a2ugthH2Urk_015000_016000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_aVdPhmRiNcc_000000_001000",
+      "path": "data_clean/scream/audioset_scream_aVdPhmRiNcc_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_aslxfM0T8No_001000_002000",
+      "path": "data_clean/scream/audioset_scream_aslxfM0T8No_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_dhKZgvg9b14_005000_006000",
+      "path": "data_clean/scream/audioset_scream_dhKZgvg9b14_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_dixaImtKNew_012000_013000",
+      "path": "data_clean/scream/audioset_scream_dixaImtKNew_012000_013000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_dqIU9mQu9ug_007000_008000",
+      "path": "data_clean/scream/audioset_scream_dqIU9mQu9ug_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_fhB7jmlgPlM_008000_009000",
+      "path": "data_clean/scream/audioset_scream_fhB7jmlgPlM_008000_009000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_h7mrFEczCkg_005000_006000",
+      "path": "data_clean/scream/audioset_scream_h7mrFEczCkg_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_h86zLSu6M9Y_025000_026000",
+      "path": "data_clean/scream/audioset_scream_h86zLSu6M9Y_025000_026000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_jWQIPRmqwqw_016000_017000",
+      "path": "data_clean/scream/audioset_scream_jWQIPRmqwqw_016000_017000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_jrmW3ma9aBc_000000_001000",
+      "path": "data_clean/scream/audioset_scream_jrmW3ma9aBc_000000_001000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_jzAufWvuXEk_006000_007000",
+      "path": "data_clean/scream/audioset_scream_jzAufWvuXEk_006000_007000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_l3DJ2MJ5CzY_002000_003000",
+      "path": "data_clean/scream/audioset_scream_l3DJ2MJ5CzY_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_m20uudT97E0_003000_004000",
+      "path": "data_clean/scream/audioset_scream_m20uudT97E0_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_m2yygHLdpXc_002000_003000",
+      "path": "data_clean/scream/audioset_scream_m2yygHLdpXc_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_m3bGlOhRkAo_014000_015000",
+      "path": "data_clean/scream/audioset_scream_m3bGlOhRkAo_014000_015000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_m4pUrlMafww_000100_001100",
+      "path": "data_clean/scream/audioset_scream_m4pUrlMafww_000100_001100_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mENDOYcumww_041000_042000",
+      "path": "data_clean/scream/audioset_scream_mENDOYcumww_041000_042000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mIc7AXv4hH0_000000_000900",
+      "path": "data_clean/scream/audioset_scream_mIc7AXv4hH0_000000_000900_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mMuIRudOtxw_003000_004000",
+      "path": "data_clean/scream/audioset_scream_mMuIRudOtxw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mQSNQGKiGT4_026000_027000",
+      "path": "data_clean/scream/audioset_scream_mQSNQGKiGT4_026000_027000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mU13gX3yTzI_002000_003000",
+      "path": "data_clean/scream/audioset_scream_mU13gX3yTzI_002000_003000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mWfQBr42ymw_003000_004000",
+      "path": "data_clean/scream/audioset_scream_mWfQBr42ymw_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mgb5uvwsRpI_003000_004000",
+      "path": "data_clean/scream/audioset_scream_mgb5uvwsRpI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mguAcRVFfXU_003000_004000",
+      "path": "data_clean/scream/audioset_scream_mguAcRVFfXU_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_mpwgypWEmJ8_003000_004000",
+      "path": "data_clean/scream/audioset_scream_mpwgypWEmJ8_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_msUgHKZQKYc_003000_004000",
+      "path": "data_clean/scream/audioset_scream_msUgHKZQKYc_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_myWiVuHMXtc_001000_002000",
+      "path": "data_clean/scream/audioset_scream_myWiVuHMXtc_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_n08qMfFBuUM_019000_020000",
+      "path": "data_clean/scream/audioset_scream_n08qMfFBuUM_019000_020000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_nwMHPaDYg4I_001000_002000",
+      "path": "data_clean/scream/audioset_scream_nwMHPaDYg4I_001000_002000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_pRR0NoGHjVk_005000_006000",
+      "path": "data_clean/scream/audioset_scream_pRR0NoGHjVk_005000_006000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_r3yk5mguYuI_003000_004000",
+      "path": "data_clean/scream/audioset_scream_r3yk5mguYuI_003000_004000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_u0WLBqVXAM0_007000_008000",
+      "path": "data_clean/scream/audioset_scream_u0WLBqVXAM0_007000_008000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    },
+    {
+      "class": "scream",
+      "group": "scream:audioset_scream_vGdfIUCkVEU_010000_011000",
+      "path": "data_clean/scream/audioset_scream_vGdfIUCkVEU_010000_011000_clean.wav",
+      "metadata_found": true,
+      "strict_label_match": true,
+      "strict_ids": "/m/03qc9zr",
+      "all_ids": "/m/03qc9zr",
+      "review_action": "keep"
+    }
+  ],
+  "summary": {
+    "glass": {
+      "total": 201,
+      "strict_match": 43,
+      "needs_review": 158
+    },
+    "scream": {
+      "total": 181,
+      "strict_match": 181,
+      "needs_review": 0
+    }
+  }
+}

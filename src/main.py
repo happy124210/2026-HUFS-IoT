@@ -7,21 +7,18 @@ import time
 import threading
 import numpy as np
 
-from audio_pipeline import SAMPLE_RATE, peak_frame_rms, resample_audio
+from audio_pipeline import SAMPLE_RATE, resample_audio
 from detection_policy import (
     CLASSES,
     MIN_CONSECUTIVE_FRAMES,
-    MIN_MEAN_PROBS,
-    MIN_PROB_MARGINS,
     THRESHOLDS,
-    decide,
+    decide_deployment,
 )
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 WINDOW_SECONDS = 2.0
 HOP_SECONDS = 1.0
-MIN_RMS = 0.02  # 이 이하면 감지 무시
 
 alert_active = False
 alert_lock = threading.Lock()
@@ -132,13 +129,7 @@ def run(device=1):
         '   연속 프레임: '
         + ' '.join(f'{cls}={count}' for cls, count in MIN_CONSECUTIVE_FRAMES.items())
     )
-    print(
-        '   추가 필터: '
-        + ' '.join(
-            f'{cls}_mean>={MIN_MEAN_PROBS[cls]*100:.0f}% margin>={MIN_PROB_MARGINS[cls]*100:.0f}%'
-            for cls in MIN_MEAN_PROBS
-        )
-    )
+    print('   정책: validation-selected classifier-only deployment policy')
     print(f"   Ctrl+C로 종료")
     print("-"*50)
 
@@ -164,16 +155,15 @@ def run(device=1):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            audio_rms = peak_frame_rms(model_audio, int(0.1 * SAMPLE_RATE))
-            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
-            final, _, max_probs, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores)
+            probs, _ = frame_predictions(yamnet, classifier, model_audio)
+            final, _, max_probs, consecutive_runs = decide_deployment(probs)
 
             now = time.time()
             with alert_lock:
                 is_active = alert_active
             can_alert = now - last_event_time >= 5.0 and not is_active
 
-            if final != 'normal' and can_alert and audio_rms >= MIN_RMS:
+            if final != 'normal' and can_alert:
                 last_event_time = now
                 confidence = max_probs[CLASSES.index(final)]
                 t = threading.Thread(target=handle_threat, args=(final, confidence), daemon=True)

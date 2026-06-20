@@ -73,9 +73,8 @@ PROFILES = {
         'class_name': 'glass',
         'prefix': 'audioset_glass_event',
         'ids': [
-            '/m/07pjjrj',  # Smash, crash
-            '/m/07pc8lb',  # Breaking
-            '/m/07plct2',  # Crushing
+            '/m/039jq',    # Glass
+            '/m/07rn7sz',  # Shatter
         ],
     },
 }

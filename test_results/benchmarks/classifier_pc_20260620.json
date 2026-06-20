@@ -1,0 +1,16 @@
+{
+  "audio_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\test_results\\glass_test2.wav",
+  "embedding_frames": 10,
+  "iterations": 10,
+  "keras_model": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\glass_classifier.h5",
+  "tflite_model": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\glass_classifier.tflite",
+  "keras_latency": {
+    "mean_ms": 69.41781000023184,
+    "median_ms": 69.09414999972796,
+    "p95_ms": 76.94809999884455
+  },
+  "scope": "Classifier head only; YAMNet feature extraction is excluded from latency.",
+  "tflite_status": "unavailable",
+  "tflite_error": "tensorflow: TypeError: CreateWrapperFromBuffer(): incompatible function arguments. The following argument types are supported:\n    1. (arg0: bytes, arg1: int, arg2: List[str], arg3: bool, arg4: bool) -> tflite::interpreter_wrapper::InterpreterWrapper\n    2. (arg0: bytes, arg1: int, arg2: List[str], arg3: List[Callable[[int], None]], arg4: bool, arg5: bool) -> tflite::interpreter_wrapper::InterpreterWrapper",
+  "recommended_fix": "Use a clean environment with one TensorFlow distribution, or install ai-edge-litert/tflite-runtime on the target Raspberry Pi."
+}

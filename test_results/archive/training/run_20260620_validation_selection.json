@@ -1,0 +1,241 @@
+{
+  "manifest_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\test_results\\training\\split_manifest.json",
+  "selection_rule": "Candidate and policy selected using validation only; test is evaluated once after selection.",
+  "baseline": {
+    "policy": {
+      "thresholds": {
+        "glass": 0.95,
+        "scream": 0.7
+      },
+      "min_consecutive_frames": {
+        "glass": 1,
+        "scream": 3
+      },
+      "min_mean_probs": {
+        "scream": 0.0
+      },
+      "min_prob_margins": {
+        "scream": 0.0
+      }
+    },
+    "validation": {
+      "accuracy": 0.8497854077253219,
+      "macro_f1": 0.7968832582960799,
+      "normal_false_alarm_rate": 0.06040268456375839,
+      "recall": {
+        "glass": 0.6904761904761905,
+        "normal": 0.9395973154362416,
+        "scream": 0.6904761904761905
+      },
+      "confusion_matrix": [
+        [
+          29,
+          9,
+          4
+        ],
+        [
+          7,
+          140,
+          2
+        ],
+        [
+          1,
+          12,
+          29
+        ]
+      ]
+    }
+  },
+  "candidates": {
+    "candidate_a_capped": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_a_capped.h5",
+      "training": {
+        "strategy": "class-weight",
+        "reused_existing_model": true
+      },
+      "selection": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.95,
+            "scream": 0.8
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 1
+          },
+          "min_mean_probs": {
+            "scream": 0.0
+          },
+          "min_prob_margins": {
+            "scream": 0.0
+          }
+        },
+        "validation": {
+          "accuracy": 0.7896995708154506,
+          "macro_f1": 0.7021192302159069,
+          "normal_false_alarm_rate": 0.04697986577181208,
+          "recall": {
+            "glass": 0.5238095238095238,
+            "normal": 0.9530201342281879,
+            "scream": 0.47619047619047616
+          },
+          "confusion_matrix": [
+            [
+              22,
+              18,
+              2
+            ],
+            [
+              1,
+              142,
+              6
+            ],
+            [
+              0,
+              22,
+              20
+            ]
+          ]
+        }
+      },
+      "passed_validation_gate": false
+    },
+    "candidate_b_balanced": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_b_balanced.h5",
+      "training": {
+        "strategy": "balanced-frames",
+        "reused_existing_model": true
+      },
+      "selection": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.9,
+            "scream": 0.95
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 1
+          },
+          "min_mean_probs": {
+            "scream": 0.35
+          },
+          "min_prob_margins": {
+            "scream": 0.0
+          }
+        },
+        "validation": {
+          "accuracy": 0.7896995708154506,
+          "macro_f1": 0.6964308848296411,
+          "normal_false_alarm_rate": 0.04697986577181208,
+          "recall": {
+            "glass": 0.6428571428571429,
+            "normal": 0.9530201342281879,
+            "scream": 0.35714285714285715
+          },
+          "confusion_matrix": [
+            [
+              27,
+              14,
+              1
+            ],
+            [
+              3,
+              142,
+              4
+            ],
+            [
+              0,
+              27,
+              15
+            ]
+          ]
+        }
+      },
+      "passed_validation_gate": false
+    },
+    "candidate_c_finetuned": {
+      "path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_c_finetuned.h5",
+      "training": {
+        "strategy": "class-weight",
+        "reused_existing_model": true
+      },
+      "selection": {
+        "policy": {
+          "thresholds": {
+            "glass": 0.95,
+            "scream": 0.65
+          },
+          "min_consecutive_frames": {
+            "glass": 1,
+            "scream": 3
+          },
+          "min_mean_probs": {
+            "scream": 0.0
+          },
+          "min_prob_margins": {
+            "scream": 0.0
+          }
+        },
+        "validation": {
+          "accuracy": 0.8669527896995708,
+          "macro_f1": 0.8252510845664706,
+          "normal_false_alarm_rate": 0.040268456375838924,
+          "recall": {
+            "glass": 0.6428571428571429,
+            "normal": 0.959731543624161,
+            "scream": 0.7619047619047619
+          },
+          "confusion_matrix": [
+            [
+              27,
+              14,
+              1
+            ],
+            [
+              2,
+              143,
+              4
+            ],
+            [
+              0,
+              10,
+              32
+            ]
+          ]
+        }
+      },
+      "passed_validation_gate": false
+    }
+  },
+  "winner": null,
+  "final_test": {
+    "baseline": {
+      "accuracy": 0.7767857142857143,
+      "macro_f1": 0.7384126984126983,
+      "normal_false_alarm_rate": 0.14074074074074075,
+      "recall": {
+        "glass": 0.6595744680851063,
+        "normal": 0.8592592592592593,
+        "scream": 0.6428571428571429
+      },
+      "confusion_matrix": [
+        [
+          31,
+          16,
+          0
+        ],
+        [
+          13,
+          116,
+          6
+        ],
+        [
+          2,
+          13,
+          27
+        ]
+      ]
+    }
+  },
+  "promoted": false
+}

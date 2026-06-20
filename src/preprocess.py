@@ -1,7 +1,6 @@
 import os
 import argparse
 import numpy as np
-import librosa
 import soundfile as sf
 from scipy import signal
 
@@ -25,6 +24,7 @@ def process_audio(path, sr=SAMPLE_RATE, duration=DURATION, min_rms=MIN_RMS):
                 n_samples = int(len(audio) * sr / source_sr)
                 audio = signal.resample(audio, n_samples).astype(np.float32)
         else:
+            import librosa
             audio, _ = librosa.load(path, sr=sr, mono=True)
     except Exception as e:
         return None, f"로드 실패: {e}"
@@ -68,6 +68,7 @@ def parse_args():
     parser.add_argument('--verbose-skip', action='store_true', help='이미 있는 출력 파일도 로그로 표시합니다.')
     parser.add_argument('--prefix', help='파일명이 이 prefix로 시작하는 입력만 처리합니다.')
     parser.add_argument('--ext', action='append', help='처리할 확장자. 예: --ext .wav')
+    parser.add_argument('--modified-since', help='원본 수정 시각 하한(ISO 형식, 예: 2026-06-20T00:00:00)')
     parser.add_argument('--min-rms', type=float, default=MIN_RMS, help='스킵할 최소 RMS 기준')
     return parser.parse_args()
 
@@ -92,6 +93,10 @@ for cls in target_classes:
             for ext in args.ext
         )
         files = [f for f in files if f.lower().endswith(wanted_exts)]
+    if args.modified_since:
+        from datetime import datetime
+        cutoff = datetime.fromisoformat(args.modified_since).timestamp()
+        files = [f for f in files if os.path.getmtime(os.path.join(in_dir, f)) >= cutoff]
     print(f"\n[{cls}] {len(files)}개 처리 중...")
 
     for fname in files:

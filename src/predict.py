@@ -6,7 +6,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 
 from audio_pipeline import SAMPLE_RATE, load_audio, loudest_window
-from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide
+from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide_deployment
 
 # ── 설정 ──────────────────────────────
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -73,9 +73,7 @@ def predict(wav_path):
     print(f"\n📊 [평균] {mean_scores}")
     print(f"📊 [최대] {max_scores}")
     
-    final, _, _, consecutive_runs = decide(
-        all_probs, yamnet_scores=yamnet_scores.numpy()
-    )
+    final, _, _, consecutive_runs = decide_deployment(all_probs)
     count_text = '  '.join(
         f"{cls}: 연속 {consecutive_runs[cls]} / 필요 {MIN_CONSECUTIVE_FRAMES[cls]}"
         for cls in THRESHOLDS

@@ -17,6 +17,8 @@ from sklearn.utils.class_weight import compute_class_weight
 
 from audio_pipeline import SAMPLE_RATE, load_audio, rms
 from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, MIN_MEAN_PROBS, MIN_PROB_MARGINS, decide
+from model_selection import passes_deployment_gate, rank_key
+from split_validation import assert_disjoint_splits, origin_overlaps, source_unit
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -30,6 +32,9 @@ MODEL_DIR = os.path.join(BASE_DIR, 'model')
 EMBEDDING_CACHE_DIR = os.path.join(MODEL_DIR, 'embedding_cache')
 REVIEW_DIR = os.path.join(BASE_DIR, 'evaluation_data', 'review_20260617')
 RESULTS_DIR = os.path.join(BASE_DIR, 'test_results', 'training')
+APPROVED_GLASS_SOURCES_PATH = os.path.join(
+    BASE_DIR, 'data_quality', 'approved_audioset_glass.txt'
+)
 SEED = 42
 EMBEDDING_CACHE_VERSION = 'frame-v1-no-peak-normalization'
 AUDIO_EXTENSIONS = ('.wav', '.mp3', '.flac', '.m4a', '.webm', '.ogg')
@@ -49,6 +54,51 @@ def source_group(cls, fname):
     stem = re.sub(r'_aug_\d+$', '', stem)
     stem = re.sub(r'_clean$', '', stem)
     return f'{cls}:{stem}'
+
+
+def preferred_duplicate_group(groups):
+    def rank(group):
+        stem = group.split(':', 1)[1]
+        has_copy_suffix = ' (1)' in stem
+        has_source_provenance = stem[:1].isdigit() or stem.startswith('audioset_')
+        return (has_copy_suffix, not has_source_provenance, len(stem), stem)
+    return min(groups, key=rank)
+
+
+def clean_source_aliases():
+    """Map byte-identical clean files to one canonical source group."""
+    hashes = defaultdict(list)
+    clean_dir = os.path.join(BASE_DIR, 'data_clean')
+    for cls in CLASSES:
+        folder = os.path.join(clean_dir, cls)
+        if not os.path.isdir(folder):
+            continue
+        for name in sorted(os.listdir(folder)):
+            if not name.lower().endswith(AUDIO_EXTENSIONS):
+                continue
+            path = os.path.join(folder, name)
+            digest = hashlib.sha256()
+            with open(path, 'rb') as handle:
+                for chunk in iter(lambda: handle.read(1024 * 1024), b''):
+                    digest.update(chunk)
+            hashes[digest.hexdigest()].append(source_group(cls, name))
+    aliases = {}
+    for groups in hashes.values():
+        canonical = preferred_duplicate_group(groups)
+        for group in groups:
+            if group != canonical:
+                aliases[group] = canonical
+    return aliases
+
+
+def approved_glass_sources():
+    if not os.path.exists(APPROVED_GLASS_SOURCES_PATH):
+        return set()
+    with open(APPROVED_GLASS_SOURCES_PATH, encoding='utf-8') as handle:
+        return {
+            line.strip() for line in handle
+            if line.strip() and not line.lstrip().startswith('#')
+        }
 
 
 def cache_path_for(path):
@@ -103,6 +153,9 @@ def selected_embeddings(yamnet, path, cls):
 def collect_sources():
     sources = defaultdict(list)
     clean_paths = {}
+    aliases = clean_source_aliases()
+    approved_glass = approved_glass_sources()
+    excluded_unverified = set()
     priority = {'data_clean': 0, 'data_augmented': 1, 'data_mixed': 2}
     for data_dir in DATA_DIRS:
         root_name = os.path.basename(data_dir)
@@ -114,13 +167,22 @@ def collect_sources():
                 if not name.lower().endswith(AUDIO_EXTENSIONS):
                     continue
                 path = os.path.join(folder, name)
-                group = source_group(cls, name)
+                original_group = source_group(cls, name)
+                if (
+                    original_group.startswith('glass:audioset_glass_event_')
+                    and original_group not in approved_glass
+                ):
+                    excluded_unverified.add(original_group)
+                    continue
+                group = aliases.get(original_group, original_group)
+                if root_name == 'data_clean' and original_group != group:
+                    continue
                 sources[group].append((priority[root_name], path))
                 if root_name == 'data_clean':
-                    clean_paths[group] = path
+                    clean_paths.setdefault(group, path)
     for group in sources:
         sources[group] = [path for _, path in sorted(sources[group], key=lambda item: (item[0], item[1]))]
-    return sources, clean_paths
+    return sources, clean_paths, aliases, excluded_unverified
 
 
 def forced_review_groups():
@@ -137,24 +199,61 @@ def forced_review_groups():
 
 def split_groups(sources):
     groups = np.array(sorted(sources))
-    labels = np.array([CLASSES.index(group.split(':', 1)[0]) for group in groups])
     forced = forced_review_groups() & set(groups)
     forced_train = {
         group for group in groups
         if any(group.split(':', 1)[1].startswith(prefix) for prefix in FORCED_TRAIN_PREFIXES)
     }
-    remaining_mask = np.array([group not in forced and group not in forced_train for group in groups])
-    remaining, remaining_labels = groups[remaining_mask], labels[remaining_mask]
+
+    unit_groups = defaultdict(list)
+    for group in groups:
+        unit_groups[source_unit(group)].append(group)
+    unit_labels = {}
+    for unit, members in unit_groups.items():
+        labels = {CLASSES.index(group.split(':', 1)[0]) for group in members}
+        if len(labels) != 1:
+            raise ValueError(f'Conflicting labels for source {unit}: {members}')
+        unit_labels[unit] = labels.pop()
+
+    forced_train_units = {source_unit(group) for group in forced_train}
+    forced_test_units = {source_unit(group) for group in forced} - forced_train_units
+    remaining = np.array(sorted(
+        set(unit_groups) - forced_train_units - forced_test_units
+    ))
+    remaining_labels = np.array([unit_labels[unit] for unit in remaining])
     train_val, random_test = train_test_split(
         remaining, test_size=0.15, stratify=remaining_labels, random_state=SEED
     )
-    train_val_labels = np.array([CLASSES.index(group.split(':', 1)[0]) for group in train_val])
+    train_val_labels = np.array([unit_labels[unit] for unit in train_val])
     train, val = train_test_split(
         train_val, test_size=0.1764705882, stratify=train_val_labels, random_state=SEED
     )
-    train = np.array(sorted(set(train) | forced_train))
-    test = np.array(sorted(set(random_test) | forced))
-    return {'train': sorted(train), 'validation': sorted(val), 'test': sorted(test)}, sorted(forced)
+
+    def expand(units):
+        return sorted(
+            group
+            for unit in units
+            for group in unit_groups[unit]
+        )
+
+    # A reviewed false negative can either teach the model or evaluate it, never both.
+    splits = {
+        'train': expand(set(train) | forced_train_units),
+        'validation': expand(val),
+        'test': expand(set(random_test) | forced_test_units),
+    }
+    assert_disjoint_splits(splits)
+    duplicate_origins = origin_overlaps(splits)
+    if duplicate_origins:
+        examples = list(duplicate_origins.items())[:10]
+        raise ValueError(
+            'Data leakage: YouTube source IDs occur in multiple splits. '
+            f'Examples: {examples}'
+        )
+    return splits, {
+        'train': sorted(forced_train),
+        'test': sorted(forced - forced_train),
+    }
 
 
 def load_split(yamnet, split_groups_map, sources, clean_paths):
@@ -266,7 +365,14 @@ def train_candidate(name, arrays, strategy, initial_model_path=None):
     )
     output = os.path.join(MODEL_DIR, 'candidates', f'{name}.h5')
     os.makedirs(os.path.dirname(output), exist_ok=True)
-    model.save(output)
+    temporary_output = tempfile.NamedTemporaryFile(suffix='.h5', delete=False)
+    temporary_output.close()
+    try:
+        model.save(temporary_output.name)
+        shutil.copy2(temporary_output.name, output)
+    finally:
+        if os.path.exists(temporary_output.name):
+            os.remove(temporary_output.name)
     return model, output, {
         'strategy': strategy,
         'epochs': len(history.history['loss']),
@@ -336,58 +442,73 @@ def tune_thresholds(items, all_probs):
     return best[4], best[5]
 
 
-def evaluate_model(model, yamnet, audio_items):
-    val_probs = audio_probabilities(model, yamnet, audio_items['validation'])
-    policy, validation = tune_thresholds(audio_items['validation'], val_probs)
-    test_probs = audio_probabilities(model, yamnet, audio_items['test'])
-    test = policy_metrics(audio_items['test'], test_probs, policy)
-    return {'policy': policy, 'validation': validation, 'test': test}
+def select_policy(model, yamnet, validation_items):
+    val_probs = audio_probabilities(model, yamnet, validation_items)
+    policy, validation = tune_thresholds(validation_items, val_probs)
+    return {'policy': policy, 'validation': validation}
 
 
-def passes_gate(candidate, baseline):
-    test = candidate['test']
-    return (
-        test['macro_f1'] > baseline['test']['macro_f1']
-        and test['normal_false_alarm_rate'] <= 0.05
-        and test['recall']['glass'] >= 0.70
-        and test['recall']['scream'] >= 0.70
-    )
+def final_test(model, yamnet, test_items, policy):
+    test_probs = audio_probabilities(model, yamnet, test_items)
+    return policy_metrics(test_items, test_probs, policy)
 
 
 def main():
     parser = argparse.ArgumentParser(description='Train capped, source-separated model candidates.')
     parser.add_argument('--promote', action='store_true', help='Promote the best candidate only if it passes gates.')
     parser.add_argument('--evaluate-existing', action='store_true', help='Evaluate already trained candidate files.')
+    parser.add_argument(
+        '--train-candidate', action='append',
+        choices=('candidate_a_capped', 'candidate_b_balanced', 'candidate_c_finetuned'),
+        help='Train only selected candidates and reuse other candidate files.',
+    )
+    parser.add_argument('--prepare-only', action='store_true', help='Write a validated split manifest without loading or training models.')
     parser.add_argument('--baseline-path', default=os.path.join(MODEL_DIR, 'glass_classifier.h5'))
     parser.add_argument('--results-path', default=os.path.join(RESULTS_DIR, 'latest.json'))
     args = parser.parse_args()
 
     np.random.seed(SEED)
     tf.random.set_seed(SEED)
-    print('Loading YAMNet...')
-    yamnet = hub.load('https://tfhub.dev/google/yamnet/1')
-    sources, clean_paths = collect_sources()
+    sources, clean_paths, aliases, excluded_unverified = collect_sources()
     splits, forced = split_groups(sources)
-    if args.evaluate_existing:
-        arrays = None
-        audio_items = audio_items_from_splits(splits, sources, clean_paths)
-    else:
-        arrays, audio_items = load_split(yamnet, splits, sources, clean_paths)
 
     manifest = {
         'seed': SEED,
         'forced_review_groups': forced,
         'max_files_per_train_source': MAX_FILES_PER_TRAIN_SOURCE,
+        'exact_duplicate_source_alias_count': len(aliases),
+        'unverified_broad_label_glass_source_exclusion_count': len(excluded_unverified),
         'splits': splits,
     }
     os.makedirs(RESULTS_DIR, exist_ok=True)
     manifest_path = os.path.join(RESULTS_DIR, 'split_manifest.json')
     with open(manifest_path, 'w', encoding='utf-8') as handle:
         json.dump(manifest, handle, ensure_ascii=False, indent=2)
+    if args.prepare_only:
+        print(json.dumps({
+            'manifest_path': manifest_path,
+            'exact_duplicate_source_alias_count': len(aliases),
+            'unverified_broad_label_glass_source_exclusion_count': len(excluded_unverified),
+            'split_counts': {name: len(groups) for name, groups in splits.items()},
+        }, ensure_ascii=False, indent=2))
+        return
+
+    print('Loading YAMNet...')
+    yamnet = hub.load('https://tfhub.dev/google/yamnet/1')
+    if args.evaluate_existing:
+        arrays = None
+        audio_items = audio_items_from_splits(splits, sources, clean_paths)
+    else:
+        arrays, audio_items = load_split(yamnet, splits, sources, clean_paths)
 
     baseline_model = tf.keras.models.load_model(args.baseline_path)
-    baseline_eval = evaluate_model(baseline_model, yamnet, audio_items)
-    results = {'manifest_path': manifest_path, 'baseline': baseline_eval, 'candidates': {}}
+    baseline_selection = select_policy(baseline_model, yamnet, audio_items['validation'])
+    results = {
+        'manifest_path': manifest_path,
+        'selection_rule': 'Candidate and policy selected using validation only; test is evaluated once after selection.',
+        'baseline': baseline_selection,
+        'candidates': {},
+    }
 
     specifications = [
         ('candidate_a_capped', 'class-weight', None),
@@ -398,25 +519,57 @@ def main():
     for name, strategy, initial_model_path in specifications:
         print(f'\nTraining {name} ({strategy})...')
         path = os.path.join(MODEL_DIR, 'candidates', f'{name}.h5')
-        if args.evaluate_existing:
+        reuse_existing = args.evaluate_existing or (
+            args.train_candidate and name not in args.train_candidate
+        )
+        if reuse_existing:
             model = tf.keras.models.load_model(path)
             training = {'strategy': strategy, 'reused_existing_model': True}
         else:
             model, path, training = train_candidate(name, arrays, strategy, initial_model_path)
-        evaluation = evaluate_model(model, yamnet, audio_items)
-        passed = passes_gate(evaluation, baseline_eval)
+        selection = select_policy(model, yamnet, audio_items['validation'])
+        passed = passes_deployment_gate(
+            selection['validation'], baseline_selection['validation']
+        )
         results['candidates'][name] = {
-            'path': path, 'training': training, 'evaluation': evaluation, 'passed_gate': passed,
+            'path': path,
+            'training': training,
+            'selection': selection,
+            'passed_validation_gate': passed,
         }
         trained[name] = model
 
     ranked = sorted(
         results['candidates'],
-        key=lambda name: results['candidates'][name]['evaluation']['test']['macro_f1'],
+        key=lambda name: rank_key(
+            results['candidates'][name]['selection']['validation']
+        ),
         reverse=True,
     )
-    winner = next((name for name in ranked if results['candidates'][name]['passed_gate']), None)
+    winner = next(
+        (name for name in ranked if results['candidates'][name]['passed_validation_gate']),
+        None,
+    )
     results['winner'] = winner
+    results['final_test'] = {
+        'baseline': final_test(
+            baseline_model,
+            yamnet,
+            audio_items['test'],
+            baseline_selection['policy'],
+        )
+    }
+    if winner:
+        winner_record = results['candidates'][winner]
+        results['final_test']['winner'] = {
+            'name': winner,
+            'metrics': final_test(
+                trained[winner],
+                yamnet,
+                audio_items['test'],
+                winner_record['selection']['policy'],
+            ),
+        }
     results['promoted'] = bool(args.promote and winner)
     if args.promote and winner:
         shutil.copy2(results['candidates'][winner]['path'], os.path.join(MODEL_DIR, 'glass_classifier.h5'))

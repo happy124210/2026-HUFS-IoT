@@ -1,7 +1,11 @@
 .env
 photos/
 logs/
-src/__pycache__/
+__pycache__/
+*.py[cod]
+*.part
+*.tmp
+*.temp
 src/scream_test.wav
 model/embedding_cache/
 data_augmented/

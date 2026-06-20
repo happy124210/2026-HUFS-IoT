@@ -7,7 +7,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 
-from detection_policy import decide
+from detection_policy import DEPLOYMENT_POLICY, decide, decide_deployment
 
 
 class DetectionPolicyTests(unittest.TestCase):
@@ -46,6 +46,16 @@ class DetectionPolicyTests(unittest.TestCase):
         self.assertEqual('normal', decide(probs)[0])
         scores = self.yamnet_scores(1, event_index=435, value=0.20)
         self.assertEqual('glass', decide(probs, yamnet_scores=scores)[0])
+
+    def test_locked_deployment_policy_matches_official_evaluation(self):
+        self.assertEqual({'glass': 0.95, 'scream': 0.40}, DEPLOYMENT_POLICY['thresholds'])
+        self.assertEqual({'glass': 1, 'scream': 3}, DEPLOYMENT_POLICY['min_consecutive_frames'])
+        self.assertEqual({'scream': 0.0}, DEPLOYMENT_POLICY['min_mean_probs'])
+        self.assertEqual({'scream': 0.0}, DEPLOYMENT_POLICY['min_prob_margins'])
+
+    def test_deployment_path_is_classifier_only(self):
+        probs = np.array([[0.75, 0.20, 0.05]])
+        self.assertEqual('normal', decide_deployment(probs)[0])
 
 
 if __name__ == '__main__':

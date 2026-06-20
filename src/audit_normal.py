@@ -7,7 +7,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 
 from audio_pipeline import load_audio
-from detection_policy import CLASSES, decide
+from detection_policy import CLASSES, decide_deployment
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -18,7 +18,7 @@ def audit_file(yamnet, model, path):
     yamnet_scores, embeddings, _ = yamnet(audio)
     probs = model.predict(embeddings.numpy(), verbose=0)
     max_probs = probs.max(axis=0)
-    final, _, _, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores.numpy())
+    final, _, _, consecutive_runs = decide_deployment(probs)
     return final, max_probs, consecutive_runs
 
 

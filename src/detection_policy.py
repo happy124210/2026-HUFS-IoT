@@ -3,18 +3,24 @@ import numpy as np
 
 CLASSES = ['glass', 'normal', 'scream']
 THRESHOLDS = {
-    'glass': 0.97,
-    'scream': 0.92,
+    'glass': 0.95,
+    'scream': 0.40,
 }
 MIN_CONSECUTIVE_FRAMES = {
     'glass': 1,
     'scream': 3,
 }
-MIN_MEAN_PROBS = {
-    'scream': 0.35,
-}
-MIN_PROB_MARGINS = {
-    'scream': 0.15,
+MIN_MEAN_PROBS = {'scream': 0.0}
+MIN_PROB_MARGINS = {'scream': 0.0}
+
+# Locked deployment policy selected on validation in
+# test_results/training/run_20260620_strict_labels.json. Production inference,
+# offline evaluation, and the live demo must use these classifier-only values.
+DEPLOYMENT_POLICY = {
+    'thresholds': THRESHOLDS,
+    'min_consecutive_frames': MIN_CONSECUTIVE_FRAMES,
+    'min_mean_probs': MIN_MEAN_PROBS,
+    'min_prob_margins': MIN_PROB_MARGINS,
 }
 
 # YAMNet AudioSet output indices. These scores are used only as corroborating
@@ -28,7 +34,8 @@ YAMNET_SUPPORT_THRESHOLDS = {
     'glass': 0.10,
 }
 YAMNET_CUSTOM_FLOORS = {
-    'scream': THRESHOLDS['scream'],
+    # Historical fusion ablations only; not used by the locked deployment path.
+    'scream': 0.92,
     'glass': 0.70,
 }
 YAMNET_MIN_CONSECUTIVE_FRAMES = {
@@ -111,3 +118,8 @@ def decide(
 
     final = max(triggered, key=lambda cls: max_probs[CLASSES.index(cls)]) if triggered else 'normal'
     return final, mean_probs, max_probs, consecutive_runs
+
+
+def decide_deployment(probs):
+    """Apply the locked classifier-only policy used for official evaluation."""
+    return decide(probs, **DEPLOYMENT_POLICY)
