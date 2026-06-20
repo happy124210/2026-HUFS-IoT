@@ -15,10 +15,10 @@ os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tf
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 def audit_file(yamnet, model, path):
     audio = load_audio(path)
-    _, embeddings, _ = yamnet(audio)
+    yamnet_scores, embeddings, _ = yamnet(audio)
     probs = model.predict(embeddings.numpy(), verbose=0)
     max_probs = probs.max(axis=0)
-    final, _, _, consecutive_runs = decide(probs)
+    final, _, _, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores.numpy())
     return final, max_probs, consecutive_runs
 
 

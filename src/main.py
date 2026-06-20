@@ -54,10 +54,10 @@ def resample_to_model_rate(audio, input_sample_rate):
     return resample_audio(audio, input_sample_rate, SAMPLE_RATE)
 
 def frame_predictions(yamnet, classifier, audio):
-    _, embeddings, _ = yamnet(audio.astype(np.float32))
+    yamnet_scores, embeddings, _ = yamnet(audio.astype(np.float32))
     embeddings = embeddings.numpy()
     probs = classifier.predict(embeddings, verbose=0)
-    return probs
+    return probs, yamnet_scores.numpy()
 
 def handle_threat(label, confidence):
     global alert_active
@@ -165,8 +165,8 @@ def run(device=1):
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
             audio_rms = peak_frame_rms(model_audio, int(0.1 * SAMPLE_RATE))
-            probs = frame_predictions(yamnet, classifier, model_audio)
-            final, _, max_probs, consecutive_runs = decide(probs)
+            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
+            final, _, max_probs, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores)
 
             now = time.time()
             with alert_lock:

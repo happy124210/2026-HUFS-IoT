@@ -33,6 +33,10 @@ RESULTS_DIR = os.path.join(BASE_DIR, 'test_results', 'training')
 SEED = 42
 EMBEDDING_CACHE_VERSION = 'frame-v1-no-peak-normalization'
 AUDIO_EXTENSIONS = ('.wav', '.mp3', '.flac', '.m4a', '.webm', '.ogg')
+# Confirmed microphone false negatives are hard examples collected specifically
+# for retraining. Keep them in train instead of letting the random split place
+# them in validation/test, where they would not correct the observed failure.
+FORCED_TRAIN_PREFIXES = ('review_scream_pred_normal_',)
 
 # Per-source limits include the clean file. They approximately balance the number
 # of embedding frames while avoiding the old 85k-file augmentation flood.
@@ -135,7 +139,11 @@ def split_groups(sources):
     groups = np.array(sorted(sources))
     labels = np.array([CLASSES.index(group.split(':', 1)[0]) for group in groups])
     forced = forced_review_groups() & set(groups)
-    remaining_mask = np.array([group not in forced for group in groups])
+    forced_train = {
+        group for group in groups
+        if any(group.split(':', 1)[1].startswith(prefix) for prefix in FORCED_TRAIN_PREFIXES)
+    }
+    remaining_mask = np.array([group not in forced and group not in forced_train for group in groups])
     remaining, remaining_labels = groups[remaining_mask], labels[remaining_mask]
     train_val, random_test = train_test_split(
         remaining, test_size=0.15, stratify=remaining_labels, random_state=SEED
@@ -144,6 +152,7 @@ def split_groups(sources):
     train, val = train_test_split(
         train_val, test_size=0.1764705882, stratify=train_val_labels, random_state=SEED
     )
+    train = np.array(sorted(set(train) | forced_train))
     test = np.array(sorted(set(random_test) | forced))
     return {'train': sorted(train), 'validation': sorted(val), 'test': sorted(test)}, sorted(forced)
 

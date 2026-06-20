@@ -33,7 +33,7 @@ def predict(wav_path):
     audio = process_audio(wav_path)
 
     # YAMNet으로 embedding 추출 (보통 6~7개 프레임)
-    _, embeddings, _ = yamnet(audio)
+    yamnet_scores, embeddings, _ = yamnet(audio)
     embeddings = embeddings.numpy()  # shape: (N, 1024)
 
     # ★ 각 프레임마다 개별 예측 → 그중 최대 glass 확률 채택
@@ -73,7 +73,9 @@ def predict(wav_path):
     print(f"\n📊 [평균] {mean_scores}")
     print(f"📊 [최대] {max_scores}")
     
-    final, _, _, consecutive_runs = decide(all_probs)
+    final, _, _, consecutive_runs = decide(
+        all_probs, yamnet_scores=yamnet_scores.numpy()
+    )
     count_text = '  '.join(
         f"{cls}: 연속 {consecutive_runs[cls]} / 필요 {MIN_CONSECUTIVE_FRAMES[cls]}"
         for cls in THRESHOLDS

@@ -46,10 +46,10 @@ def load_models(no_model):
 
 
 def frame_predictions(yamnet, classifier, audio):
-    _, embeddings, _ = yamnet(audio.astype(np.float32))
+    yamnet_scores, embeddings, _ = yamnet(audio.astype(np.float32))
     embeddings = embeddings.numpy()
     probs = classifier.predict(embeddings, verbose=0)
-    return probs
+    return probs, yamnet_scores.numpy()
 
 
 def format_scores(probs):
@@ -140,8 +140,8 @@ def run_loop(args):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            probs = frame_predictions(yamnet, classifier, model_audio)
-            final, mean_probs, max_probs, consecutive_runs = decide(probs)
+            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
+            final, mean_probs, max_probs, consecutive_runs = decide(probs, yamnet_scores=yamnet_scores)
 
             now = time.time()
             can_alert = now - last_event_time >= args.cooldown

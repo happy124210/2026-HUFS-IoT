@@ -36,14 +36,14 @@ def collect_files(dataset_dir):
 
 def predict_frames(yamnet, classifier, path):
     audio = loudest_window(load_audio(path), WINDOW_SAMPLES)
-    _, embeddings, _ = yamnet(audio.astype(np.float32))
-    return classifier.predict(embeddings.numpy(), verbose=0)
+    yamnet_scores, embeddings, _ = yamnet(audio.astype(np.float32))
+    return classifier.predict(embeddings.numpy(), verbose=0), yamnet_scores.numpy()
 
 
 def labels_for(all_probs, thresholds):
     return np.array([
-        CLASSES.index(decide(probs, thresholds=thresholds)[0])
-        for probs in all_probs
+        CLASSES.index(decide(probs, yamnet_scores=yamnet_scores, thresholds=thresholds)[0])
+        for probs, yamnet_scores in all_probs
     ])
 
 

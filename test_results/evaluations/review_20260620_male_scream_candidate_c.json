@@ -1,0 +1,60 @@
+{
+  "dataset_dir": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\evaluation_data\\review_20260619",
+  "model_path": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\candidates\\candidate_c_finetuned.h5",
+  "classes": [
+    "glass",
+    "normal",
+    "scream"
+  ],
+  "sample_count": 3,
+  "policy": {
+    "thresholds": {
+      "glass": 0.97,
+      "scream": 0.92
+    },
+    "min_consecutive_frames": {
+      "glass": 1,
+      "scream": 3
+    }
+  },
+  "metrics": {
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        2,
+        1
+      ]
+    ],
+    "macro_f1": 0.16666666666666666,
+    "normal_false_alarm_rate": 0.0,
+    "accuracy": 0.3333333333333333
+  },
+  "predictions": [
+    {
+      "path": "scream/review_scream_pred_normal_20260619_234449_007.wav",
+      "actual": "scream",
+      "predicted": "scream"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260619_234552_009.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    },
+    {
+      "path": "scream/review_scream_pred_normal_20260619_234649_015.wav",
+      "actual": "scream",
+      "predicted": "normal"
+    }
+  ],
+  "threshold_search_top10": []
+}
