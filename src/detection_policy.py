@@ -2,45 +2,49 @@ import numpy as np
 
 
 CLASSES = ['glass', 'normal', 'scream']
+
+# Final frame-aligned fusion policy selected on the source-separated validation
+# set on 2026-06-21. YAMNet scores and embeddings come from one forward pass.
+FINAL_FUSION_POLICY = {
+    'glass': {
+        'strong_threshold': 0.95,
+        'strong_min_frames': 2,
+        'fusion_custom_threshold': 0.40,
+        'fusion_yamnet_threshold': 0.10,
+        'fusion_min_frames': 1,
+    },
+    'scream': {
+        'strong_threshold': 0.55,
+        'strong_min_frames': 3,
+        'fusion_custom_threshold': 0.85,
+        'fusion_yamnet_threshold': 0.02,
+        'fusion_min_frames': 1,
+    },
+}
+
+# Compatibility constants used by runtime status displays.
 THRESHOLDS = {
-    'glass': 0.95,
-    'scream': 0.40,
+    cls: values['strong_threshold'] for cls, values in FINAL_FUSION_POLICY.items()
 }
 MIN_CONSECUTIVE_FRAMES = {
-    'glass': 1,
-    'scream': 3,
+    cls: values['strong_min_frames'] for cls, values in FINAL_FUSION_POLICY.items()
 }
 MIN_MEAN_PROBS = {'scream': 0.0}
 MIN_PROB_MARGINS = {'scream': 0.0}
+DEPLOYMENT_POLICY = FINAL_FUSION_POLICY
 
-# Locked deployment policy selected on validation in
-# test_results/training/run_20260620_strict_labels.json. Production inference,
-# offline evaluation, and the live demo must use these classifier-only values.
-DEPLOYMENT_POLICY = {
-    'thresholds': THRESHOLDS,
-    'min_consecutive_frames': MIN_CONSECUTIVE_FRAMES,
-    'min_mean_probs': MIN_MEAN_PROBS,
-    'min_prob_margins': MIN_PROB_MARGINS,
+# Historical classifier-only policy retained solely to reproduce the June 20
+# comparison. It is no longer the final runtime policy.
+LEGACY_CLASSIFIER_ONLY_POLICY = {
+    'thresholds': {'glass': 0.95, 'scream': 0.40},
+    'min_consecutive_frames': {'glass': 1, 'scream': 3},
+    'min_mean_probs': {'scream': 0.0},
+    'min_prob_margins': {'scream': 0.0},
 }
 
-# YAMNet AudioSet output indices. These scores are used only as corroborating
-# evidence; the project classifier remains the primary detector.
 YAMNET_EVENT_INDICES = {
     'scream': (11,),              # Screaming
     'glass': (435, 437),          # Glass, Shatter
-}
-YAMNET_SUPPORT_THRESHOLDS = {
-    'scream': 0.05,
-    'glass': 0.10,
-}
-YAMNET_CUSTOM_FLOORS = {
-    # Historical fusion ablations only; not used by the locked deployment path.
-    'scream': 0.92,
-    'glass': 0.70,
-}
-YAMNET_MIN_CONSECUTIVE_FRAMES = {
-    'scream': 2,
-    'glass': 1,
 }
 
 
@@ -53,6 +57,26 @@ def longest_consecutive_run(mask):
     return longest
 
 
+def _validate_probs(probs):
+    probs = np.asarray(probs)
+    if probs.ndim != 2 or probs.shape[1] != len(CLASSES):
+        raise ValueError(
+            f'Expected probabilities shaped (frames, {len(CLASSES)}), got {probs.shape}'
+        )
+    return probs
+
+
+def _validate_yamnet_scores(yamnet_scores, frame_count):
+    yamnet_scores = np.asarray(yamnet_scores)
+    if yamnet_scores.ndim != 2:
+        raise ValueError(f'Expected 2-D YAMNet scores, got {yamnet_scores.shape}')
+    if yamnet_scores.shape[0] != frame_count:
+        raise ValueError(
+            f'Classifier/YAMNet frame count mismatch: {frame_count} != {yamnet_scores.shape[0]}'
+        )
+    return yamnet_scores
+
+
 def decide(
     probs,
     yamnet_scores=None,
@@ -61,65 +85,83 @@ def decide(
     min_mean_probs=None,
     min_prob_margins=None,
 ):
-    thresholds = thresholds or THRESHOLDS
-    min_consecutive_frames = min_consecutive_frames or MIN_CONSECUTIVE_FRAMES
-    min_mean_probs = min_mean_probs or MIN_MEAN_PROBS
-    min_prob_margins = min_prob_margins or MIN_PROB_MARGINS
-    probs = np.asarray(probs)
-    if probs.ndim != 2 or probs.shape[1] != len(CLASSES):
-        raise ValueError(f'Expected probabilities shaped (frames, {len(CLASSES)}), got {probs.shape}')
-
+    """Legacy configurable classifier-only decision used by training utilities."""
+    thresholds = thresholds or LEGACY_CLASSIFIER_ONLY_POLICY['thresholds']
+    min_consecutive_frames = (
+        min_consecutive_frames
+        or LEGACY_CLASSIFIER_ONLY_POLICY['min_consecutive_frames']
+    )
+    min_mean_probs = min_mean_probs or LEGACY_CLASSIFIER_ONLY_POLICY['min_mean_probs']
+    min_prob_margins = (
+        min_prob_margins or LEGACY_CLASSIFIER_ONLY_POLICY['min_prob_margins']
+    )
+    probs = _validate_probs(probs)
     max_probs = probs.max(axis=0)
     mean_probs = probs.mean(axis=0)
-    frame_margins = {}
     consecutive_runs = {}
-    for cls in thresholds:
-        cls_index = CLASSES.index(cls)
-        other_indices = [idx for idx in range(len(CLASSES)) if idx != cls_index]
-        frame_margins[cls] = probs[:, cls_index] - probs[:, other_indices].max(axis=1)
-        strict_mask = probs[:, cls_index] >= thresholds[cls]
-        if cls in min_prob_margins:
-            strict_mask &= frame_margins[cls] >= min_prob_margins[cls]
-        consecutive_runs[cls] = longest_consecutive_run(strict_mask)
-
-    yamnet_event_probs = None
-    if yamnet_scores is not None:
-        yamnet_scores = np.asarray(yamnet_scores)
-        if yamnet_scores.ndim != 2:
-            raise ValueError(f'Expected 2-D YAMNet scores, got {yamnet_scores.shape}')
-        if yamnet_scores.shape[0] != probs.shape[0]:
-            raise ValueError(
-                f'Classifier/YAMNet frame count mismatch: {probs.shape[0]} != {yamnet_scores.shape[0]}'
-            )
-        yamnet_event_probs = {
-            cls: yamnet_scores[:, indices].max(axis=1)
-            for cls, indices in YAMNET_EVENT_INDICES.items()
-        }
-
     triggered = []
     for cls in thresholds:
         cls_index = CLASSES.index(cls)
-        mean_ok = mean_probs[cls_index] >= min_mean_probs.get(cls, 0.0)
-        strict = consecutive_runs[cls] >= min_consecutive_frames[cls] and mean_ok
-
-        corroborated = False
-        if yamnet_event_probs is not None and cls in yamnet_event_probs:
-            custom_mask = probs[:, cls_index] >= YAMNET_CUSTOM_FLOORS[cls]
-            custom_run = longest_consecutive_run(custom_mask)
-            yamnet_support = float(yamnet_event_probs[cls].max()) >= YAMNET_SUPPORT_THRESHOLDS[cls]
-            corroborated = (
-                custom_run >= YAMNET_MIN_CONSECUTIVE_FRAMES[cls]
-                and yamnet_support
-                and mean_ok
-            )
-
-        if strict or corroborated:
+        other_indices = [index for index in range(len(CLASSES)) if index != cls_index]
+        margin = probs[:, cls_index] - probs[:, other_indices].max(axis=1)
+        mask = probs[:, cls_index] >= thresholds[cls]
+        if cls in min_prob_margins:
+            mask &= margin >= min_prob_margins[cls]
+        consecutive_runs[cls] = longest_consecutive_run(mask)
+        if (
+            consecutive_runs[cls] >= min_consecutive_frames[cls]
+            and mean_probs[cls_index] >= min_mean_probs.get(cls, 0.0)
+        ):
             triggered.append(cls)
-
-    final = max(triggered, key=lambda cls: max_probs[CLASSES.index(cls)]) if triggered else 'normal'
+    final = max(
+        triggered, key=lambda cls: max_probs[CLASSES.index(cls)]
+    ) if triggered else 'normal'
     return final, mean_probs, max_probs, consecutive_runs
 
 
-def decide_deployment(probs):
-    """Apply the locked classifier-only policy used for official evaluation."""
-    return decide(probs, **DEPLOYMENT_POLICY)
+def decide_fusion(probs, yamnet_scores, policy=None):
+    """Apply strong-classifier OR frame-aligned classifier/YAMNet fusion paths."""
+    policy = policy or FINAL_FUSION_POLICY
+    probs = _validate_probs(probs)
+    yamnet_scores = _validate_yamnet_scores(yamnet_scores, probs.shape[0])
+    max_probs = probs.max(axis=0)
+    mean_probs = probs.mean(axis=0)
+    consecutive_runs = {}
+    triggered = []
+
+    for cls, values in policy.items():
+        cls_index = CLASSES.index(cls)
+        strong_mask = probs[:, cls_index] >= values['strong_threshold']
+        strong_run = longest_consecutive_run(strong_mask)
+        event_scores = yamnet_scores[:, YAMNET_EVENT_INDICES[cls]].max(axis=1)
+        aligned_mask = (
+            (probs[:, cls_index] >= values['fusion_custom_threshold'])
+            & (event_scores >= values['fusion_yamnet_threshold'])
+        )
+        fusion_run = longest_consecutive_run(aligned_mask)
+        consecutive_runs[cls] = strong_run
+        if (
+            strong_run >= values['strong_min_frames']
+            or fusion_run >= values['fusion_min_frames']
+        ):
+            triggered.append(cls)
+
+    final = max(
+        triggered, key=lambda cls: max_probs[CLASSES.index(cls)]
+    ) if triggered else 'normal'
+    return final, mean_probs, max_probs, consecutive_runs
+
+
+def decide_deployment(probs, yamnet_scores):
+    """Apply the final 2026-06-21 frame-aligned fusion policy."""
+    return decide_fusion(probs, yamnet_scores)
+
+
+def decide_final_fusion(probs, yamnet_scores):
+    """Apply the same final policy used by evaluation and the live demo."""
+    return decide_fusion(probs, yamnet_scores)
+
+
+def decide_legacy_classifier_only(probs):
+    """Reproduce the historical June 20 classifier-only comparison."""
+    return decide(probs, **LEGACY_CLASSIFIER_ONLY_POLICY)

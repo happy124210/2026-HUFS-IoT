@@ -4,6 +4,8 @@ from scipy import signal
 
 
 SAMPLE_RATE = 16000
+STREAM_WINDOW_SECONDS = 3.0
+STREAM_HOP_SECONDS = 1.0
 
 
 def to_mono_float32(audio):

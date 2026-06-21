@@ -1,0 +1,155 @@
+{
+  "selection_data": "validation only",
+  "candidate_count": 3,
+  "selection_rule": "Require glass and scream recall >= 0.70; then maximize Macro F1 and use lower normal false-alarm rate as tie-breaker.",
+  "candidates": {
+    "recall_oriented": {
+      "glass": {
+        "strong_threshold": 0.9,
+        "strong_min_frames": 1,
+        "fusion_custom_threshold": 0.4,
+        "fusion_yamnet_threshold": 0.1,
+        "fusion_min_frames": 1
+      },
+      "scream": {
+        "strong_threshold": 0.4,
+        "strong_min_frames": 3,
+        "fusion_custom_threshold": 0.7,
+        "fusion_yamnet_threshold": 0.05,
+        "fusion_min_frames": 1
+      }
+    },
+    "balanced": {
+      "glass": {
+        "strong_threshold": 0.95,
+        "strong_min_frames": 2,
+        "fusion_custom_threshold": 0.4,
+        "fusion_yamnet_threshold": 0.1,
+        "fusion_min_frames": 1
+      },
+      "scream": {
+        "strong_threshold": 0.55,
+        "strong_min_frames": 3,
+        "fusion_custom_threshold": 0.85,
+        "fusion_yamnet_threshold": 0.02,
+        "fusion_min_frames": 1
+      }
+    },
+    "precision_oriented": {
+      "glass": {
+        "strong_threshold": 0.97,
+        "strong_min_frames": 2,
+        "fusion_custom_threshold": 0.55,
+        "fusion_yamnet_threshold": 0.2,
+        "fusion_min_frames": 1
+      },
+      "scream": {
+        "strong_threshold": 0.7,
+        "strong_min_frames": 3,
+        "fusion_custom_threshold": 0.85,
+        "fusion_yamnet_threshold": 0.05,
+        "fusion_min_frames": 1
+      }
+    }
+  },
+  "validation_results": {
+    "recall_oriented": {
+      "accuracy": 0.8461538461538461,
+      "macro_f1": 0.8286067838557116,
+      "normal_false_alarm_rate": 0.1935483870967742,
+      "recall": {
+        "glass": 0.88,
+        "normal": 0.8064516129032258,
+        "scream": 0.9210526315789473
+      },
+      "confusion_matrix": [
+        [
+          22,
+          3,
+          0
+        ],
+        [
+          14,
+          75,
+          4
+        ],
+        [
+          1,
+          2,
+          35
+        ]
+      ]
+    },
+    "balanced": {
+      "accuracy": 0.9358974358974359,
+      "macro_f1": 0.9236278243354757,
+      "normal_false_alarm_rate": 0.043010752688172046,
+      "recall": {
+        "glass": 0.88,
+        "normal": 0.956989247311828,
+        "scream": 0.9210526315789473
+      },
+      "confusion_matrix": [
+        [
+          22,
+          3,
+          0
+        ],
+        [
+          1,
+          89,
+          3
+        ],
+        [
+          1,
+          2,
+          35
+        ]
+      ]
+    },
+    "precision_oriented": {
+      "accuracy": 0.9102564102564102,
+      "macro_f1": 0.8945498338473308,
+      "normal_false_alarm_rate": 0.043010752688172046,
+      "recall": {
+        "glass": 0.84,
+        "normal": 0.956989247311828,
+        "scream": 0.8421052631578947
+      },
+      "confusion_matrix": [
+        [
+          21,
+          4,
+          0
+        ],
+        [
+          1,
+          89,
+          3
+        ],
+        [
+          1,
+          5,
+          32
+        ]
+      ]
+    }
+  },
+  "selected_name": "balanced",
+  "selected_policy": {
+    "glass": {
+      "strong_threshold": 0.95,
+      "strong_min_frames": 2,
+      "fusion_custom_threshold": 0.4,
+      "fusion_yamnet_threshold": 0.1,
+      "fusion_min_frames": 1
+    },
+    "scream": {
+      "strong_threshold": 0.55,
+      "strong_min_frames": 3,
+      "fusion_custom_threshold": 0.85,
+      "fusion_yamnet_threshold": 0.02,
+      "fusion_min_frames": 1
+    }
+  }
+}

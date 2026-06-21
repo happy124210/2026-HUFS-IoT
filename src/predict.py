@@ -5,14 +5,14 @@ import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
 
-from audio_pipeline import SAMPLE_RATE, load_audio, loudest_window
+from audio_pipeline import SAMPLE_RATE, STREAM_WINDOW_SECONDS, load_audio, loudest_window
 from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide_deployment
 
 # ── 설정 ──────────────────────────────
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 os.environ.setdefault('TFHUB_CACHE_DIR', os.path.join(tempfile.gettempdir(), 'tfhub_cache_hufs_iot'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-DURATION = 3.0
+DURATION = STREAM_WINDOW_SECONDS
 
 # ── preprocess.py와 동일한 전처리 ─────
 def process_audio(path):
@@ -73,12 +73,13 @@ def predict(wav_path):
     print(f"\n📊 [평균] {mean_scores}")
     print(f"📊 [최대] {max_scores}")
     
-    final, _, _, consecutive_runs = decide_deployment(all_probs)
+    final, _, _, consecutive_runs = decide_deployment(all_probs, yamnet_scores.numpy())
     count_text = '  '.join(
-        f"{cls}: 연속 {consecutive_runs[cls]} / 필요 {MIN_CONSECUTIVE_FRAMES[cls]}"
+        f"{cls}: strong 연속 {consecutive_runs[cls]} / 필요 {MIN_CONSECUTIVE_FRAMES[cls]}"
         for cls in THRESHOLDS
     )
-    print(f"📊 [연속 감지 프레임] {count_text}")
+    print(f"📊 [strong 경로] {count_text}")
+    print("📊 [fusion 경로] 같은 프레임의 custom classifier + YAMNet 동의도 함께 검사")
     print(f"\n🎯 결론: {final}")
     return final
 # ── 실행 ──────────────────────────────

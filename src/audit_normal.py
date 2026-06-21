@@ -18,7 +18,7 @@ def audit_file(yamnet, model, path):
     yamnet_scores, embeddings, _ = yamnet(audio)
     probs = model.predict(embeddings.numpy(), verbose=0)
     max_probs = probs.max(axis=0)
-    final, _, _, consecutive_runs = decide_deployment(probs)
+    final, _, _, consecutive_runs = decide_deployment(probs, yamnet_scores.numpy())
     return final, max_probs, consecutive_runs
 
 

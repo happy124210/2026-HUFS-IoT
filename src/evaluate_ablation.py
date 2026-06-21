@@ -11,9 +11,11 @@ from sklearn.metrics import confusion_matrix, f1_score, recall_score
 from audio_pipeline import load_audio
 from detection_policy import (
     CLASSES,
+    FINAL_FUSION_POLICY,
+    LEGACY_CLASSIFIER_ONLY_POLICY,
     YAMNET_EVENT_INDICES,
-    YAMNET_SUPPORT_THRESHOLDS,
     decide,
+    decide_fusion,
 )
 from train import audio_items_from_splits, collect_sources
 
@@ -52,10 +54,11 @@ def metric_summary(y_true, y_pred):
 
 
 def yamnet_only_label(scores):
+    support_thresholds = {'scream': 0.05, 'glass': 0.10}
     supported = []
     for cls, indices in YAMNET_EVENT_INDICES.items():
         peak = float(scores[:, indices].max())
-        threshold = YAMNET_SUPPORT_THRESHOLDS[cls]
+        threshold = support_thresholds[cls]
         if peak >= threshold:
             supported.append((peak / threshold, cls))
     return max(supported)[1] if supported else 'normal'
@@ -86,8 +89,10 @@ def main():
     models = {name: tf.keras.models.load_model(path) for name, path in model_specs}
     predictions = {'yamnet_only': []}
     for name in models:
-        predictions[f'{name}_custom_policy'] = []
-        predictions[f'{name}_yamnet_fusion'] = []
+        predictions[f'{name}_legacy_classifier_only'] = []
+        predictions[f'{name}_final_strong_only'] = []
+        predictions[f'{name}_same_custom_paths_without_yamnet'] = []
+        predictions[f'{name}_final_frame_aligned_fusion'] = []
 
     y_true = []
     sample_records = []
@@ -104,9 +109,31 @@ def main():
         predictions['yamnet_only'].append(CLASSES.index(yamnet_only_label(scores)))
         for name, model in models.items():
             probs = model.predict(embeddings, verbose=0)
-            predictions[f'{name}_custom_policy'].append(CLASSES.index(decide(probs)[0]))
-            predictions[f'{name}_yamnet_fusion'].append(
-                CLASSES.index(decide(probs, yamnet_scores=scores)[0])
+            predictions[f'{name}_legacy_classifier_only'].append(
+                CLASSES.index(decide(probs, **LEGACY_CLASSIFIER_ONLY_POLICY)[0])
+            )
+            predictions[f'{name}_final_strong_only'].append(CLASSES.index(decide(
+                probs,
+                thresholds={
+                    cls: values['strong_threshold']
+                    for cls, values in FINAL_FUSION_POLICY.items()
+                },
+                min_consecutive_frames={
+                    cls: values['strong_min_frames']
+                    for cls, values in FINAL_FUSION_POLICY.items()
+                },
+                min_mean_probs={'scream': 0.0},
+                min_prob_margins={'scream': 0.0},
+            )[0]))
+            no_yamnet_policy = {
+                cls: {**values, 'fusion_yamnet_threshold': 0.0}
+                for cls, values in FINAL_FUSION_POLICY.items()
+            }
+            predictions[f'{name}_same_custom_paths_without_yamnet'].append(
+                CLASSES.index(decide_fusion(probs, scores, policy=no_yamnet_policy)[0])
+            )
+            predictions[f'{name}_final_frame_aligned_fusion'].append(
+                CLASSES.index(decide_fusion(probs, scores)[0])
             )
         if index % 50 == 0 or index == len(items):
             print(f'[{index}/{len(items)}]')

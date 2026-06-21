@@ -7,14 +7,19 @@ import time
 
 import numpy as np
 
-from audio_pipeline import SAMPLE_RATE, resample_audio
+from audio_pipeline import (
+    SAMPLE_RATE,
+    STREAM_HOP_SECONDS,
+    STREAM_WINDOW_SECONDS,
+    resample_audio,
+)
 from detection_policy import CLASSES, MIN_CONSECUTIVE_FRAMES, THRESHOLDS, decide_deployment
 
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-WINDOW_SECONDS = 3.0
-HOP_SECONDS = 1.0
+WINDOW_SECONDS = STREAM_WINDOW_SECONDS
+HOP_SECONDS = STREAM_HOP_SECONDS
 
 
 def import_sounddevice():
@@ -140,8 +145,8 @@ def run_loop(args):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            probs, _ = frame_predictions(yamnet, classifier, model_audio)
-            final, mean_probs, max_probs, consecutive_runs = decide_deployment(probs)
+            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
+            final, mean_probs, max_probs, consecutive_runs = decide_deployment(probs, yamnet_scores)
 
             now = time.time()
             can_alert = now - last_event_time >= args.cooldown

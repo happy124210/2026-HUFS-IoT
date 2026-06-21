@@ -1,0 +1,1231 @@
+{
+  "manifest": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\test_results\\training\\split_manifest.json",
+  "split": "test",
+  "sample_count": 165,
+  "models": {
+    "baseline": "C:\\윤아\\Workspace\\HUFSWorkspace\\2026-HUFS-IoT\\model\\glass_classifier.h5"
+  },
+  "results": {
+    "yamnet_only": {
+      "accuracy": 0.8,
+      "macro_f1": 0.7556540424388934,
+      "normal_false_alarm_rate": 0.05102040816326531,
+      "recall": {
+        "glass": 0.6896551724137931,
+        "normal": 0.9489795918367347,
+        "scream": 0.5
+      },
+      "confusion_matrix": [
+        [
+          20,
+          9,
+          0
+        ],
+        [
+          2,
+          93,
+          3
+        ],
+        [
+          0,
+          19,
+          19
+        ]
+      ]
+    },
+    "baseline_legacy_classifier_only": {
+      "accuracy": 0.8242424242424242,
+      "macro_f1": 0.8008900632779361,
+      "normal_false_alarm_rate": 0.1326530612244898,
+      "recall": {
+        "glass": 0.8275862068965517,
+        "normal": 0.8673469387755102,
+        "scream": 0.7105263157894737
+      },
+      "confusion_matrix": [
+        [
+          24,
+          4,
+          1
+        ],
+        [
+          6,
+          85,
+          7
+        ],
+        [
+          1,
+          10,
+          27
+        ]
+      ]
+    },
+    "baseline_final_strong_only": {
+      "accuracy": 0.8242424242424242,
+      "macro_f1": 0.7907833802908125,
+      "normal_false_alarm_rate": 0.07142857142857142,
+      "recall": {
+        "glass": 0.6206896551724138,
+        "normal": 0.9285714285714286,
+        "scream": 0.7105263157894737
+      },
+      "confusion_matrix": [
+        [
+          18,
+          10,
+          1
+        ],
+        [
+          0,
+          91,
+          7
+        ],
+        [
+          0,
+          11,
+          27
+        ]
+      ]
+    },
+    "baseline_same_custom_paths_without_yamnet": {
+      "accuracy": 0.6121212121212121,
+      "macro_f1": 0.6162608727299195,
+      "normal_false_alarm_rate": 0.5816326530612245,
+      "recall": {
+        "glass": 0.896551724137931,
+        "normal": 0.41836734693877553,
+        "scream": 0.8947368421052632
+      },
+      "confusion_matrix": [
+        [
+          26,
+          2,
+          1
+        ],
+        [
+          28,
+          41,
+          29
+        ],
+        [
+          3,
+          1,
+          34
+        ]
+      ]
+    },
+    "baseline_final_frame_aligned_fusion": {
+      "accuracy": 0.8545454545454545,
+      "macro_f1": 0.8369822548927027,
+      "normal_false_alarm_rate": 0.09183673469387756,
+      "recall": {
+        "glass": 0.7586206896551724,
+        "normal": 0.9081632653061225,
+        "scream": 0.7894736842105263
+      },
+      "confusion_matrix": [
+        [
+          22,
+          6,
+          1
+        ],
+        [
+          1,
+          89,
+          8
+        ],
+        [
+          0,
+          8,
+          30
+        ]
+      ]
+    }
+  },
+  "errors": {
+    "yamnet_only": [
+      {
+        "group": "glass:201919__univ_lyon3__gelis_hugo_2013_2014_son2",
+        "path": "data_clean/glass/201919__univ_lyon3__gelis_hugo_2013_2014_son2_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:338694__natemarler__glass-bottle-break",
+        "path": "data_clean/glass/338694__natemarler__glass-bottle-break_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:390707__funwithsound__breaking-glass-13",
+        "path": "data_clean/glass/390707__funwithsound__breaking-glass-13_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:427788__fullmetaljedi__metal-to-glass05-broke-it",
+        "path": "data_clean/glass/427788__fullmetaljedi__metal-to-glass05-broke-it_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_1fJNudB6faA_003000_004000",
+        "path": "data_clean/glass/audioset_glass_event_1fJNudB6faA_003000_004000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+        "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_gp5KCkmWRhA_013000_014000",
+        "path": "data_clean/glass/audioset_glass_event_gp5KCkmWRhA_013000_014000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181139_009",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181139_009_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181146_010",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181146_010_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "normal:240139__drfortyseven__yawn-male",
+        "path": "data_clean/normal/240139__drfortyseven__yawn-male_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_casino_normal_046",
+        "path": "data_clean/normal/audioset_casino_normal_046_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_EfWu3FKtvmE_016000_017000",
+        "path": "data_clean/normal/audioset_footsteps_normal_EfWu3FKtvmE_016000_017000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_impact_normal_mTJe1uECCwM_000600_001600",
+        "path": "data_clean/normal/audioset_impact_normal_mTJe1uECCwM_000600_001600_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BnovYnY1UpM_025000_026000",
+        "path": "data_clean/normal/audioset_speech_normal_BnovYnY1UpM_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+        "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_0l1acpkziXE_014000_015000",
+        "path": "data_clean/scream/audioset_scream_0l1acpkziXE_014000_015000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_20qEIZlhruA_003000_004000",
+        "path": "data_clean/scream/audioset_scream_20qEIZlhruA_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_2EVWWafRWwY_003000_004000",
+        "path": "data_clean/scream/audioset_scream_2EVWWafRWwY_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_2WwYJFQiV6U_003000_004000",
+        "path": "data_clean/scream/audioset_scream_2WwYJFQiV6U_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_32uQEpwmYOo_001300_002300",
+        "path": "data_clean/scream/audioset_scream_32uQEpwmYOo_001300_002300_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_3zAp2kxzU7Q_005000_006000",
+        "path": "data_clean/scream/audioset_scream_3zAp2kxzU7Q_005000_006000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_72fUt6hvcs0_000000_001000",
+        "path": "data_clean/scream/audioset_scream_72fUt6hvcs0_000000_001000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_75EwmfHLijI_002000_003000",
+        "path": "data_clean/scream/audioset_scream_75EwmfHLijI_002000_003000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_7ZxN4Labbsg_003000_004000",
+        "path": "data_clean/scream/audioset_scream_7ZxN4Labbsg_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_7kL7i5VdAT4_003000_004000",
+        "path": "data_clean/scream/audioset_scream_7kL7i5VdAT4_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_8PDsogXkGnw_000600_001600",
+        "path": "data_clean/scream/audioset_scream_8PDsogXkGnw_000600_001600_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_8Vb69cN3uWQ_003000_004000",
+        "path": "data_clean/scream/audioset_scream_8Vb69cN3uWQ_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+        "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_l3DJ2MJ5CzY_002000_003000",
+        "path": "data_clean/scream/audioset_scream_l3DJ2MJ5CzY_002000_003000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_m20uudT97E0_003000_004000",
+        "path": "data_clean/scream/audioset_scream_m20uudT97E0_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_116",
+        "path": "data_clean/scream/scream_116_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_133",
+        "path": "data_clean/scream/scream_133_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_136",
+        "path": "data_clean/scream/scream_136_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      }
+    ],
+    "baseline_legacy_classifier_only": [
+      {
+        "group": "glass:427788__fullmetaljedi__metal-to-glass05-broke-it",
+        "path": "data_clean/glass/427788__fullmetaljedi__metal-to-glass05-broke-it_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+        "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_gp5KCkmWRhA_013000_014000",
+        "path": "data_clean/glass/audioset_glass_event_gp5KCkmWRhA_013000_014000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181139_009",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181139_009_clean.wav",
+        "actual": "glass",
+        "predicted": "scream"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181146_010",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181146_010_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "normal:240139__drfortyseven__yawn-male",
+        "path": "data_clean/normal/240139__drfortyseven__yawn-male_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_mgcEfmolt7A_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_mgcEfmolt7A_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_casino_normal_046",
+        "path": "data_clean/normal/audioset_casino_normal_046_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_5UpwKg8zbQw_048000_049000",
+        "path": "data_clean/normal/audioset_footsteps_normal_5UpwKg8zbQw_048000_049000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_EfWu3FKtvmE_016000_017000",
+        "path": "data_clean/normal/audioset_footsteps_normal_EfWu3FKtvmE_016000_017000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_impact_normal_mTJe1uECCwM_000600_001600",
+        "path": "data_clean/normal/audioset_impact_normal_mTJe1uECCwM_000600_001600_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BYk9vYAhmkM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_BYk9vYAhmkM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BnovYnY1UpM_025000_026000",
+        "path": "data_clean/normal/audioset_speech_normal_BnovYnY1UpM_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_E9etGzNH2SM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_E9etGzNH2SM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_20CeP51xlBs_001000_002000",
+        "path": "data_clean/normal/audioset_street_normal_20CeP51xlBs_001000_002000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_7UKtoZ2IvMQ_003000_004000",
+        "path": "data_clean/normal/audioset_street_normal_7UKtoZ2IvMQ_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:normal_006",
+        "path": "data_clean/normal/normal_006_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_180842_009",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_180842_009_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+        "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_72fUt6hvcs0_000000_001000",
+        "path": "data_clean/scream/audioset_scream_72fUt6hvcs0_000000_001000_clean.wav",
+        "actual": "scream",
+        "predicted": "glass"
+      },
+      {
+        "group": "scream:audioset_scream_8Vb69cN3uWQ_003000_004000",
+        "path": "data_clean/scream/audioset_scream_8Vb69cN3uWQ_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+        "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_l3DJ2MJ5CzY_002000_003000",
+        "path": "data_clean/scream/audioset_scream_l3DJ2MJ5CzY_002000_003000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_m20uudT97E0_003000_004000",
+        "path": "data_clean/scream/audioset_scream_m20uudT97E0_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_nwMHPaDYg4I_001000_002000",
+        "path": "data_clean/scream/audioset_scream_nwMHPaDYg4I_001000_002000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_100",
+        "path": "data_clean/scream/scream_100_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_116",
+        "path": "data_clean/scream/scream_116_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_133",
+        "path": "data_clean/scream/scream_133_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_153",
+        "path": "data_clean/scream/scream_153_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      }
+    ],
+    "baseline_final_strong_only": [
+      {
+        "group": "glass:201919__univ_lyon3__gelis_hugo_2013_2014_son2",
+        "path": "data_clean/glass/201919__univ_lyon3__gelis_hugo_2013_2014_son2_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:368329__johandeecke__glass-hit-15",
+        "path": "data_clean/glass/368329__johandeecke__glass-hit-15_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:368330__johandeecke__glass-hit-14",
+        "path": "data_clean/glass/368330__johandeecke__glass-hit-14_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:368347__johandeecke__glass-hit-19",
+        "path": "data_clean/glass/368347__johandeecke__glass-hit-19_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:427788__fullmetaljedi__metal-to-glass05-broke-it",
+        "path": "data_clean/glass/427788__fullmetaljedi__metal-to-glass05-broke-it_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:444136__lurpsis__glass-shatter-3",
+        "path": "data_clean/glass/444136__lurpsis__glass-shatter-3_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_1fJNudB6faA_003000_004000",
+        "path": "data_clean/glass/audioset_glass_event_1fJNudB6faA_003000_004000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+        "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_gp5KCkmWRhA_013000_014000",
+        "path": "data_clean/glass/audioset_glass_event_gp5KCkmWRhA_013000_014000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181139_009",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181139_009_clean.wav",
+        "actual": "glass",
+        "predicted": "scream"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181146_010",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181146_010_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "normal:240139__drfortyseven__yawn-male",
+        "path": "data_clean/normal/240139__drfortyseven__yawn-male_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_5UpwKg8zbQw_048000_049000",
+        "path": "data_clean/normal/audioset_footsteps_normal_5UpwKg8zbQw_048000_049000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_EfWu3FKtvmE_016000_017000",
+        "path": "data_clean/normal/audioset_footsteps_normal_EfWu3FKtvmE_016000_017000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BYk9vYAhmkM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_BYk9vYAhmkM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BnovYnY1UpM_025000_026000",
+        "path": "data_clean/normal/audioset_speech_normal_BnovYnY1UpM_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_7UKtoZ2IvMQ_003000_004000",
+        "path": "data_clean/normal/audioset_street_normal_7UKtoZ2IvMQ_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_180842_009",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_180842_009_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+        "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_41frLbvJKhQ_000000_001000",
+        "path": "data_clean/scream/audioset_scream_41frLbvJKhQ_000000_001000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_8Vb69cN3uWQ_003000_004000",
+        "path": "data_clean/scream/audioset_scream_8Vb69cN3uWQ_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+        "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_l3DJ2MJ5CzY_002000_003000",
+        "path": "data_clean/scream/audioset_scream_l3DJ2MJ5CzY_002000_003000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_m20uudT97E0_003000_004000",
+        "path": "data_clean/scream/audioset_scream_m20uudT97E0_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_nwMHPaDYg4I_001000_002000",
+        "path": "data_clean/scream/audioset_scream_nwMHPaDYg4I_001000_002000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_100",
+        "path": "data_clean/scream/scream_100_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_116",
+        "path": "data_clean/scream/scream_116_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_133",
+        "path": "data_clean/scream/scream_133_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_153",
+        "path": "data_clean/scream/scream_153_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      }
+    ],
+    "baseline_same_custom_paths_without_yamnet": [
+      {
+        "group": "glass:427788__fullmetaljedi__metal-to-glass05-broke-it",
+        "path": "data_clean/glass/427788__fullmetaljedi__metal-to-glass05-broke-it_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+        "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181139_009",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181139_009_clean.wav",
+        "actual": "glass",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:240139__drfortyseven__yawn-male",
+        "path": "data_clean/normal/240139__drfortyseven__yawn-male_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_ambient_normal_2VA6hYWCyzY_034000_035000",
+        "path": "data_clean/normal/audioset_ambient_normal_2VA6hYWCyzY_034000_035000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_mNNjOlPg0y0_000000_000500",
+        "path": "data_clean/normal/audioset_cafe_normal_mNNjOlPg0y0_000000_000500_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_mUYmhq3Rjtc_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_mUYmhq3Rjtc_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_mgcEfmolt7A_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_mgcEfmolt7A_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_miuUYyMOrjU_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_miuUYyMOrjU_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_mmRz2kEp0ho_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_mmRz2kEp0ho_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_cafe_normal_muLJl3ouAZw_003000_004000",
+        "path": "data_clean/normal/audioset_cafe_normal_muLJl3ouAZw_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_casino_normal_020",
+        "path": "data_clean/normal/audioset_casino_normal_020_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_casino_normal_046",
+        "path": "data_clean/normal/audioset_casino_normal_046_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_casino_normal_047",
+        "path": "data_clean/normal/audioset_casino_normal_047_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_casino_normal_102",
+        "path": "data_clean/normal/audioset_casino_normal_102_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_casino_normal_136",
+        "path": "data_clean/normal/audioset_casino_normal_136_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_5UpwKg8zbQw_048000_049000",
+        "path": "data_clean/normal/audioset_footsteps_normal_5UpwKg8zbQw_048000_049000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_EfWu3FKtvmE_016000_017000",
+        "path": "data_clean/normal/audioset_footsteps_normal_EfWu3FKtvmE_016000_017000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_impact_normal_mTJe1uECCwM_000600_001600",
+        "path": "data_clean/normal/audioset_impact_normal_mTJe1uECCwM_000600_001600_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_indoor_normal_15mQMIemjFM_009000_010000",
+        "path": "data_clean/normal/audioset_indoor_normal_15mQMIemjFM_009000_010000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_indoor_normal_2ckEnnHGUmk_001400_002400",
+        "path": "data_clean/normal/audioset_indoor_normal_2ckEnnHGUmk_001400_002400_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_indoor_normal_2csUSFecAdI_008000_009000",
+        "path": "data_clean/normal/audioset_indoor_normal_2csUSFecAdI_008000_009000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_indoor_normal_4S0ugCV4Nn4_003000_004000",
+        "path": "data_clean/normal/audioset_indoor_normal_4S0ugCV4Nn4_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_indoor_normal_Aax8cjFZZ2o_000000_001000",
+        "path": "data_clean/normal/audioset_indoor_normal_Aax8cjFZZ2o_000000_001000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_music_normal_mmekDLDTUXA_003000_004000",
+        "path": "data_clean/normal/audioset_music_normal_mmekDLDTUXA_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_0urv4EcbPAM_009000_010000",
+        "path": "data_clean/normal/audioset_speech_normal_0urv4EcbPAM_009000_010000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_6AyumUbU3VM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_6AyumUbU3VM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_6smsmRjmHYM_019000_020000",
+        "path": "data_clean/normal/audioset_speech_normal_6smsmRjmHYM_019000_020000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_9yY9mjvbHEg_024000_025000",
+        "path": "data_clean/normal/audioset_speech_normal_9yY9mjvbHEg_024000_025000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_AEPQ1U4qFUQ_012000_013000",
+        "path": "data_clean/normal/audioset_speech_normal_AEPQ1U4qFUQ_012000_013000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_AjHS7UZbW74_031000_032000",
+        "path": "data_clean/normal/audioset_speech_normal_AjHS7UZbW74_031000_032000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BYk9vYAhmkM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_BYk9vYAhmkM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BnovYnY1UpM_025000_026000",
+        "path": "data_clean/normal/audioset_speech_normal_BnovYnY1UpM_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_C07IwvRb7Ro_053000_054000",
+        "path": "data_clean/normal/audioset_speech_normal_C07IwvRb7Ro_053000_054000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_CrWiG7dvZIg_007000_008000",
+        "path": "data_clean/normal/audioset_speech_normal_CrWiG7dvZIg_007000_008000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_DYMSZuLfdlc_023000_024000",
+        "path": "data_clean/normal/audioset_speech_normal_DYMSZuLfdlc_023000_024000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_E9etGzNH2SM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_E9etGzNH2SM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_speech_normal_EduyXGoXoB4_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_EduyXGoXoB4_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_0PNUMPym0I8_024000_025000",
+        "path": "data_clean/normal/audioset_street_normal_0PNUMPym0I8_024000_025000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_0cjmAt96WEI_007000_008000",
+        "path": "data_clean/normal/audioset_street_normal_0cjmAt96WEI_007000_008000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_1WFBllfIMPA_000000_000200",
+        "path": "data_clean/normal/audioset_street_normal_1WFBllfIMPA_000000_000200_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_20CeP51xlBs_001000_002000",
+        "path": "data_clean/normal/audioset_street_normal_20CeP51xlBs_001000_002000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_7UKtoZ2IvMQ_003000_004000",
+        "path": "data_clean/normal/audioset_street_normal_7UKtoZ2IvMQ_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_7lyqru6t1SQ_028000_029000",
+        "path": "data_clean/normal/audioset_street_normal_7lyqru6t1SQ_028000_029000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_8430QfEUpWo_026000_027000",
+        "path": "data_clean/normal/audioset_street_normal_8430QfEUpWo_026000_027000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_9KrN9OBhpyQ_017000_018000",
+        "path": "data_clean/normal/audioset_street_normal_9KrN9OBhpyQ_017000_018000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_AchH6Qd0htw_025000_026000",
+        "path": "data_clean/normal/audioset_street_normal_AchH6Qd0htw_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_mojOx7vduyU_054000_055000",
+        "path": "data_clean/normal/audioset_street_normal_mojOx7vduyU_054000_055000_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_street_normal_muBbPbRML3U_029000_030000",
+        "path": "data_clean/normal/audioset_street_normal_muBbPbRML3U_029000_030000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:fp_normal_ambient_002",
+        "path": "data_clean/normal/fp_normal_ambient_002_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:fp_normal_ambient_021",
+        "path": "data_clean/normal/fp_normal_ambient_021_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:normal_006",
+        "path": "data_clean/normal/normal_006_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:normal_010",
+        "path": "data_clean/normal/normal_010_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:normal_019",
+        "path": "data_clean/normal/normal_019_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:normal_020",
+        "path": "data_clean/normal/normal_020_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:normal_040",
+        "path": "data_clean/normal/normal_040_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_180842_009",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_180842_009_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_181329_001",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_181329_001_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_181432_008",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_181432_008_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_181444_009",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_181444_009_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+        "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "glass"
+      },
+      {
+        "group": "scream:audioset_scream_72fUt6hvcs0_000000_001000",
+        "path": "data_clean/scream/audioset_scream_72fUt6hvcs0_000000_001000_clean.wav",
+        "actual": "scream",
+        "predicted": "glass"
+      },
+      {
+        "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+        "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_116",
+        "path": "data_clean/scream/scream_116_clean.wav",
+        "actual": "scream",
+        "predicted": "glass"
+      }
+    ],
+    "baseline_final_frame_aligned_fusion": [
+      {
+        "group": "glass:201919__univ_lyon3__gelis_hugo_2013_2014_son2",
+        "path": "data_clean/glass/201919__univ_lyon3__gelis_hugo_2013_2014_son2_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:427788__fullmetaljedi__metal-to-glass05-broke-it",
+        "path": "data_clean/glass/427788__fullmetaljedi__metal-to-glass05-broke-it_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_1fJNudB6faA_003000_004000",
+        "path": "data_clean/glass/audioset_glass_event_1fJNudB6faA_003000_004000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_VXnHav1KTos_023000_024000",
+        "path": "data_clean/glass/audioset_glass_event_VXnHav1KTos_023000_024000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:audioset_glass_event_gp5KCkmWRhA_013000_014000",
+        "path": "data_clean/glass/audioset_glass_event_gp5KCkmWRhA_013000_014000_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181139_009",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181139_009_clean.wav",
+        "actual": "glass",
+        "predicted": "scream"
+      },
+      {
+        "group": "glass:review_glass_pred_normal_20260617_181146_010",
+        "path": "data_clean/glass/review_glass_pred_normal_20260617_181146_010_clean.wav",
+        "actual": "glass",
+        "predicted": "normal"
+      },
+      {
+        "group": "normal:240139__drfortyseven__yawn-male",
+        "path": "data_clean/normal/240139__drfortyseven__yawn-male_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_casino_normal_046",
+        "path": "data_clean/normal/audioset_casino_normal_046_clean.wav",
+        "actual": "normal",
+        "predicted": "glass"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_5UpwKg8zbQw_048000_049000",
+        "path": "data_clean/normal/audioset_footsteps_normal_5UpwKg8zbQw_048000_049000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_footsteps_normal_EfWu3FKtvmE_016000_017000",
+        "path": "data_clean/normal/audioset_footsteps_normal_EfWu3FKtvmE_016000_017000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BYk9vYAhmkM_003000_004000",
+        "path": "data_clean/normal/audioset_speech_normal_BYk9vYAhmkM_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_BnovYnY1UpM_025000_026000",
+        "path": "data_clean/normal/audioset_speech_normal_BnovYnY1UpM_025000_026000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_speech_normal_CrWiG7dvZIg_007000_008000",
+        "path": "data_clean/normal/audioset_speech_normal_CrWiG7dvZIg_007000_008000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:audioset_street_normal_7UKtoZ2IvMQ_003000_004000",
+        "path": "data_clean/normal/audioset_street_normal_7UKtoZ2IvMQ_003000_004000_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "normal:review_normal_pred_scream_20260617_180842_009",
+        "path": "data_clean/normal/review_normal_pred_scream_20260617_180842_009_clean.wav",
+        "actual": "normal",
+        "predicted": "scream"
+      },
+      {
+        "group": "scream:audioset_scream_0YnOMAls83g_003000_004000",
+        "path": "data_clean/scream/audioset_scream_0YnOMAls83g_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_8Vb69cN3uWQ_003000_004000",
+        "path": "data_clean/scream/audioset_scream_8Vb69cN3uWQ_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_J3kJTkyu5c0_015000_016000",
+        "path": "data_clean/scream/audioset_scream_J3kJTkyu5c0_015000_016000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_l3DJ2MJ5CzY_002000_003000",
+        "path": "data_clean/scream/audioset_scream_l3DJ2MJ5CzY_002000_003000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:audioset_scream_m20uudT97E0_003000_004000",
+        "path": "data_clean/scream/audioset_scream_m20uudT97E0_003000_004000_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_100",
+        "path": "data_clean/scream/scream_100_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_116",
+        "path": "data_clean/scream/scream_116_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      },
+      {
+        "group": "scream:scream_133",
+        "path": "data_clean/scream/scream_133_clean.wav",
+        "actual": "scream",
+        "predicted": "normal"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "platform": "current Windows PC; not Raspberry Pi",
+  "audio_duration_seconds": 3.0,
+  "sample_count": 30,
+  "scope": "audio load + one YAMNet pass + H5 classifier + final Fusion",
+  "inference_ms": {
+    "mean": 57.41690666618524,
+    "median": 56.66124999697786,
+    "p95": 60.55696500552585,
+    "max": 71.1001000017859
+  },
+  "end_to_end_file_ms": {
+    "mean": 58.10261666726243,
+    "median": 57.31250000098953,
+    "p95": 61.319609999191016,
+    "max": 71.73039999906905
+  },
+  "limitation": "This excludes microphone buffering, GPIO/camera/network alert time, and does not represent Raspberry Pi latency."
+}
