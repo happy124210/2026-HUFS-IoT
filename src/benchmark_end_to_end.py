@@ -1,6 +1,7 @@
 import argparse
 import json
 import os
+import platform
 import statistics
 import tempfile
 import time
@@ -18,7 +19,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 MANIFEST = os.path.join(BASE_DIR, 'test_results', 'training', 'split_manifest.json')
 MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
 OUTPUT_PATH = os.path.join(
-    BASE_DIR, 'test_results', 'benchmarks', 'end_to_end_pc_20260621.json'
+    BASE_DIR, 'test_results', 'benchmarks', 'model_processing_current_host_20260621.json'
 )
 
 
@@ -28,7 +29,7 @@ def percentile(values, q):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Benchmark YAMNet + custom head + final Fusion on this PC.'
+        description='Benchmark YAMNet + custom head + final Fusion on the current host.'
     )
     parser.add_argument('--samples', type=int, default=30)
     parser.add_argument('--output', default=OUTPUT_PATH)
@@ -64,25 +65,25 @@ def main():
         total_ms.append((time.perf_counter() - total_start) * 1000)
 
     output = {
-        'platform': 'current Windows PC; not Raspberry Pi',
+        'platform': platform.platform(),
         'audio_duration_seconds': 3.0,
         'sample_count': len(test_items),
-        'scope': 'audio load + one YAMNet pass + H5 classifier + final Fusion',
+        'scope': 'three-second WAV load + YAMNet + H5 classifier + final Fusion',
         'inference_ms': {
             'mean': float(statistics.mean(inference_ms)),
             'median': float(statistics.median(inference_ms)),
             'p95': percentile(inference_ms, 95),
             'max': float(max(inference_ms)),
         },
-        'end_to_end_file_ms': {
+        'file_load_plus_model_ms': {
             'mean': float(statistics.mean(total_ms)),
             'median': float(statistics.median(total_ms)),
             'p95': percentile(total_ms, 95),
             'max': float(max(total_ms)),
         },
         'limitation': (
-            'This excludes microphone buffering, GPIO/camera/network alert time, and does not '
-            'represent Raspberry Pi latency.'
+            'This is model-processing latency, not complete event-to-alert latency. It excludes '
+            'microphone buffering, window and hop alignment, and GPIO/camera/network alert time.'
         ),
     }
     os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)

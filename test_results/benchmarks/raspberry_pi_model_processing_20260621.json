@@ -1,0 +1,19 @@
+{
+  "platform": "Raspberry Pi 4; benchmark launched through PuTTY SSH from a PC",
+  "audio_duration_seconds": 3.0,
+  "sample_count": 30,
+  "scope": "three-second WAV load + YAMNet + H5 classifier + final Fusion on Raspberry Pi",
+  "inference_ms": {
+    "mean": 286.52744153334123,
+    "median": 285.3537759999938,
+    "p95": 293.10018599998955,
+    "max": 293.8379520000467
+  },
+  "file_load_plus_model_ms": {
+    "mean": 287.798541199993,
+    "median": 286.63857649999613,
+    "p95": 294.33407710000097,
+    "max": 295.07322900002464
+  },
+  "limitation": "This is Raspberry Pi model-processing latency, not complete event-to-alert latency. It excludes microphone buffering, window and hop alignment, and GPIO/camera/network alert time."
+}

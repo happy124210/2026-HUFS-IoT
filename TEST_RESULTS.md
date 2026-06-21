@@ -31,30 +31,34 @@ precision-oriented 세 후보만 이번 재검증용으로 고정하고, 두 이
   조건이 완화 경로의 대량 오탐을 억제한다.
 - 모든 정제 음원, 파일 예측, 오프라인 평가, 실시간 기본 window를 3초로 통일했다.
   실시간 hop은 1초다.
-- 현재 Windows PC에서 3초 음원 30개를 대상으로 한 YAMNet + H5 head + Fusion 추론은
-  평균 57.4ms, p95 60.6ms였다. 이는 마이크 buffering과 경보 장치 시간을 제외하며
-  Raspberry Pi 성능을 의미하지 않는다.
+- Raspberry Pi 4에서 3초 음원 30개를 대상으로 한 YAMNet + H5 head + Fusion 모델
+  처리는 평균 286.5ms, p95 293.1ms였다. 파일 로드까지 포함하면 평균 287.8ms,
+  p95 294.3ms다. PuTTY는 원격 터미널로만 사용했으며 실제 추론은 Raspberry Pi에서
+  실행됐다. 이 수치는 마이크 buffering, window/hop 정렬 대기, GPIO/카메라/네트워크
+  경보 시간을 제외한다.
 - 정책 선택: `test_results/training/fusion_policy_selection_20260621.json`
 - 분리 평가: `test_results/evaluations/final_fusion_ablation_20260621.json`
-- PC benchmark: `test_results/benchmarks/end_to_end_pc_20260621.json`
+- Raspberry Pi 모델 처리 benchmark:
+  `test_results/benchmarks/raspberry_pi_model_processing_20260621.json`
 
-## TODO: Raspberry Pi 전체 지연 측정 (오늘 저녁)
+## TODO: Raspberry Pi 전체 이벤트→경보 지연 측정
 
-현재 발표 수치에는 Raspberry Pi 전체 지연이 포함되어 있지 않다. 아래 측정을 완료하기
-전까지 PC의 57.4ms 평균값을 Raspberry Pi 성능이나 실제 경보 지연으로 설명하지 않는다.
+Raspberry Pi 모델 처리 지연은 측정했지만 실제 이벤트 입력부터 경보 출력까지의 전체
+지연은 아직 측정하지 않았다. 286.5ms 평균값을 전체 경보 지연으로 설명하지 않는다.
 
-- [ ] 실제 데모에 사용할 Raspberry Pi에서 최종 Fusion 코드를 실행한다.
+- [x] 실제 데모에 사용할 Raspberry Pi에서 최종 Fusion 모델 처리를 실행한다.
 - [ ] 기기 모델, RAM, OS, Python/TensorFlow 버전, 전원 모드를 기록한다.
 - [ ] 3초 window와 1초 hop을 유지하고, 최소 5회 warm-up 후 30회 이상 측정한다.
-- [ ] 순수 추론 지연을 측정한다: YAMNet 1회 + H5 head + Fusion decision.
+- [x] 모델 처리 지연을 측정한다: YAMNet + H5 head + Fusion decision.
 - [ ] 전체 지연을 별도로 측정한다: 이벤트가 마이크에 입력된 시점부터 실제 경보
   출력(GPIO/화면/네트워크 중 데모에서 사용하는 출력)이 발생한 시점까지.
 - [ ] 두 측정 모두 mean, median, p95, max를 기록하고, 정상/유리 파손/비명 사례를
   모두 포함한다.
-- [ ] 결과를 `test_results/benchmarks/end_to_end_raspberry_pi_20260621.json`에 저장하고
-  이 문서 및 발표자료의 Raspberry Pi 미측정 문구를 실제 결과로 갱신한다.
+- [x] 모델 처리 결과를
+  `test_results/benchmarks/raspberry_pi_model_processing_20260621.json`에 저장한다.
+- [ ] 전체 이벤트→경보 결과를 별도 JSON으로 저장하고 이 문서에 추가한다.
 
-주의: 기존 `src/benchmark_end_to_end.py`는 파일 로드와 추론만 측정하므로 마이크
+주의: 기존 `src/benchmark_end_to_end.py`는 파일 로드와 모델 처리만 측정하므로 마이크
 buffering, 3초 window 대기, 1초 hop 정렬 대기, GPIO/카메라/네트워크 출력 시간을
 포함하지 않는다. 따라서 이 스크립트의 Raspberry Pi 실행 결과만으로 "전체 지연"을
 주장하면 안 된다. 실제 전체 지연은 외부 타임스탬프 또는 동기화된 로그로 별도 측정한다.
