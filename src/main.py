@@ -7,22 +7,18 @@ import time
 import threading
 import numpy as np
 
-from audio_pipeline import (
-    SAMPLE_RATE,
-    STREAM_HOP_SECONDS,
-    STREAM_WINDOW_SECONDS,
-    resample_audio,
-)
+from audio_pipeline import SAMPLE_RATE, resample_audio
 from detection_policy import (
     CLASSES,
-    FINAL_FUSION_POLICY,
+    MIN_CONSECUTIVE_FRAMES,
+    THRESHOLDS,
     decide_deployment,
 )
 
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-MODEL_PATH = os.path.join(BASE_DIR, 'model', 'glass_classifier.h5')
-WINDOW_SECONDS = STREAM_WINDOW_SECONDS
-HOP_SECONDS = STREAM_HOP_SECONDS
+MODEL_PATH = os.path.join(BASE_DIR, 'model', 'experiments/candidate_c_20260619.h5')
+WINDOW_SECONDS = 2.0
+HOP_SECONDS = 1.0
 
 alert_active = False
 alert_lock = threading.Lock()
@@ -128,15 +124,12 @@ def run(device=1):
 
     print(f"\n✅ 시스템 시작!")
     print(f"   입력: {input_sample_rate}Hz → 모델: {SAMPLE_RATE}Hz")
-    print('   정책: 2026-06-21 validation-selected frame-aligned fusion')
-    for cls, policy in FINAL_FUSION_POLICY.items():
-        print(
-            f"   {cls}: strong={policy['strong_threshold']*100:.0f}%/"
-            f"{policy['strong_min_frames']} frames, fusion=custom "
-            f"{policy['fusion_custom_threshold']*100:.0f}% + YAMNet "
-            f"{policy['fusion_yamnet_threshold']*100:.0f}%/"
-            f"{policy['fusion_min_frames']} aligned frames"
-        )
+    print(f"   임계값: glass={THRESHOLDS['glass']*100}% scream={THRESHOLDS['scream']*100}%")
+    print(
+        '   연속 프레임: '
+        + ' '.join(f'{cls}={count}' for cls, count in MIN_CONSECUTIVE_FRAMES.items())
+    )
+    print('   정책: validation-selected classifier-only deployment policy')
     print(f"   Ctrl+C로 종료")
     print("-"*50)
 
@@ -162,8 +155,8 @@ def run(device=1):
                 continue
 
             model_audio = resample_to_model_rate(audio_buffer, input_sample_rate)
-            probs, yamnet_scores = frame_predictions(yamnet, classifier, model_audio)
-            final, _, max_probs, consecutive_runs = decide_deployment(probs, yamnet_scores)
+            probs, _ = frame_predictions(yamnet, classifier, model_audio)
+            final, _, max_probs, consecutive_runs = decide_deployment(probs)
 
             now = time.time()
             with alert_lock:
