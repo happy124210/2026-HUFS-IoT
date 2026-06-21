@@ -1,43 +1,75 @@
-# Edge AI Threat-Sound Detection — 한국어 번역본
+# Edge AI 위협음 감지 — 한국어 해설본
 
-발표 시간: 발표 8분 + 질의응답 2분. 실제 발표는 영어로 진행합니다.
+예상 발표 시간: 약 9분. 실제 발표는 영어로 진행합니다.
 
-## 슬라이드 1 — Edge AI 위협음 감지 (0:25)
+## 슬라이드 1 — Edge AI 위협음 감지
 
-안녕하세요. 저희 프로젝트는 유리 파손음과 비명을 감지하는 엣지 AI 보안 시스템입니다. Raspberry Pi에서 실시간으로 오디오를 분류하고 물리적 경보와 원격 알림을 실행합니다. 오늘은 베이스라인, 최종 Fusion 모델, 시행착오, 최종적으로 효과가 있었던 방법과 향후 개선 방향을 설명하겠습니다.
+이 프로젝트는 유리 파손음과 비명을 감지하는 Edge AI 보안 시스템입니다. Raspberry Pi에서 실시간 오디오 분류를 실행하고 물리적 경보 및 원격 알림으로 연결합니다.
 
-## 슬라이드 2 — 왜 위협음을 들어야 하는가? (0:40)
+## 슬라이드 2 — 왜 위협음을 감지하는가?
 
-카메라와 움직임 센서는 유용하지만 사각지대가 있습니다. 마이크는 음원이 카메라 시야 밖에 있어도 이벤트를 감지할 수 있습니다. 또한 엣지에서 추론하므로 원본 오디오를 계속 업로드할 필요가 없습니다. 위협이 확인되면 부저와 LED를 작동하고, 사진을 촬영하고, 로그를 기록하며, Telegram과 이메일 알림을 전송합니다.
+카메라와 움직임 센서에는 사각지대가 있습니다. 마이크는 독립적인 감지 신호를 추가하며, Edge inference는 원본 오디오를 계속 업로드하지 않도록 합니다. 이벤트가 확인되면 로컬 및 원격 대응을 즉시 실행할 수 있습니다.
 
-## 슬라이드 3 — YAMNet만으로 충분하지 않은 이유 (0:50)
+## 슬라이드 3 — 프로젝트 아이디어와 목표
 
-왜 YAMNet만으로는 부족할까요? Custom head를 제거하고 YAMNet의 범용 AudioSet score를 고정 규칙으로 glass, scream, normal에 직접 매핑했습니다. 이 방식은 특히 비명 감지 성능이 부족했습니다. 범용 의미 점수만으로는 프로젝트의 목표 클래스에 충분히 특화되지 않았기 때문에 다음 슬라이드의 과제 전용 custom head가 필요합니다.
+핵심 개념은 소리를 추가적인 보안 센서로 사용하는 것입니다. 세 클래스의 안정적인 감지, 개인정보를 보호하는 로컬 추론, IoT 대응 연결을 목표로 했습니다. 따라서 threat recall, false alarm, Raspberry Pi 실용성의 균형이 중요합니다.
 
-## 슬라이드 4 — 최종 모델: custom head + YAMNet Fusion (1:05)
+## 슬라이드 4 — 전체 시스템 설계
 
-최종 시스템은 한 번의 YAMNet 실행에서 나오는 두 출력을 모두 사용합니다. 1,024차원 embedding은 과제 전용 dense classifier에 입력되고, 521개 AudioSet class 중 관련 score는 보조 확인에 사용됩니다. 최종 규칙은 두 경로로 구성됩니다. Classifier 증거가 여러 프레임 동안 지속되면 단독으로 감지하고, 더 민감한 경로에서는 같은 프레임에서 classifier와 YAMNet이 동의해야 합니다.
+오디오는 rolling window로 수집됩니다. YAMNet이 embedding과 semantic score를 생성하고, custom head가 세 클래스 확률을 출력합니다. Fusion이 최종 이벤트를 결정한 뒤 IoT 계층이 경보를 실행합니다.
 
-## 슬라이드 5 — 데이터 출처와 평가 방법 (0:45)
+## 슬라이드 5 — 하드웨어 구조
 
-두 가지 상호보완적인 데이터 출처를 사용했습니다. AudioSet의 라벨된 YouTube 오디오는 다양한 음향 환경을 제공하고, Raspberry Pi 마이크로 직접 녹음한 데이터는 실제 배포 환경과 실패 사례를 반영합니다. 학습 데이터에는 gain 변화, noise와 filtering, 여러 신호 대 잡음비와 위치를 적용한 threat event와 normal background의 혼합을 사용했습니다. 표에서는 독립 원본과 생성된 오디오를 구분했습니다. Train source 732개에서 증강·혼합 오디오 4,458개를 생성해 최종적으로 학습에 사용한 오디오 파일은 5,190개입니다.
+모든 AI 추론은 Raspberry Pi 4에서 실행됩니다. 마이크는 오디오를 입력하고, 카메라는 증거 사진을 촬영하며, LED와 부저는 로컬 경보를 제공합니다. PC의 PuTTY는 원격 terminal일 뿐 AI를 실행하지 않습니다.
 
-## 슬라이드 6 — 베이스라인과 최종 Fusion 비교 (0:55)
+## 슬라이드 6 — 소프트웨어와 코드 구조
 
-이 표는 같은 test group에서 YAMNet-only baseline과 최종 Fusion을 비교합니다. 최종 Fusion은 scream recall을 크게 높이고 전체 Macro F1도 개선했습니다. 대신 normal 오탐이 다소 증가했으며, 이는 위협을 놓치는 비용이 더 크다고 판단할 때 수용할 수 있는 trade-off입니다. 이 test split은 이전 프로젝트 반복에서 확인된 적이 있으므로 새로운 외부 데이터 검증은 여전히 필요합니다.
+realtime_detect.py가 실시간 루프를 실행하고 audio_pipeline.py가 오디오 전처리를 담당합니다. H5 custom model이 과제 분류를 수행하며 detection_policy.py가 Fusion 규칙을 적용합니다. GPIO, 카메라, Telegram, 이메일은 각각 별도 모듈로 구성됩니다.
 
-## 슬라이드 7 — 시행착오가 시스템을 바꾸었다 (1:00)
+## 슬라이드 7 — YAMNet-only 베이스라인
 
-세 가지 교훈이 접근 방식을 바꿨습니다. 첫째, 처음에는 YAMNet에서 일반적으로 사용하는 clip-level averaging으로 시작했습니다. 이 방법은 음원 전체에서 지배적인 소리를 요약하는 clip tagging에는 적합합니다. 하지만 저희의 목표는 짧은 이벤트 감지이므로 유리 충격음이 주변 normal 프레임에 희석되었습니다. 따라서 frame-level 증거를 유지하도록 바꿨습니다. 둘째, 광범위한 AudioSet 라벨은 노이즈를 만들었고 실제 마이크 리뷰는 배포 환경에 특화된 오류를 드러냈습니다. 그래서 라벨을 엄격히 정리하고 검증된 실패 사례를 다시 학습 데이터에 반영했습니다. 셋째, 완화된 classifier threshold는 민감도를 높였지만 YAMNet의 보조 확인 없이 사용하면 normal 소리에서도 감지가 자주 발생했습니다. 따라서 이 경로에서는 두 신호가 같은 프레임에서 동의하도록 했습니다.
+베이스라인은 custom head를 제거하고 YAMNet의 범용 AudioSet score를 세 클래스로 직접 매핑합니다. 낮은 scream recall은 범용 score만으로는 우리 과제에 충분히 특화되지 않는다는 점을 보여줍니다.
 
-## 슬라이드 8 — 실시간 Fusion (0:50)
+## 슬라이드 8 — 최종 모델 구조
 
-실시간 시스템은 rolling audio window를 일정한 간격으로 분석합니다. Raspberry Pi에서 모델 처리 시간은 평균 약 287ms였습니다. 이 값은 WAV 로드, YAMNet, H5 classifier, Fusion 판정을 한 번에 포함해 측정한 값입니다.
+한 번의 YAMNet 실행에서 두 출력이 나옵니다. 1,024차원 embedding은 custom dense head에 입력되고, 521개 AudioSet class 중 관련 score는 보조 확인에 사용됩니다. 1,024는 특징 수이고 521은 범용 클래스 수입니다.
 
-## 슬라이드 9 — 향후 개선 가능성 (0:50)
+## 슬라이드 9 — Frame-aligned Fusion 정책
 
-데이터 측면에서는 실제 배포 공간의 비명과 충격음, 말소리, 발걸음 같은 hard negative가 더 필요합니다. 모델 측면에서는 일부 YAMNet 계층 fine-tuning, calibration, 소형 temporal network를 검토할 수 있습니다. 배포 측면에서는 현재 TensorFlow Hub와 H5를 사용하고 TFLite는 classifier head만 포함합니다. 새로운 외부 데이터 검증, Raspberry Pi 지속 부하 조건의 지연 검증, 장시간 시간당 오탐 측정이 필요합니다.
+두 가지 판정 경로가 있습니다. 강한 classifier 증거가 여러 프레임 동안 지속되면 직접 감지합니다. 더 민감한 경로는 같은 프레임에서 classifier와 관련 YAMNet score가 함께 동의할 때만 감지합니다.
 
-## 슬라이드 10 — 결론 (0:40)
+## 슬라이드 10 — 데이터 출처
 
-전이학습은 감지기를 실용적으로 만들었고, custom head는 YAMNet 특징을 프로젝트 목적에 맞게 전문화했습니다. Frame-aligned Fusion은 과제 특화 정보와 범용 의미 정보를 결합했습니다. 최종 시스템은 평가에서 가장 좋은 전체 균형을 보였습니다. 다음 단계는 새로운 외부 데이터에서 결과를 검증하고 장시간 현장 시험을 완료하는 것입니다. 감사합니다. 질문 받겠습니다.
+AudioSet으로 다양한 음향 환경을 확보하고, Raspberry Pi 마이크 직접 녹음으로 실제 배포 영역을 반영했습니다. Speech, music, impact, footsteps 같은 현실적인 normal hard negative도 포함했습니다.
+
+## 슬라이드 11 — 증강 및 최종 데이터 규모
+
+Gain 변화, noise, filtering, 여러 SNR과 위치에서의 background mixing을 적용했습니다. 최종 학습 입력은 source audio 732개와 증강·혼합 오디오 4,458개를 합친 총 5,190개입니다.
+
+## 슬라이드 12 — 학습과 평가 방법
+
+원본 source 기준으로 데이터를 분리하고 YAMNet을 동결한 뒤 frame-level embedding을 cache했습니다. Regularization과 early stopping으로 dense head를 학습하고 validation의 최소 recall 조건을 이용해 Fusion candidate를 선택했습니다.
+
+## 슬라이드 13 — 시행착오
+
+Mean pooling은 짧은 glass impact를 희석했고, 광범위한 label은 노이즈를 만들었으며, YAMNet 동의 없는 완화 threshold는 normal 오탐을 증가시켰습니다. 각 실패가 최종 설계 변경으로 이어졌습니다.
+
+## 슬라이드 14 — 베이스라인과 최종 Fusion 비교
+
+Final Fusion은 YAMNet-only보다 scream recall과 Macro F1을 크게 개선했습니다. 대신 normal false alarm은 다소 증가했습니다. Test split을 이전 반복에서 확인한 적이 있으므로 새로운 외부 데이터 검증이 필요합니다.
+
+## 슬라이드 15 — 결과와 기여
+
+과제 특화 classifier, frame-level Fusion, Raspberry Pi edge deployment, source-separated evaluation이 주요 기여입니다. 오디오 모델을 실제 IoT 보안 대응과 연결했다는 점이 프로젝트의 실용적 의미입니다.
+
+## 슬라이드 16 — Raspberry Pi 실시간 처리
+
+실시간 시스템은 3초 rolling window와 1초 hop을 사용합니다. Raspberry Pi에서 WAV load, YAMNet, H5 classifier, Fusion decision을 포함한 모델 처리 평균은 약 287ms였습니다.
+
+## 슬라이드 17 — 향후 개선
+
+새로운 외부 데이터 검증, 실제 마이크 threat 및 hard negative 추가, calibration 또는 compact temporal model, 지속 부하 시험, 장시간 시간당 오탐 측정이 필요합니다.
+
+## 슬라이드 18 — 결론
+
+Transfer learning으로 실용적인 detector를 만들었고 custom head가 YAMNet feature를 과제에 맞게 특화했습니다. Frame-aligned Fusion은 과제 특화 증거와 범용 의미 증거를 결합했습니다. 다음 단계는 새로운 외부 데이터 검증입니다.
