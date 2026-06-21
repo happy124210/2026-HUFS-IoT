@@ -26,9 +26,9 @@
 
 realtime_detect.py가 실시간 루프를 실행하고 audio_pipeline.py가 오디오 전처리를 담당합니다. H5 custom model이 과제 분류를 수행하며 detection_policy.py가 Fusion 규칙을 적용합니다. GPIO, 카메라, Telegram, 이메일은 각각 별도 모듈로 구성됩니다.
 
-## 슬라이드 7 — YAMNet-only 베이스라인
+## 슬라이드 7 — 비교 기준: YAMNet-only
 
-베이스라인은 custom head를 제거하고 YAMNet의 범용 AudioSet score를 세 클래스로 직접 매핑합니다. 낮은 scream recall은 범용 score만으로는 우리 과제에 충분히 특화되지 않는다는 점을 보여줍니다.
+비교를 위해 YAMNet-only 베이스라인을 평가했습니다. YAMNet은 MobileNetV1 기반의 사전 학습 오디오 분류 모델이며 AudioSet의 521개 클래스 점수를 출력합니다. 이 중 관련 점수를 고정 규칙으로 세 클래스에 매핑했습니다. 이 베이스라인은 두 위험음을 모두 놓쳤고 특히 scream에 취약했기 때문에 과제에 특화된 분류기가 필요하다는 것을 확인했습니다.
 
 ## 슬라이드 8 — 최종 모델 구조
 

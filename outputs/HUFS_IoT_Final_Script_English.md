@@ -26,9 +26,9 @@ The Raspberry Pi 4 performs all inference. The microphone provides audio, the ca
 
 The implementation is modular. The live loop is in realtime_detect.py, audio preprocessing is separated into audio_pipeline.py, the custom H5 model performs task classification, and detection_policy.py applies the final Fusion rules. Separate modules handle GPIO, camera, Telegram, and email.
 
-## Slide 7 — Baseline: YAMNet-only control (0:30)
+## Slide 7 — Comparison baseline: YAMNet-only (0:30)
 
-Our baseline removes the custom head and maps generic YAMNet AudioSet scores directly to three classes. Its weak scream recall shows why generic semantic scores alone are not sufficiently specialized for our task.
+For comparison, we evaluated a YAMNet-only baseline. YAMNet is a pretrained audio classifier based on MobileNetV1 and produces scores for 521 AudioSet classes. We mapped selected scores to our three classes using fixed rules. This baseline missed both threat types, especially screams, showing why a task-specific classifier was needed.
 
 ## Slide 8 — Final architecture (0:35)
 
